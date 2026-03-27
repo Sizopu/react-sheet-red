@@ -1,0 +1,651 @@
+{
+  "version": "2.1",
+  "exportDate": "2026-03-27T00:00:00.000Z",
+  "characters": [
+    {
+      "profile": {
+        "id": "char_test_001",
+        "name": "Test Solo",
+        "description": "Тестовый персонаж для проверки всех полей",
+        "createdAt": 1711500000000,
+        "updatedAt": 1711500000000
+      },
+      "character": {
+        "char_name": "Johnny Silverhand",
+        "age": "35",
+        "role": "Rockerboy",
+        "xp_current": "500",
+        "hp_current": "12",
+        "hp_max": "12",
+        "humanity_current": "18",
+        "humanity_max": "18",
+        "initiative": "15",
+        "death_save": "0",
+        "critically_wounded": false,
+        "seriously_wounded": false,
+        "critical_injuries": "",
+        "addictions": "",
+        "notes": "Тестовые заметки персонажа",
+        "stat_int": "6",
+        "stat_ref": "9",
+        "stat_dex": "7",
+        "stat_tech": "4",
+        "stat_cool": "8",
+        "stat_will": "6",
+        "stat_luck_current": "5",
+        "stat_luck_max": "10",
+        "stat_move": "6",
+        "stat_body": "8",
+        "stat_emp_current": "7",
+        "stat_emp_max": "10",
+        "skills": {
+          "AWARENESS_SKILLS_concentration": {
+            "mod": 0,
+            "lvl": 2
+          },
+          "AWARENESS_SKILLS_perception": {
+            "mod": 0,
+            "lvl": 3
+          },
+          "BODY_SKILLS_athletics": {
+            "mod": 0,
+            "lvl": 4
+          },
+          "BODY_SKILLS_endurance": {
+            "mod": 0,
+            "lvl": 2
+          },
+          "BODY_SKILLS_stealth": {
+            "mod": 0,
+            "lvl": 1
+          },
+          "CONTROL_SKILLS_drive land vehicle": {
+            "mod": 0,
+            "lvl": 5
+          },
+          "EDUCATION_SKILLS_business": {
+            "mod": 0,
+            "lvl": 2
+          },
+          "EDUCATION_SKILLS_language": {
+            "mod": 0,
+            "lvl": 3
+          },
+          "FIGHTING_SKILLS_brawling": {
+            "mod": 0,
+            "lvl": 4
+          },
+          "FIGHTING_SKILLS_evasion": {
+            "mod": 0,
+            "lvl": 2
+          },
+          "FIGHTING_SKILLS_melee weapon": {
+            "mod": 0,
+            "lvl": 3
+          },
+          "PERFORMANCE_SKILLS_play instrument": {
+            "mod": 0,
+            "lvl": 6
+          },
+          "RANGED_WEAPON_SKILLS_handgun": {
+            "mod": 0,
+            "lvl": 5
+          },
+          "RANGED_WEAPON_SKILLS_shoulders arms": {
+            "mod": 0,
+            "lvl": 3
+          },
+          "SOCIAL_SKILLS_persuasion": {
+            "mod": 0,
+            "lvl": 4
+          },
+          "SOCIAL_SKILLS_streetwise": {
+            "mod": 0,
+            "lvl": 2
+          },
+          "TECHNIQUE_SKILLS_first aid": {
+            "mod": 0,
+            "lvl": 1
+          }
+        },
+        "expandableRows": {
+          "EDUCATION_SKILLS_language": [
+            {
+              "id": 1,
+              "mod": 0,
+              "lvl": 2,
+              "name": "English"
+            },
+            {
+              "id": 2,
+              "mod": 0,
+              "lvl": 1,
+              "name": "Japanese"
+            }
+          ],
+          "PERFORMANCE_SKILLS_play instrument": [
+            {
+              "id": 1,
+              "mod": 0,
+              "lvl": 4,
+              "name": "Guitar"
+            },
+            {
+              "id": 2,
+              "mod": 0,
+              "lvl": 2,
+              "name": "Piano"
+            }
+          ]
+        },
+        "customSkillNames": {
+          "EDUCATION_SKILLS_language": "Languages"
+        },
+        "specialisedSkills": [
+          {
+            "id": 1,
+            "stat": "REF",
+            "name": "Katana",
+            "mod": 0,
+            "lvl": 3
+          },
+          {
+            "id": 2,
+            "stat": "COOL",
+            "name": "Intimidation",
+            "mod": 0,
+            "lvl": 2
+          }
+        ],
+        "weapons": [
+          {
+            "id": 1,
+            "name": "Malorian Arms 3516",
+            "dmg": "6d6+5",
+            "mag": "6",
+            "rof": "0",
+            "notes": "Reliable, Accurate",
+            "attackSlots": [
+              {
+                "formula": "6d6+5",
+                "notes": "Standard shot"
+              },
+              {
+                "formula": "6d6+5",
+                "notes": "Aimed shot"
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Katana",
+            "dmg": "6d6+4",
+            "mag": "",
+            "rof": "",
+            "notes": "Very Deadly",
+            "attackSlots": [
+              {
+                "formula": "6d6+4",
+                "notes": "Slash"
+              }
+            ]
+          }
+        ],
+        "roles": [
+          {
+            "id": 1,
+            "role": "Rockerboy",
+            "ability": "Charismatic Leadership",
+            "lvl": 3
+          },
+          {
+            "id": 2,
+            "role": "Solo",
+            "ability": "Combat Sense",
+            "lvl": 1
+          }
+        ],
+        "avatar": "",
+        "cyberdeckData": {
+          "cyberdeckInfo": {
+            "model": "Cyberdeck 3000",
+            "icon": "🖥️",
+            "netActions": 4,
+            "black": 2,
+            "cost": 5000
+          },
+          "interfaceAbilities": [
+            "backdoor",
+            "virus",
+            "zap",
+            "control"
+          ],
+          "cyberdeckNotes": "Мой любимый кибердек для взлома",
+          "programsData": {
+            "poor": [
+              {
+                "id": 1,
+                "name": "Scanner",
+                "type": "passive"
+              }
+            ],
+            "standard": [
+              {
+                "id": 1,
+                "name": "Ice Breaker",
+                "type": "attack"
+              },
+              {
+                "id": 2,
+                "name": "Shield",
+                "type": "defense"
+              }
+            ],
+            "excellent": [
+              {
+                "id": 1,
+                "name": "Demon",
+                "type": "attack"
+              }
+            ],
+            "cyberarm": []
+          },
+          "hardwareData": [
+            {
+              "id": 1,
+              "name": "Neural Link",
+              "effect": "+1 to Interface",
+              "cost": 1000
+            },
+            {
+              "id": 2,
+              "name": "Memory Boost",
+              "effect": "+2 Memory",
+              "cost": 500
+            }
+          ]
+        },
+        "cyberwareImplants": "[{\"id\":1,\"type\":\"neuralware\",\"name\":\"Neural Processor\",\"gameEffect\":\"+1 Interface\",\"cost\":200,\"zones\":[\"brain\"],\"description\":\"Улучшает интерфейс с киберпространством\",\"humanityLoss\":1},{\"id\":2,\"type\":\"cyberoptics\",\"name\":\"Kiroshi Optics Mark III\",\"gameEffect\":\"+2 Perception\",\"cost\":300,\"zones\":[\"eyes\"],\"description\":\"Продвинутые киберглаза с зумом\",\"humanityLoss\":2},{\"id\":3,\"type\":\"internal\",\"name\":\"Heart Implant\",\"gameEffect\":\"+1 Body\",\"cost\":150,\"zones\":[\"heart\"],\"description\":\"Искусственное сердце\",\"humanityLoss\":1},{\"id\":4,\"type\":\"limb\",\"name\":\"Cyber Arm\",\"gameEffect\":\"+2 Strength\",\"cost\":500,\"zones\":[\"right-arm\"],\"description\":\"Кибернетическая рука\",\"humanityLoss\":2}]",
+        "lifepathData": "{\"aliases\":\"Silverhand, Johnny Boy\",\"impCurrent\":18,\"impMax\":18,\"repValue\":5,\"repEvents\":\"Известен своими концертами\",\"culturalOrigins\":\"Центр Найт-Сити\",\"personality\":\"Дерзкий и независимый\",\"clothingStyles\":\"Рокерская кожа и металл\",\"hairstyle\":\"Серебристые волосы\",\"valueMost\":\"Свобода слова\",\"feelingsPeople\":\"Сочувствует угнетенным\",\"valuedPerson\":\"Alt Cunningham\",\"valuedPossession\":\"Malorian Arms 3516\",\"familyBackground\":\"Потерял семью в войне\",\"childhoodEnvironment\":\"Улицы Найт-Сити\",\"familyCrisis\":\"Смерть родителей\",\"lifeGoals\":\"Уничтожить Arasaka\",\"fashion\":\"Кожаная куртка с шипами\",\"friends\":\"Morgan Blackhand\",\"tragicLove\":\"Alt Cunningham\",\"enemies\":[\"Arasaka Corporation\",\"\",\"\",\"\"],\"housing\":\"Квартира в Найт-Сити\",\"rent\":\"500\",\"lifestyle\":\"Средний\",\"moneyTotal\":10000,\"roleLifepath\":\"Лидер группы Samurai\"}",
+        "inventoryData": "[{\"gear\":\"Malorian Arms 3516\",\"cost\":5000,\"weight\":2,\"notes\":\"Legendary pistol\",\"cash\":0},{\"gear\":\"Katana\",\"cost\":1000,\"weight\":3,\"notes\":\"Very Deadly\",\"cash\":0}]",
+        "notesData": "[{\"id\":1,\"type\":\"note\",\"title\":\"Важные контакты\",\"content\":\"Fixer: Wakako\\nNetrunner: Net\\nTech: Viktor\",\"createdAt\":\"2026-03-27T00:00:00.000Z\"},{\"id\":2,\"type\":\"table\",\"title\":\"Таблица лута\",\"content\":\"\",\"tableRows\":3,\"tableCols\":3,\"tableData\":[[\"Предмет\",\"Кол-во\",\"Цена\"],[\"Патроны\",\"100\",\"50\"],[\"Аптечка\",\"5\",\"100\"]],\"createdAt\":\"2026-03-27T00:00:00.000Z\"}]"
+      }
+    },
+    {
+      "profile": {
+        "id": "char_test_002",
+        "name": "Test Netrunner",
+        "description": "Тестовый нетраннер",
+        "createdAt": 1711500000000,
+        "updatedAt": 1711500000000
+      },
+      "character": {
+        "char_name": "Alt Cunningham",
+        "age": "28",
+        "role": "Netrunner",
+        "xp_current": "1200",
+        "hp_current": "8",
+        "hp_max": "10",
+        "humanity_current": "10",
+        "humanity_max": "18",
+        "initiative": "18",
+        "death_save": "0",
+        "critically_wounded": false,
+        "seriously_wounded": false,
+        "critical_injuries": "",
+        "addictions": "",
+        "notes": "Гениальный программист",
+        "stat_int": "10",
+        "stat_ref": "8",
+        "stat_dex": "6",
+        "stat_tech": "9",
+        "stat_cool": "7",
+        "stat_will": "8",
+        "stat_luck_current": "8",
+        "stat_luck_max": "10",
+        "stat_move": "5",
+        "stat_body": "5",
+        "stat_emp_current": "5",
+        "stat_emp_max": "10",
+        "skills": {
+          "AWARENESS_SKILLS_concentration": {
+            "mod": 0,
+            "lvl": 5
+          },
+          "AWARENESS_SKILLS_perception": {
+            "mod": 0,
+            "lvl": 4
+          },
+          "EDUCATION_SKILLS_science": {
+            "mod": 0,
+            "lvl": 6
+          },
+          "EDUCATION_SKILLS_cryptography": {
+            "mod": 0,
+            "lvl": 5
+          },
+          "TECHNIQUE_SKILLS_basic tech": {
+            "mod": 0,
+            "lvl": 4
+          },
+          "TECHNIQUE_SKILLS_electronics/security tech": {
+            "mod": 0,
+            "lvl": 7
+          },
+          "TECHNIQUE_SKILLS_cybertech": {
+            "mod": 0,
+            "lvl": 3
+          }
+        },
+        "expandableRows": {
+          "EDUCATION_SKILLS_science": [
+            {
+              "id": 1,
+              "mod": 0,
+              "lvl": 5,
+              "name": "Computer Science"
+            },
+            {
+              "id": 2,
+              "mod": 0,
+              "lvl": 3,
+              "name": "Mathematics"
+            }
+          ]
+        },
+        "customSkillNames": {},
+        "specialisedSkills": [
+          {
+            "id": 1,
+            "stat": "INT",
+            "name": "Programming",
+            "mod": 0,
+            "lvl": 7
+          }
+        ],
+        "weapons": [
+          {
+            "id": 1,
+            "name": "Light Pistol",
+            "dmg": "2d6+1",
+            "mag": "10",
+            "rof": "0",
+            "notes": "",
+            "attackSlots": [
+              {
+                "formula": "2d6+1",
+                "notes": ""
+              }
+            ]
+          }
+        ],
+        "roles": [
+          {
+            "id": 1,
+            "role": "Netrunner",
+            "ability": "Interface On The Go",
+            "lvl": 4
+          }
+        ],
+        "avatar": "",
+        "cyberdeckData": {
+          "cyberdeckInfo": {
+            "model": "Netrunner Pro X",
+            "icon": "💻",
+            "netActions": 6,
+            "black": 4,
+            "cost": 15000
+          },
+          "interfaceAbilities": [
+            "backdoor",
+            "cloak",
+            "scanner",
+            "slide",
+            "virus",
+            "zap",
+            "control",
+            "pathfinder"
+          ],
+          "cyberdeckNotes": "Профессиональный кибердек для глубокого взлома",
+          "programsData": {
+            "poor": [
+              {
+                "id": 1,
+                "name": "Ping",
+                "type": "passive"
+              }
+            ],
+            "standard": [
+              {
+                "id": 1,
+                "name": "Crash",
+                "type": "attack"
+              },
+              {
+                "id": 2,
+                "name": "Armor",
+                "type": "defense"
+              },
+              {
+                "id": 3,
+                "name": "Bounce",
+                "type": "defense"
+              }
+            ],
+            "excellent": [
+              {
+                "id": 1,
+                "name": "Hellhound",
+                "type": "attack"
+              },
+              {
+                "id": 2,
+                "name": "Pool Depletion",
+                "type": "attack"
+              }
+            ],
+            "cyberarm": [
+              {
+                "id": 1,
+                "name": "CoProcessor",
+                "type": "upgrade"
+              }
+            ]
+          },
+          "hardwareData": [
+            {
+              "id": 1,
+              "name": "Neural Processor V",
+              "effect": "+2 Interface",
+              "cost": 2000
+            },
+            {
+              "id": 2,
+              "name": "RAM Boost",
+              "effect": "+4 Memory",
+              "cost": 800
+            },
+            {
+              "id": 3,
+              "name": "Data Wall",
+              "effect": "Defense +3",
+              "cost": 1200
+            }
+          ]
+        },
+        "cyberwareImplants": "[{\"id\":1,\"type\":\"neuralware\",\"name\":\"Interface Plugs\",\"gameEffect\":\"Interface with cyberdecks\",\"cost\":100,\"zones\":[\"neck\"],\"description\":\"Позволяют подключаться к кибердеку\",\"humanityLoss\":1},{\"id\":2,\"type\":\"neuralware\",\"name\":\"Kerenzikov Booster\",\"gameEffect\":\"+2 Initiative\",\"cost\":400,\"zones\":[\"brain\"],\"description\":\"Ускоритель рефлексов\",\"humanityLoss\":2}]",
+        "lifepathData": "{\"aliases\":\"The Queen of the Net\",\"impCurrent\":10,\"impMax\":18,\"repValue\":8,\"repEvents\":\"Создатель Soulkiller\",\"culturalOrigins\":\"Night City University\",\"personality\":\"Аналитический ум\",\"clothingStyles\":\"Минимализм\",\"hairstyle\":\"Короткие темные волосы\",\"valueMost\":\"Знания\",\"feelingsPeople\":\"Недоверие к корпорациям\",\"valuedPerson\":\"Johnny Silverhand\",\"valuedPossession\":\"Soulkiller\",\"familyBackground\":\"Отец - учёный\",\"childhoodEnvironment\":\"Академическая среда\",\"familyCrisis\":\"Потеря доступа к исследованиям\",\"lifeGoals\":\"Защитить цифровую свободу\",\"fashion\":\"Простая одежда\",\"friends\":\"Johnny Silverhand\",\"tragicLove\":\"Johnny Silverhand\",\"enemies\":[\"Arasaka AI Division\",\"\",\"\",\"\"],\"housing\":\"Квартира в центре\",\"rent\":\"800\",\"lifestyle\":\"Высокий\",\"moneyTotal\":25000,\"roleLifepath\":\"Создатель цифровых технологий\"}",
+        "inventoryData": "[{\"gear\":\"Light Pistol\",\"cost\":200,\"weight\":1,\"notes\":\"\",\"cash\":0},{\"gear\":\"Cyberdeck\",\"cost\":15000,\"weight\":2,\"notes\":\"Netrunner Pro X\",\"cash\":0}]",
+        "notesData": "[{\"id\":1,\"type\":\"note\",\"title\":\"Коды доступа\",\"content\":\"Arasaka Tower: Level 5\\nMilitech Server: Admin\\n\",\"createdAt\":\"2026-03-27T00:00:00.000Z\"}]"
+      }
+    },
+    {
+      "profile": {
+        "id": "char_test_003",
+        "name": "Test Tech",
+        "description": "Тестовый техник",
+        "createdAt": 1711500000000,
+        "updatedAt": 1711500000000
+      },
+      "character": {
+        "char_name": "Sasha Mechanic",
+        "age": "42",
+        "role": "Tech",
+        "xp_current": "800",
+        "hp_current": "14",
+        "hp_max": "14",
+        "humanity_current": "16",
+        "humanity_max": "18",
+        "initiative": "11",
+        "death_save": "0",
+        "critically_wounded": false,
+        "seriously_wounded": false,
+        "critical_injuries": "",
+        "addictions": "",
+        "notes": "Может починить что угодно",
+        "stat_int": "7",
+        "stat_ref": "6",
+        "stat_dex": "7",
+        "stat_tech": "10",
+        "stat_cool": "5",
+        "stat_will": "6",
+        "stat_luck_current": "6",
+        "stat_luck_max": "10",
+        "stat_move": "6",
+        "stat_body": "8",
+        "stat_emp_current": "8",
+        "stat_emp_max": "10",
+        "skills": {
+          "AWARENESS_SKILLS_perception": {
+            "mod": 0,
+            "lvl": 2
+          },
+          "BODY_SKILLS_athletics": {
+            "mod": 0,
+            "lvl": 2
+          },
+          "CONTROL_SKILLS_drive land vehicle": {
+            "mod": 0,
+            "lvl": 3
+          },
+          "EDUCATION_SKILLS_business": {
+            "mod": 0,
+            "lvl": 2
+          },
+          "TECHNIQUE_SKILLS_basic tech": {
+            "mod": 0,
+            "lvl": 6
+          },
+          "TECHNIQUE_SKILLS_land vehicle tech": {
+            "mod": 0,
+            "lvl": 7
+          },
+          "TECHNIQUE_SKILLS_air vehicle tech": {
+            "mod": 0,
+            "lvl": 4
+          },
+          "TECHNIQUE_SKILLS_weaponstech": {
+            "mod": 0,
+            "lvl": 5
+          },
+          "TECHNIQUE_SKILLS_cybertech": {
+            "mod": 0,
+            "lvl": 3
+          },
+          "TECHNIQUE_SKILLS_electronics/security tech": {
+            "mod": 0,
+            "lvl": 4
+          }
+        },
+        "expandableRows": {},
+        "customSkillNames": {},
+        "specialisedSkills": [
+          {
+            "id": 1,
+            "stat": "TECH",
+            "name": "Cyberdeck Modding",
+            "mod": 0,
+            "lvl": 4
+          }
+        ],
+        "weapons": [
+          {
+            "id": 1,
+            "name": "Wrench",
+            "dmg": "1d6+2",
+            "mag": "",
+            "rof": "",
+            "notes": "Improvised weapon",
+            "attackSlots": [
+              {
+                "formula": "1d6+2",
+                "notes": "Melee"
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Shotgun",
+            "dmg": "4d6",
+            "mag": "6",
+            "rof": "0",
+            "notes": "Close range",
+            "attackSlots": [
+              {
+                "formula": "4d6",
+                "notes": "Standard"
+              }
+            ]
+          }
+        ],
+        "roles": [
+          {
+            "id": 1,
+            "role": "Tech",
+            "ability": "Juryrig",
+            "lvl": 3
+          }
+        ],
+        "avatar": "",
+        "cyberdeckData": {
+          "cyberdeckInfo": {
+            "model": "Tech Deck v2",
+            "icon": "🔧",
+            "netActions": 2,
+            "black": 1,
+            "cost": 2000
+          },
+          "interfaceAbilities": [
+            "scanner",
+            "pathfinder"
+          ],
+          "cyberdeckNotes": "Простой дек для диагностики",
+          "programsData": {
+            "poor": [],
+            "standard": [
+              {
+                "id": 1,
+                "name": "Diagnostic",
+                "type": "passive"
+              }
+            ],
+            "excellent": [],
+            "cyberarm": []
+          },
+          "hardwareData": [
+            {
+              "id": 1,
+              "name": "Tool Interface",
+              "effect": "+1 Tech checks",
+              "cost": 300
+            }
+          ]
+        },
+        "cyberwareImplants": "[{\"id\":1,\"type\":\"external\",\"name\":\"Tool Hands\",\"gameEffect\":\"Built-in tools\",\"cost\":250,\"zones\":[\"right-arm\",\"left-arm\"],\"description\":\"Встроенные инструменты в руках\",\"humanityLoss\":1},{\"id\":2,\"type\":\"cyberaudio\",\"name\":\"Audio Scanner\",\"gameEffect\":\"+1 Perception (audio)\",\"cost\":150,\"zones\":[\"ears\"],\"description\":\"Сканер звуковых частот\",\"humanityLoss\":1},{\"id\":3,\"type\":\"fashionware\",\"name\":\"Nanite Hair\",\"gameEffect\":\"Change color at will\",\"cost\":50,\"zones\":[\"hair\"],\"description\":\"Волосы с наномашинами\",\"humanityLoss\":0}]",
+        "lifepathData": "{\"aliases\":\"Sasha Wrench\",\"impCurrent\":16,\"impMax\":18,\"repValue\":4,\"repEvents\":\"Починил генератор в Afterlife\",\"culturalOrigins\":\"The Glen Garage\",\"personality\":\"Практичный и надёжный\",\"clothingStyles\":\"Рабочая одежда\",\"hairstyle\":\"Короткая стрижка\",\"valueMost\":\"Инструменты\",\"feelingsPeople\":\"Уважение к мастерам\",\"valuedPerson\":\"Rogue\",\"valuedPossession\":\"Набор инструментов\",\"familyBackground\":\"Семья механиков\",\"childhoodEnvironment\":\"Гараж с детства\",\"familyCrisis\":\"Закрытие семейного бизнеса\",\"lifeGoals\":\"Открыть свою мастерскую\",\"fashion\":\"Комбинезон\",\"friends\":\"Rogue Amendiares\",\"tragicLove\":\"\",\"enemies\":[\"Tyger Claws Gang\",\"\",\"\",\"\"],\"housing\":\"Дом в Glen\",\"rent\":\"300\",\"lifestyle\":\"Средний\",\"moneyTotal\":8000,\"roleLifepath\":\"Лучший техник в Найт-Сити\"}",
+        "inventoryData": "[{\"gear\":\"Wrench\",\"cost\":10,\"weight\":1,\"notes\":\"Improvised weapon\",\"cash\":0},{\"gear\":\"Shotgun\",\"cost\":500,\"weight\":4,\"notes\":\"Close range\",\"cash\":0},{\"gear\":\"Tool Kit\",\"cost\":200,\"weight\":5,\"notes\":\"Basic tools\",\"cash\":0}]",
+        "notesData": "[{\"id\":1,\"type\":\"note\",\"title\":\"Список запчастей\",\"content\":\"Engine parts: 5x\\nCyberlimb joints: 3x\\nOptics: 2x\\n\",\"createdAt\":\"2026-03-27T00:00:00.000Z\"},{\"id\":2,\"type\":\"note\",\"title\":\"Клиенты\",\"content\":\"Rogue - фикс на байк\\nPanam - ремонт генератора\\n\",\"createdAt\":\"2026-03-27T00:00:00.000Z\"},{\"id\":3,\"type\":\"table\",\"title\":\"Прайс-лист\",\"content\":\"\",\"tableRows\":4,\"tableCols\":2,\"tableData\":[[\"Услуга\",\"Цена\"],[\"Ремонт киберимпланта\",\"500\"],[\"Диагностика\",\"100\"],[\"Модификация\",\"1000\"]],\"createdAt\":\"2026-03-27T00:00:00.000Z\"}]"
+      }
+    }
+  ]
+}

@@ -1,0 +1,540 @@
+{
+  "version": "2.1",
+  "exportDate": "2026-03-27T19:32:17.527Z",
+  "characters": [
+    {
+      "profile": {
+        "id": "char_full_001",
+        "name": "Johnny Silverhand",
+        "description": "Полностью заполненный тестовый персонаж - Rockerboy",
+        "createdAt": 1774639937527,
+        "updatedAt": 1774639937527
+      },
+      "character": {
+        "char_name": "Johnny Silverhand",
+        "age": "35",
+        "role": "Rockerboy",
+        "xp_current": "500",
+        "hp_current": "12",
+        "hp_max": "12",
+        "humanity_current": "18",
+        "humanity_max": "18",
+        "initiative": "15",
+        "death_save": "0",
+        "critically_wounded": false,
+        "seriously_wounded": false,
+        "critical_injuries": "",
+        "addictions": "",
+        "notes": "Тестовые заметки",
+        "stat_int": "6",
+        "stat_ref": "9",
+        "stat_dex": "7",
+        "stat_tech": "4",
+        "stat_cool": "8",
+        "stat_will": "6",
+        "stat_luck_current": "5",
+        "stat_luck_max": "10",
+        "stat_move": "6",
+        "stat_body": "8",
+        "stat_emp_current": "7",
+        "stat_emp_max": "10",
+        "skills": {
+          "AWARENESS_SKILLS_concentration": {
+            "mod": 0,
+            "lvl": 2
+          },
+          "AWARENESS_SKILLS_perception": {
+            "mod": 0,
+            "lvl": 3
+          },
+          "BODY_SKILLS_athletics": {
+            "mod": 0,
+            "lvl": 4
+          },
+          "BODY_SKILLS_endurance": {
+            "mod": 0,
+            "lvl": 2
+          },
+          "BODY_SKILLS_stealth": {
+            "mod": 0,
+            "lvl": 1
+          },
+          "CONTROL_SKILLS_drive land vehicle": {
+            "mod": 0,
+            "lvl": 5
+          },
+          "EDUCATION_SKILLS_business": {
+            "mod": 0,
+            "lvl": 2
+          },
+          "EDUCATION_SKILLS_language": {
+            "mod": 0,
+            "lvl": 3
+          },
+          "FIGHTING_SKILLS_brawling": {
+            "mod": 0,
+            "lvl": 4
+          },
+          "FIGHTING_SKILLS_evasion": {
+            "mod": 0,
+            "lvl": 2
+          },
+          "FIGHTING_SKILLS_melee weapon": {
+            "mod": 0,
+            "lvl": 3
+          },
+          "PERFORMANCE_SKILLS_play instrument": {
+            "mod": 0,
+            "lvl": 6
+          },
+          "RANGED_WEAPON_SKILLS_handgun": {
+            "mod": 0,
+            "lvl": 5
+          },
+          "RANGED_WEAPON_SKILLS_shoulders arms": {
+            "mod": 0,
+            "lvl": 3
+          },
+          "SOCIAL_SKILLS_persuasion": {
+            "mod": 0,
+            "lvl": 4
+          },
+          "SOCIAL_SKILLS_streetwise": {
+            "mod": 0,
+            "lvl": 2
+          },
+          "TECHNIQUE_SKILLS_first aid": {
+            "mod": 0,
+            "lvl": 1
+          }
+        },
+        "expandableRows": {
+          "EDUCATION_SKILLS_language": [
+            {
+              "id": 1,
+              "mod": 0,
+              "lvl": 2,
+              "name": "English"
+            },
+            {
+              "id": 2,
+              "mod": 0,
+              "lvl": 1,
+              "name": "Japanese"
+            }
+          ],
+          "PERFORMANCE_SKILLS_play instrument": [
+            {
+              "id": 1,
+              "mod": 0,
+              "lvl": 4,
+              "name": "Guitar"
+            },
+            {
+              "id": 2,
+              "mod": 0,
+              "lvl": 2,
+              "name": "Piano"
+            }
+          ]
+        },
+        "customSkillNames": {
+          "EDUCATION_SKILLS_language": "Languages"
+        },
+        "specialisedSkills": [
+          {
+            "id": 1,
+            "stat": "REF",
+            "name": "Katana",
+            "mod": 0,
+            "lvl": 3
+          },
+          {
+            "id": 2,
+            "stat": "COOL",
+            "name": "Intimidation",
+            "mod": 0,
+            "lvl": 2
+          }
+        ],
+        "weapons": [
+          {
+            "id": 1,
+            "name": "Malorian Arms 3516",
+            "dmg": "6d6+5",
+            "mag": "6",
+            "rof": "0",
+            "notes": "Reliable, Accurate",
+            "attackSlots": [
+              {
+                "formula": "6d6+5",
+                "notes": "Standard shot"
+              },
+              {
+                "formula": "6d6+5",
+                "notes": "Aimed shot"
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Katana",
+            "dmg": "6d6+4",
+            "mag": "",
+            "rof": "",
+            "notes": "Very Deadly",
+            "attackSlots": [
+              {
+                "formula": "6d6+4",
+                "notes": "Slash"
+              }
+            ]
+          }
+        ],
+        "roles": [
+          {
+            "id": 1,
+            "role": "Rockerboy",
+            "ability": "Charismatic Leadership",
+            "lvl": 3
+          },
+          {
+            "id": 2,
+            "role": "Solo",
+            "ability": "Combat Sense",
+            "lvl": 1
+          }
+        ],
+        "avatar": "",
+        "cyberwareImplants": "[{\"id\":1,\"type\":\"neuralware\",\"name\":\"Neural Processor\",\"gameEffect\":\"+1 Interface\",\"cost\":200,\"zones\":[\"brain\"],\"description\":\"Улучшает интерфейс с киберпространством\",\"humanityLoss\":1,\"effects\":[\"Interface +1\",\"Memory +2\",\"\"],\"rarity\":\"common\"},{\"id\":2,\"type\":\"cyberoptics\",\"name\":\"Kiroshi Optics Mark III\",\"gameEffect\":\"+2 Perception\",\"cost\":300,\"zones\":[\"eyes\"],\"description\":\"Продвинутые киберглаза с зумом\",\"humanityLoss\":2,\"effects\":[\"Zoom x10\",\"Low-Light\",\"Anti-Flash\"],\"rarity\":\"common\"},{\"id\":3,\"type\":\"internal\",\"name\":\"Heart Implant\",\"gameEffect\":\"+1 Body\",\"cost\":150,\"zones\":[\"heart\"],\"description\":\"Искусственное сердце\",\"humanityLoss\":1,\"effects\":[\"Resist Poison +2\",\"\",\"\"],\"rarity\":\"common\"},{\"id\":4,\"type\":\"limb\",\"name\":\"Cyber Arm\",\"gameEffect\":\"+2 Strength\",\"cost\":500,\"zones\":[\"right-arm\"],\"description\":\"Кибернетическая рука\",\"humanityLoss\":2,\"effects\":[\"Melee Dmg +1\",\"Lift +20kg\",\"\"],\"rarity\":\"common\"}]",
+        "lifepathData": "{\"aliases\":\"Silverhand, Johnny Boy\",\"impCurrent\":18,\"impMax\":18,\"repValue\":5,\"repEvents\":\"Известен своими концертами\",\"culturalOrigins\":\"Центр Найт-Сити\",\"personality\":\"Дерзкий и независимый\",\"clothingStyles\":\"Рокерская кожа и металл\",\"hairstyle\":\"Серебристые волосы\",\"valueMost\":\"Свобода слова\",\"feelingsPeople\":\"Сочувствует угнетенным\",\"valuedPerson\":\"Alt Cunningham\",\"valuedPossession\":\"Malorian Arms 3516\",\"familyBackground\":\"Потерял семью в войне\",\"childhoodEnvironment\":\"Улицы Найт-Сити\",\"familyCrisis\":\"Смерть родителей\",\"lifeGoals\":\"Уничтожить Arasaka\",\"fashion\":\"Кожаная куртка с шипами\",\"friends\":\"Morgan Blackhand\",\"tragicLove\":\"Alt Cunningham\",\"enemies\":[\"Arasaka Corporation\",\"Убийство родителей\",\"Весь арсенал корпорации\",\"Судебный процесс\"],\"housing\":\"Квартира в Найт-Сити\",\"rent\":\"500\",\"lifestyle\":\"Средний\",\"moneyTotal\":10000,\"roleLifepath\":\"Лидер группы Samurai\"}",
+        "inventoryData": "[{\"gear\":\"Malorian Arms 3516\",\"cost\":5000,\"weight\":2,\"notes\":\"Legendary pistol\",\"cash\":0},{\"gear\":\"Katana\",\"cost\":1000,\"weight\":3,\"notes\":\"Very Deadly\",\"cash\":0},{\"gear\":\"Leather Jacket\",\"cost\":200,\"weight\":1,\"notes\":\"Armored\",\"cash\":0}]",
+        "notesData": "[{\"id\":1,\"type\":\"note\",\"title\":\"Важные контакты\",\"content\":\"Fixer: Wakako\\nNetrunner: Net\\nTech: Viktor\",\"createdAt\":\"2026-03-27T19:32:17.527Z\"},{\"id\":2,\"type\":\"table\",\"title\":\"Таблица лута\",\"content\":\"\",\"tableRows\":3,\"tableCols\":3,\"tableData\":[[\"Предмет\",\"Кол-во\",\"Цена\"],[\"Патроны\",\"100\",\"50\"],[\"Аптечка\",\"5\",\"100\"]],\"createdAt\":\"2026-03-27T19:32:17.527Z\"}]",
+        "cyberdeckData": {
+          "cyberdeckInfo": {
+            "model": "Cyberdeck 3000",
+            "icon": "🖥️",
+            "netActions": 4,
+            "black": 2,
+            "cost": 5000
+          },
+          "interfaceAbilities": [
+            "backdoor",
+            "virus",
+            "zap",
+            "control"
+          ],
+          "cyberdeckNotes": "Мой любимый кибердек для взлома",
+          "programsData": {
+            "poor": [
+              {
+                "id": 1,
+                "name": "Scanner",
+                "type": "passive"
+              }
+            ],
+            "standard": [
+              {
+                "id": 1,
+                "name": "Ice Breaker",
+                "type": "attack"
+              },
+              {
+                "id": 2,
+                "name": "Shield",
+                "type": "defense"
+              }
+            ],
+            "excellent": [
+              {
+                "id": 1,
+                "name": "Demon",
+                "type": "attack"
+              }
+            ],
+            "cyberarm": []
+          },
+          "hardwareData": [
+            {
+              "id": 1,
+              "name": "Neural Link",
+              "effect": "+1 to Interface",
+              "cost": 1000
+            },
+            {
+              "id": 2,
+              "name": "Memory Boost",
+              "effect": "+2 Memory",
+              "cost": 500
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "mobs": [
+    {
+      "id": "mob_001",
+      "name": "Arasaka Security Guard",
+      "stats": {
+        "int": 5,
+        "ref": 8,
+        "dex": 8,
+        "tech": 4,
+        "cool": 7,
+        "will": 6,
+        "luck": 5,
+        "move": 6,
+        "body": 7,
+        "emp": 0
+      },
+      "hitPoints": {
+        "current": 14,
+        "max": 14
+      },
+      "seriouslyWounded": false,
+      "deathSave": 0,
+      "initiative": 0,
+      "weapons": [
+        {
+          "name": "Arasaka Pistol",
+          "dmg": "2d6",
+          "mag": "12",
+          "rof": "0",
+          "notes": "Standard issue",
+          "attackSlots": [
+            {
+              "formula": "2d6",
+              "notes": "Standard shot"
+            }
+          ]
+        },
+        {
+          "name": "Batton",
+          "dmg": "1d6",
+          "mag": "",
+          "rof": "",
+          "notes": "Non-lethal",
+          "attackSlots": [
+            {
+              "formula": "1d6",
+              "notes": "Melee"
+            }
+          ]
+        }
+      ],
+      "handWeapons": [],
+      "armor": {
+        "head": {
+          "sp": "10",
+          "notes": "Helmet",
+          "penalty": "0"
+        },
+        "body": {
+          "sp": "10",
+          "notes": "Armor Vest",
+          "penalty": "0"
+        }
+      },
+      "skills": [
+        {
+          "name": "Athletics",
+          "value": 4
+        },
+        {
+          "name": "Handgun",
+          "value": 5
+        },
+        {
+          "name": "Melee",
+          "value": 3
+        },
+        {
+          "name": "Awareness",
+          "value": 4
+        }
+      ],
+      "skillBases": "REF+DEX for most skills",
+      "cyberware": "None",
+      "notes": "Охранник начального уровня"
+    },
+    {
+      "id": "mob_002",
+      "name": "Tyger Claws Gang Member",
+      "stats": {
+        "int": 5,
+        "ref": 9,
+        "dex": 9,
+        "tech": 4,
+        "cool": 8,
+        "will": 7,
+        "luck": 6,
+        "move": 7,
+        "body": 8,
+        "emp": 0
+      },
+      "hitPoints": {
+        "current": 16,
+        "max": 16
+      },
+      "seriouslyWounded": false,
+      "deathSave": 0,
+      "initiative": 0,
+      "weapons": [
+        {
+          "name": "Katana",
+          "dmg": "6d6",
+          "mag": "",
+          "rof": "",
+          "notes": "Traditional",
+          "attackSlots": [
+            {
+              "formula": "6d6",
+              "notes": "Slash"
+            }
+          ]
+        },
+        {
+          "name": "SMG",
+          "dmg": "3d6",
+          "mag": "30",
+          "rof": "3",
+          "notes": "Auto",
+          "attackSlots": [
+            {
+              "formula": "3d6",
+              "notes": "Burst"
+            }
+          ]
+        }
+      ],
+      "handWeapons": [],
+      "armor": {
+        "head": {
+          "sp": "8",
+          "notes": "Cap",
+          "penalty": "0"
+        },
+        "body": {
+          "sp": "8",
+          "notes": "Leather Jacket",
+          "penalty": "0"
+        }
+      },
+      "skills": [
+        {
+          "name": "Athletics",
+          "value": 5
+        },
+        {
+          "name": "Handgun",
+          "value": 4
+        },
+        {
+          "name": "Melee Weapon",
+          "value": 5
+        },
+        {
+          "name": "Stealth",
+          "value": 4
+        }
+      ],
+      "skillBases": "DEX+REF for combat",
+      "cyberware": "Kerenzikov Booster +1",
+      "notes": "Член банды Tyger Claws"
+    },
+    {
+      "id": "mob_003",
+      "name": "Militech Soldier",
+      "stats": {
+        "int": 6,
+        "ref": 10,
+        "dex": 9,
+        "tech": 5,
+        "cool": 8,
+        "will": 8,
+        "luck": 6,
+        "move": 7,
+        "body": 9,
+        "emp": 0
+      },
+      "hitPoints": {
+        "current": 18,
+        "max": 18
+      },
+      "seriouslyWounded": false,
+      "deathSave": 0,
+      "initiative": 0,
+      "weapons": [
+        {
+          "name": "Militech Rifle",
+          "dmg": "5d6",
+          "mag": "30",
+          "rof": "3",
+          "notes": "Assault rifle",
+          "attackSlots": [
+            {
+              "formula": "5d6",
+              "notes": "Standard"
+            },
+            {
+              "formula": "5d6",
+              "notes": "Burst"
+            }
+          ]
+        },
+        {
+          "name": "Combat Knife",
+          "dmg": "1d6+2",
+          "mag": "",
+          "rof": "",
+          "notes": "Military grade",
+          "attackSlots": [
+            {
+              "formula": "1d6+2",
+              "notes": "Stab"
+            }
+          ]
+        }
+      ],
+      "handWeapons": [],
+      "armor": {
+        "head": {
+          "sp": "14",
+          "notes": "Combat Helmet",
+          "penalty": "0"
+        },
+        "body": {
+          "sp": "14",
+          "notes": "Flak Jacket",
+          "penalty": "0"
+        }
+      },
+      "skills": [
+        {
+          "name": "Athletics",
+          "value": 6
+        },
+        {
+          "name": "Rifle",
+          "value": 7
+        },
+        {
+          "name": "Handgun",
+          "value": 5
+        },
+        {
+          "name": "Melee",
+          "value": 4
+        },
+        {
+          "name": "Tactics",
+          "value": 5
+        }
+      ],
+      "skillBases": "Military trained",
+      "cyberware": "None",
+      "notes": "Элитный солдат Militech"
+    }
+  ]
+}

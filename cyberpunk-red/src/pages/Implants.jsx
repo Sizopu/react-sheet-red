@@ -86,12 +86,12 @@ const ZONE_LABELS = {
 }
 
 export default function Implants() {
-  const { characterData, updateCharacterField, saveCharacterData, currentCharacterId } = useCharacter()
-  
+  const { currentCharacterId, characterData } = useCharacter()
+
   const [implants, setImplants] = useState([])
   const [selectedImplantId, setSelectedImplantId] = useState(null)
   const [dropdownOpen, setDropdownOpen] = useState(false)
-  
+
   const [lifepathData, setLifepathData] = useState({
     aliases: '',
     impCurrent: 0,
@@ -122,87 +122,192 @@ export default function Implants() {
   })
   
   const [inventory, setInventory] = useState([{ gear: '', cost: 0, weight: 0, notes: '', cash: 0 }])
-  
-  // Refs for debouncing
-  const implantsRef = useRef(implants)
-  const lifepathDataRef = useRef(lifepathData)
-  const inventoryRef = useRef(inventory)
+
   const saveTimeoutRef = useRef(null)
 
-  // Update refs when state changes
+  // Load saved data из characterData
   useEffect(() => {
-    implantsRef.current = implants
-  }, [implants])
-  
-  useEffect(() => {
-    lifepathDataRef.current = lifepathData
-  }, [lifepathData])
-  
-  useEffect(() => {
-    inventoryRef.current = inventory
-  }, [inventory])
+    console.log('[IMPLANTS] useEffect triggered - currentCharacterId:', currentCharacterId)
+    console.log('[IMPLANTS] characterData:', characterData)
+    console.log('[IMPLANTS] characterData.cyberwareImplants:', characterData?.cyberwareImplants)
+    console.log('[IMPLANTS] characterData.lifepathData:', characterData?.lifepathData)
 
-  // Load saved data
-  useEffect(() => {
-    if (characterData.cyberdeckData) {
-      const data = JSON.parse(characterData.cyberdeckData)
-      if (data.implants) setImplants(data.implants)
-      if (data.lifepathData) setLifepathData({ ...lifepathData, ...data.lifepathData })
-      if (data.inventoryData) setInventory(data.inventoryData)
-    } else {
-      // Load from old keys for backwards compatibility
-      if (characterData.cyberwareImplants) {
-        setImplants(JSON.parse(characterData.cyberwareImplants))
-      }
-      if (characterData.lifepathData) {
-        setLifepathData(JSON.parse(characterData.lifepathData))
-      }
-      if (characterData.inventoryData) {
-        setInventory(JSON.parse(characterData.inventoryData))
-      }
+    if (!currentCharacterId || !characterData) {
+      console.log('[IMPLANTS] Skipping load - no characterId or characterData')
+      return
     }
-  }, [characterData])
 
-  // Auto-save with debounce
+    console.log('[IMPLANTS] characterData keys:', Object.keys(characterData))
+    console.log('[IMPLANTS] inventoryData:', characterData.inventoryData)
+
+    // Загружаем импланты
+    if (characterData.cyberwareImplants) {
+      const implantsData = typeof characterData.cyberwareImplants === 'string'
+        ? JSON.parse(characterData.cyberwareImplants)
+        : characterData.cyberwareImplants
+      console.log('[IMPLANTS] Parsed implantsData:', implantsData)
+      if (Array.isArray(implantsData)) {
+        console.log('[IMPLANTS] Loading implants:', implantsData)
+        // Добавляем дефолтные значения для отсутствующих полей
+        const normalizedImplants = implantsData.map(implant => ({
+          id: implant.id,
+          type: implant.type || 'external',
+          name: implant.name || '',
+          zone: implant.zone || implant.zones?.[0] || 'chest',
+          zones: implant.zones || (implant.zone ? [implant.zone] : ['chest']),
+          humanityLoss: implant.humanityLoss ?? 0,
+          description: implant.description || '',
+          gameEffect: implant.gameEffect || '',
+          effects: implant.effects || ['', '', ''],
+          cost: implant.cost ?? 0,
+          rarity: implant.rarity || 'common'
+        }))
+        console.log('[IMPLANTS] Normalized implants:', normalizedImplants)
+        setImplants(normalizedImplants)
+      } else {
+        console.log('[IMPLANTS] implantsData is not an array:', implantsData)
+      }
+    } else {
+      console.log('[IMPLANTS] No cyberwareImplants in characterData')
+      setImplants([])
+    }
+
+    // Загружаем lifepath
+    if (characterData.lifepathData) {
+      const lifepath = typeof characterData.lifepathData === 'string'
+        ? JSON.parse(characterData.lifepathData)
+        : characterData.lifepathData
+      console.log('[IMPLANTS] Loading lifepath:', lifepath)
+      console.log('[IMPLANTS] lifepath.enemies:', lifepath.enemies)
+      console.log('[IMPLANTS] Is enemies array?', Array.isArray(lifepath.enemies))
+      
+      // Объединяем с дефолтными значениями для отсутствующих полей
+      const newLifepath = {
+        aliases: lifepath.aliases || '',
+        impCurrent: lifepath.impCurrent ?? 0,
+        impMax: lifepath.impMax ?? 0,
+        repValue: lifepath.repValue ?? 0,
+        repEvents: lifepath.repEvents || '',
+        culturalOrigins: lifepath.culturalOrigins || '',
+        personality: lifepath.personality || '',
+        clothingStyles: lifepath.clothingStyles || '',
+        hairstyle: lifepath.hairstyle || '',
+        valueMost: lifepath.valueMost || '',
+        feelingsPeople: lifepath.feelingsPeople || '',
+        valuedPerson: lifepath.valuedPerson || '',
+        valuedPossession: lifepath.valuedPossession || '',
+        familyBackground: lifepath.familyBackground || '',
+        childhoodEnvironment: lifepath.childhoodEnvironment || '',
+        familyCrisis: lifepath.familyCrisis || '',
+        lifeGoals: lifepath.lifeGoals || '',
+        fashion: lifepath.fashion || '',
+        friends: lifepath.friends || '',
+        tragicLove: lifepath.tragicLove || '',
+        enemies: Array.isArray(lifepath.enemies) ? lifepath.enemies : ['', '', '', ''],
+        housing: lifepath.housing || '',
+        rent: lifepath.rent || '',
+        lifestyle: lifepath.lifestyle || '',
+        moneyTotal: lifepath.moneyTotal ?? 0,
+        roleLifepath: lifepath.roleLifepath || ''
+      }
+      console.log('[IMPLANTS] Setting lifepathData:', newLifepath)
+      console.log('[IMPLANTS] newLifepath.enemies:', newLifepath.enemies)
+      setLifepathData(newLifepath)
+    } else {
+      console.log('[IMPLANTS] No lifepathData in characterData')
+      setLifepathData({
+        aliases: '',
+        impCurrent: 0,
+        impMax: 0,
+        repValue: 0,
+        repEvents: '',
+        culturalOrigins: '',
+        personality: '',
+        clothingStyles: '',
+        hairstyle: '',
+        valueMost: '',
+        feelingsPeople: '',
+        valuedPerson: '',
+        valuedPossession: '',
+        familyBackground: '',
+        childhoodEnvironment: '',
+        familyCrisis: '',
+        lifeGoals: '',
+        fashion: '',
+        friends: '',
+        tragicLove: '',
+        enemies: ['', '', '', ''],
+        housing: '',
+        rent: '',
+        lifestyle: '',
+        moneyTotal: 0,
+        roleLifepath: ''
+      })
+    }
+
+    // Загружаем inventory
+    if (characterData.inventoryData) {
+      const invData = typeof characterData.inventoryData === 'string'
+        ? JSON.parse(characterData.inventoryData)
+        : characterData.inventoryData
+      console.log('[IMPLANTS] Loading inventory:', invData)
+      if (Array.isArray(invData) && invData.length > 0) {
+        setInventory(invData)
+      } else {
+        setInventory([{ gear: '', cost: 0, weight: 0, notes: '', cash: 0 }])
+      }
+    } else {
+      setInventory([{ gear: '', cost: 0, weight: 0, notes: '', cash: 0 }])
+    }
+  }, [currentCharacterId, characterData])
+
+  // Auto-save with debounce - пишем напрямую в localStorage
   useEffect(() => {
     if (!currentCharacterId) return
-    
+
     if (saveTimeoutRef.current) {
       clearTimeout(saveTimeoutRef.current)
     }
-    
+
     saveTimeoutRef.current = setTimeout(() => {
-      saveCharacterData({
-        ...characterData,
-        cyberwareImplants: JSON.stringify(implantsRef.current),
-        lifepathData: JSON.stringify(lifepathDataRef.current),
-        inventoryData: JSON.stringify(inventoryRef.current)
-      })
+      const key = `character_${currentCharacterId}_characterData`
+      const saved = localStorage.getItem(key)
+      const data = saved ? JSON.parse(saved) : {}
+
+      // Обновляем только наши поля
+      data.cyberwareImplants = JSON.stringify(implants)
+      data.lifepathData = JSON.stringify(lifepathData)
+      data.inventoryData = JSON.stringify(inventory)
+
+      localStorage.setItem(key, JSON.stringify(data))
+      console.log('[IMPLANTS] Auto-saved:', { implants, lifepathData, inventory })
     }, 500)
-    
+
     return () => {
       if (saveTimeoutRef.current) {
         clearTimeout(saveTimeoutRef.current)
       }
     }
-  }, [implants, lifepathData, inventory])
+  }, [implants, lifepathData, inventory, currentCharacterId])
 
   const addImplant = useCallback((type, preferredZone = null) => {
     const typeInfo = IMPLANT_TYPES[type]
     const zone = preferredZone || typeInfo.defaultZones[0]
-    
+
     const implant = {
       id: Date.now(),
       type,
       name: '',
       zone,
+      zones: [zone],
       humanityLoss: 0,
       description: '',
+      gameEffect: '',
       effects: ['', '', ''],
       cost: 0,
       rarity: 'common'
     }
-    
+
     setImplants(prev => [...prev, implant])
     setSelectedImplantId(implant.id)
     setDropdownOpen(false)
@@ -220,7 +325,16 @@ export default function Implants() {
   }, [])
 
   const updateLifepathField = useCallback((field, value) => {
-    setLifepathData(prev => ({ ...prev, [field]: value }))
+    setLifepathData(prev => {
+      const newData = { ...prev, [field]: value }
+      // Для enemies确保 массив всегда имеет 4 элемента
+      if (field === 'enemies' && Array.isArray(value)) {
+        while (newData.enemies.length < 4) {
+          newData.enemies.push('')
+        }
+      }
+      return newData
+    })
   }, [])
 
   const addInventoryRow = useCallback(() => {
@@ -798,10 +912,14 @@ export default function Implants() {
                         <div className="implant-card-body" onClick={e => e.stopPropagation()}>
                           <div className="implant-card-row">
                             <label>Location</label>
-                            <select 
+                            <select
                               className="implant-card-zone"
                               value={implant.zone}
-                              onChange={(e) => updateImplant(implant.id, 'zone', e.target.value)}
+                              onChange={(e) => {
+                                const newZone = e.target.value
+                                updateImplant(implant.id, 'zone', newZone)
+                                updateImplant(implant.id, 'zones', [newZone])
+                              }}
                             >
                               {Object.entries(ZONE_LABELS).map(([zone, label]) => (
                                 <option key={zone} value={zone}>{label}</option>
@@ -809,10 +927,20 @@ export default function Implants() {
                             </select>
                           </div>
                           <div className="implant-card-row">
+                            <label>Game Effect</label>
+                            <input
+                              type="text"
+                              className="implant-card-gameeffect"
+                              placeholder="e.g. +1 Interface"
+                              value={implant.gameEffect || ''}
+                              onChange={(e) => updateImplant(implant.id, 'gameEffect', e.target.value)}
+                            />
+                          </div>
+                          <div className="implant-card-row">
                             <label>Humanity Loss</label>
-                            <input 
-                              type="number" 
-                              className="implant-card-humanity" 
+                            <input
+                              type="number"
+                              className="implant-card-humanity"
                               value={implant.humanityLoss}
                               min="0"
                               onChange={(e) => updateImplant(implant.id, 'humanityLoss', parseInt(e.target.value) || 0)}
@@ -820,9 +948,9 @@ export default function Implants() {
                           </div>
                           <div className="implant-card-row">
                             <label>Cost</label>
-                            <input 
-                              type="number" 
-                              className="implant-card-cost" 
+                            <input
+                              type="number"
+                              className="implant-card-cost"
                               value={implant.cost}
                               min="0"
                               onChange={(e) => updateImplant(implant.id, 'cost', parseInt(e.target.value) || 0)}
@@ -830,7 +958,7 @@ export default function Implants() {
                           </div>
                           <div className="implant-card-row">
                             <label>Rarity</label>
-                            <select 
+                            <select
                               className="implant-card-rarity"
                               value={implant.rarity}
                               onChange={(e) => updateImplant(implant.id, 'rarity', e.target.value)}
@@ -843,8 +971,8 @@ export default function Implants() {
                           </div>
                           <div className="implant-card-row full">
                             <label>Description</label>
-                            <textarea 
-                              className="implant-card-description" 
+                            <textarea
+                              className="implant-card-description"
                               placeholder="Description..."
                               value={implant.description}
                               onChange={(e) => updateImplant(implant.id, 'description', e.target.value)}
@@ -853,15 +981,15 @@ export default function Implants() {
                           <div className="implant-card-row full">
                             <label>Effects</label>
                             <div className="effects-grid">
-                              {implant.effects.map((effect, i) => (
-                                <input 
+                              {(implant.effects || ['', '', '']).map((effect, i) => (
+                                <input
                                   key={i}
-                                  type="text" 
-                                  className="implant-card-effect" 
+                                  type="text"
+                                  className="implant-card-effect"
                                   placeholder={`Effect ${i + 1}`}
                                   value={effect}
                                   onChange={(e) => {
-                                    const newEffects = [...implant.effects]
+                                    const newEffects = [...(implant.effects || ['', '', ''])]
                                     newEffects[i] = e.target.value
                                     updateImplant(implant.id, 'effects', newEffects)
                                   }}

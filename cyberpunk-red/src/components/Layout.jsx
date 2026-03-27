@@ -27,6 +27,7 @@ export default function Layout() {
         const data = JSON.parse(e.target.result)
         importCharacters(data)
         alert('Characters loaded successfully!')
+        navigate('/characters')
       } catch (error) {
         alert('Error loading file: ' + error.message)
       }

@@ -339,16 +339,113 @@
   .characters-container {
     grid-template-columns: 1fr;
   }
-  
+
   .characters-sidebar {
     max-height: 300px;
   }
-  
+
   .stats-summary {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .character-actions {
     flex-direction: column;
   }
+}
+
+/* Character Tooltip */
+.character-tooltip {
+  background: #161b22;
+  border: 2px solid #f78166;
+  border-radius: 4px;
+  padding: 12px;
+  min-width: 280px;
+  max-width: 350px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.character-tooltip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #30363d;
+  margin-bottom: 10px;
+}
+
+.tooltip-name {
+  font-size: 12px;
+  font-weight: bold;
+  color: #f78166;
+  text-transform: uppercase;
+}
+
+.tooltip-age {
+  font-size: 9px;
+  color: #8b949e;
+}
+
+.tooltip-section {
+  margin-bottom: 10px;
+}
+
+.tooltip-section:last-child {
+  margin-bottom: 0;
+}
+
+.tooltip-section-title {
+  font-size: 8px;
+  font-weight: bold;
+  color: #6e7681;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.tooltip-role {
+  font-size: 9px;
+  color: #c9d1d9;
+  padding: 2px 0;
+}
+
+.tooltip-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+}
+
+.tooltip-stat {
+  font-size: 9px;
+  color: #c9d1d9;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tooltip-stat span:first-child {
+  color: #6e7681;
+  margin-right: 4px;
+}
+
+.tooltip-vitals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 9px;
+  color: #c9d1d9;
+}
+
+.tooltip-skills {
+  font-size: 9px;
+  color: #8b949e;
 }

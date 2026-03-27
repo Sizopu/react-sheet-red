@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useCharacter } from '../context/CharacterContext'
+import { useCharacter, charStorage } from '../context/CharacterContext'
 import '../css/main.css'
 
 export default function Characters() {
@@ -10,6 +10,32 @@ export default function Characters() {
   const [dialogOpen, setDialogOpen] = useState(false)
   const [editingId, setEditingId] = useState(null)
   const [formData, setFormData] = useState({ name: '', description: '' })
+  const [hoveredCharId, setHoveredCharId] = useState(null)
+  const [hoveredCharData, setHoveredCharData] = useState(null)
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 })
+
+  // Загрузка данных персонажа при наведении
+  useEffect(() => {
+    if (hoveredCharId) {
+      // Читаем данные напрямую из localStorage для конкретного персонажа
+      const characterData = JSON.parse(localStorage.getItem(`character_${hoveredCharId}_characterData`) || '{}')
+      const skillsData = JSON.parse(localStorage.getItem(`character_${hoveredCharId}_skillsData`) || '{}')
+      const rolesData = JSON.parse(localStorage.getItem(`character_${hoveredCharId}_rolesData`) || '[]')
+      const specialisedSkills = JSON.parse(localStorage.getItem(`character_${hoveredCharId}_specialisedSkillsData`) || '[]')
+      const weapons = JSON.parse(localStorage.getItem(`character_${hoveredCharId}_weaponsData`) || '[]')
+      
+      setHoveredCharData({
+        ...characterData,
+        skills: skillsData.skills || {},
+        expandableRows: skillsData.expandableRows || {},
+        roles: rolesData,
+        specialisedSkills,
+        weapons
+      })
+    } else {
+      setHoveredCharData(null)
+    }
+  }, [hoveredCharId])
 
   const handleOpenDialog = (editId = null) => {
     if (editId) {
@@ -66,6 +92,30 @@ export default function Characters() {
     navigate('/sheet')
   }
 
+  // Обработчики для tooltip
+  const handleCharacterHover = (charId, event) => {
+    setHoveredCharId(charId)
+    
+    // Позиция tooltip
+    const rect = event.currentTarget.getBoundingClientRect()
+    setTooltipPosition({
+      x: rect.right + 10,
+      y: rect.top
+    })
+  }
+
+  const handleCharacterLeave = () => {
+    setHoveredCharId(null)
+  }
+
+  // Получение статистики навыков
+  const getSkillsSummary = (skills) => {
+    if (!skills || Object.keys(skills).length === 0) return 'No skills'
+    const total = Object.keys(skills).length
+    const withLevels = Object.values(skills).filter(s => (s.lvl || 0) > 0).length
+    return `${withLevels}/${total} skills`
+  }
+
   const selectedCharacter = characters.find(c => c.id === selectedId)
 
   return (
@@ -84,11 +134,13 @@ export default function Characters() {
               </div>
             ) : (
               characters.map(char => (
-                <div 
-                  key={char.id} 
+                <div
+                  key={char.id}
                   className={`character-item ${selectedId === char.id ? 'active' : ''}`}
+                  onMouseEnter={(e) => handleCharacterHover(char.id, e)}
+                  onMouseLeave={() => handleCharacterLeave(char.id)}
                 >
-                  <div 
+                  <div
                     className="character-item-info"
                     onClick={() => setSelectedId(char.id)}
                   >
@@ -99,8 +151,8 @@ export default function Characters() {
                     <div className="character-item-date">{formatDate(char.createdAt)}</div>
                   </div>
                   <div className="character-item-actions">
-                    <button 
-                      className="character-item-btn" 
+                    <button
+                      className="character-item-btn"
                       onClick={(e) => {
                         e.stopPropagation()
                         handleOpenDialog(char.id)
@@ -109,8 +161,8 @@ export default function Characters() {
                     >
                       ✎
                     </button>
-                    <button 
-                      className="character-item-btn" 
+                    <button
+                      className="character-item-btn"
                       onClick={(e) => {
                         e.stopPropagation()
                         deleteCharacter(char.id)
@@ -125,6 +177,67 @@ export default function Characters() {
             )}
           </div>
         </div>
+
+        {/* Tooltip с информацией о персонаже */}
+        {hoveredCharId && hoveredCharData && (
+          <div 
+            className="character-tooltip"
+            style={{
+              position: 'fixed',
+              left: tooltipPosition.x,
+              top: tooltipPosition.y,
+              zIndex: 1000
+            }}
+          >
+            <div className="character-tooltip-header">
+              <span className="tooltip-name">{hoveredCharData.char_name || 'Unnamed'}</span>
+              {hoveredCharData.age && <span className="tooltip-age">Age: {hoveredCharData.age}</span>}
+            </div>
+            
+            {hoveredCharData.roles && hoveredCharData.roles.length > 0 && (
+              <div className="tooltip-section">
+                <div className="tooltip-section-title">Roles</div>
+                {hoveredCharData.roles.map((role, idx) => (
+                  <div key={role.id || idx} className="tooltip-role">
+                    {role.role || 'N/A'} - {role.ability || 'N/A'} (Lvl {role.lvl || 1})
+                  </div>
+                ))}
+              </div>
+            )}
+            
+            <div className="tooltip-section">
+              <div className="tooltip-section-title">Stats</div>
+              <div className="tooltip-stats-grid">
+                <div className="tooltip-stat"><span>INT:</span> {hoveredCharData.stat_int || 0}</div>
+                <div className="tooltip-stat"><span>REF:</span> {hoveredCharData.stat_ref || 0}</div>
+                <div className="tooltip-stat"><span>DEX:</span> {hoveredCharData.stat_dex || 0}</div>
+                <div className="tooltip-stat"><span>TECH:</span> {hoveredCharData.stat_tech || 0}</div>
+                <div className="tooltip-stat"><span>COOL:</span> {hoveredCharData.stat_cool || 0}</div>
+                <div className="tooltip-stat"><span>WILL:</span> {hoveredCharData.stat_will || 0}</div>
+                <div className="tooltip-stat"><span>LUCK:</span> {hoveredCharData.stat_luck_current || 0}/{hoveredCharData.stat_luck_max || 0}</div>
+                <div className="tooltip-stat"><span>MOVE:</span> {hoveredCharData.stat_move || 0}</div>
+                <div className="tooltip-stat"><span>BODY:</span> {hoveredCharData.stat_body || 0}</div>
+                <div className="tooltip-stat"><span>EMP:</span> {hoveredCharData.stat_emp_current || 0}/{hoveredCharData.stat_emp_max || 0}</div>
+              </div>
+            </div>
+            
+            <div className="tooltip-section">
+              <div className="tooltip-section-title">Vitals</div>
+              <div className="tooltip-vitals">
+                <span>HP: {hoveredCharData.hp_current || 0}/{hoveredCharData.hp_max || 0}</span>
+                <span>XP: {hoveredCharData.xp_current || 0}</span>
+                <span>Humanity: {hoveredCharData.humanity_current || 0}/{hoveredCharData.humanity_max || 0}</span>
+              </div>
+            </div>
+            
+            <div className="tooltip-section">
+              <div className="tooltip-section-title">Skills</div>
+              <div className="tooltip-skills">
+                {getSkillsSummary(hoveredCharData.skills)}
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Right Panel - Character Details */}
         <div className="character-details-panel">

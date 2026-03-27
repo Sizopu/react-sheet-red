@@ -1720,27 +1720,14 @@ export default function CharacterSheet() {
                       {diceResult.roll}
                     </div>
                   )}
-                  {/* Дополнительный бросок при критическом успехе */}
-                  {diceResult.extraRoll && (
-                    <div className="dice-roll-item crit-success pop-in">
-                      {diceResult.extraRoll}
-                    </div>
-                  )}
                 </div>
                 <div className="dice-total-display">
                   <span className="dice-total-label">Total:</span>
                   <span className="dice-total-value">{diceResult.total}</span>
                 </div>
-                <div className="dice-result-detail">
-                  {diceResult.base && (
-                    <>
-                      <span>Base: {diceResult.base}</span>
-                      {diceResult.extraRoll && (
-                        <span style={{ color: '#2ea043' }}>Extra: +{diceResult.extraRoll}</span>
-                      )}
-                    </>
-                  )}
-                </div>
+                <p className="dice-description">
+                  Roll: 1d10 + REF
+                </p>
               </>
             )}
           </div>

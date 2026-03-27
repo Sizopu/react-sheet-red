@@ -1,0 +1,1453 @@
+/* ========================================
+   MOBS PAGE STYLES
+   ======================================== */
+
+/* Dice Animations */
+@keyframes diceShake {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: rotate(-15deg) scale(1.1);
+  }
+  20%, 40%, 60%, 80% {
+    transform: rotate(15deg) scale(1.1);
+  }
+}
+
+.mobs-page {
+  padding: 10px;
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.mobs-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 10px;
+  min-height: calc(100vh - 60px);
+}
+
+@media (min-width: 1000px) {
+  .mobs-container {
+    grid-template-columns: 350px 1fr;
+  }
+}
+
+/* Sidebar */
+.mobs-sidebar {
+  background: #2d3139;
+  border: 1px solid #3d4149;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.mobs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: #3d4149;
+  border-bottom: 1px solid #3d4149;
+}
+
+.mobs-header span {
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #f78166;
+  letter-spacing: 2px;
+}
+
+.add-mob-btn {
+  background: #238636;
+  border: 1px solid #2ea043;
+  color: #0f1115;
+  width: 26px;
+  height: 26px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.add-mob-btn:hover {
+  background: #2ea043;
+  border-color: #3fb950;
+  color: #0f1115;
+}
+
+.mobs-list {
+  padding: 8px;
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+}
+
+.mob-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 6px;
+  background: #232931;
+  border: 1px solid #3d4149;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mob-item:hover {
+  border-color: #58a6ff;
+  background: #30363d;
+}
+
+.mob-item.selected {
+  border-color: #f78166;
+  background: #3d3423;
+}
+
+.mob-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.mob-item-name {
+  font-size: 10px;
+  font-weight: bold;
+  color: #c9c6b9;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mob-item-initiative {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.mob-item-initiative span {
+  font-size: 8px;
+  color: #8b949e;
+  text-transform: uppercase;
+}
+
+.mob-init-input {
+  width: 50px;
+  background: #2d3139;
+  border: 1px solid #3d4149;
+  color: #f78166;
+  padding: 3px 6px;
+  font-size: 9px;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.mob-init-input:focus {
+  outline: none;
+  border-color: #f78166;
+}
+
+.mob-roll-init-btn {
+  background: #2d3139;
+  border: 1px solid #3d4149;
+  color: #f78166;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.mob-roll-init-btn:hover {
+  background: #f78166;
+  border-color: #f78166;
+  color: #0f1115;
+}
+
+.mob-roll-init-btn:active {
+  transform: scale(0.9);
+}
+
+.mob-roll-init-btn.rolling {
+  animation: diceShake 0.6s ease-in-out;
+}
+
+.mob-item-delete {
+  background: #2d3139;
+  border: 1px solid #3d4149;
+  color: #8b949e;
+  width: 22px;
+  height: 22px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.mob-item-delete:hover {
+  background: #f78166;
+  border-color: #f78166;
+  color: #0f1115;
+}
+
+/* Content Panel */
+.mob-content-panel {
+  background: #2d3139;
+  border: 1px solid #3d4149;
+  border-radius: 4px;
+  min-height: calc(100vh - 80px);
+  width: 100%;
+}
+
+.mob-editor {
+  height: 100%;
+  width: 100%;
+}
+
+.editor-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 400px;
+  color: #8b949e;
+  font-size: 11px;
+}
+
+/* Mob Editor Content */
+.mob-editor-content {
+  padding: 15px;
+  width: 100%;
+}
+
+.mob-name-input {
+  width: 100%;
+  background: #232931;
+  border: 1px solid #3d4149;
+  color: #c9c6b9;
+  padding: 10px 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  border-radius: 3px;
+}
+
+.mob-name-input:focus {
+  outline: none;
+  border-color: #f78166;
+}
+
+/* Stats Blocks */
+.mob-stats-block {
+  background: #232931;
+  border: 1px solid #3d4149;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.stats-label {
+  font-size: 9px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #f78166;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.stat-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-field label {
+  font-size: 8px;
+  text-transform: uppercase;
+  color: #8b949e;
+  text-align: center;
+}
+
+.stat-field input {
+  background: #2d3139;
+  border: 1px solid #3d4149;
+  color: #c9c6b9;
+  padding: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.stat-field input:focus {
+  outline: none;
+  border-color: #f78166;
+}
+
+/* Health Row */
+.mob-health-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.health-field {
+  background: #232931;
+  border: 1px solid #3d4149;
+  border-radius: 3px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.health-field label {
+  font-size: 8px;
+  text-transform: uppercase;
+  color: #f78166;
+}
+
+.health-field input[type="number"] {
+  background: #2d3139;
+  border: 1px solid #3d4149;
+  color: #c9c6b9;
+  padding: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  border-radius: 3px;
+}
+
+.health-field input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Combat Section */
+.mob-combat-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.weapons-section,
+.armor-section {
+  background: #232931;
+  border: 1px solid #3d4149;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #3d4149;
+}
+
+.section-header span {
+  font-size: 9px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #f78166;
+  letter-spacing: 1px;
+}
+
+.add-weapon-btn {
+  background: #238636;
+  border: 1px solid #2ea043;
+  color: #0f1115;
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.add-weapon-btn:hover {
+  background: #2ea043;
+  border-color: #3fb950;
+}
+
+/* Weapon Row */
+.weapon-row {
+  display: grid;
+  grid-template-columns: 1fr 50px 50px 50px 24px;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.weapon-row input {
+  background: #2d3139;
+  border: 1px solid #3d4149;
+  color: #c9c6b9;
+  padding: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  border-radius: 3px;
+}
+
+.weapon-row input:focus {
+  outline: none;
+  border-color: #f78166;
+}
+
+.delete-weapon-btn {
+  background: #2d3139;
+  border: 1px solid #3d4149;
+  color: #8b949e;
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.delete-weapon-btn:hover {
+  background: #f78166;
+  border-color: #f78166;
+  color: #0f1115;
+}
+
+.weapon-notes-row {
+  margin-bottom: 8px;
+}
+
+.weapon-notes-row input {
+  width: 100%;
+  background: #2d3139;
+  border: 1px solid #3d4149;
+  color: #c9c6b9;
+  padding: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  border-radius: 3px;
+}
+
+.weapon-notes-row input:focus {
+  outline: none;
+  border-color: #f78166;
+}
+
+/* Armor Row */
+.armor-row {
+  display: grid;
+  grid-template-columns: 50px 1fr 1fr 1fr;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.armor-label {
+  font-size: 8px;
+  text-transform: uppercase;
+  color: #f78166;
+  font-weight: bold;
+}
+
+.armor-row input {
+  background: #2d3139;
+  border: 1px solid #3d4149;
+  color: #c9c6b9;
+  padding: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  border-radius: 3px;
+}
+
+.armor-row input:focus {
+  outline: none;
+  border-color: #f78166;
+}
+
+/* Skill Bases & Cyberware */
+.mob-skill-bases,
+.mob-cyberware {
+  background: #232931;
+  border: 1px solid #3d4149;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.mob-skill-bases label,
+.mob-cyberware label {
+  display: block;
+  font-size: 9px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #f78166;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.skill-bases-input,
+.cyberware-input {
+  width: 100%;
+  background: #2d3139;
+  border: 1px solid #3d4149;
+  color: #c9c6b9;
+  padding: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  min-height: 60px;
+  resize: vertical;
+  border-radius: 3px;
+}
+
+.skill-bases-input:focus,
+.cyberware-input:focus {
+  outline: none;
+  border-color: #f78166;
+}
+
+/* Mob Skills Section */
+.mob-skills-section {
+  background: #232931;
+  border: 1px solid #3d4149;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.mob-skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mob-skill-row {
+  display: grid;
+  grid-template-columns: 1fr 80px 50px 32px 24px;
+  gap: 6px;
+  align-items: center;
+}
+
+.mob-skill-row select,
+.mob-skill-row input {
+  background: #2d3139;
+  border: 1px solid #3d4149;
+  color: #c9c6b9;
+  padding: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  border-radius: 3px;
+}
+
+.mob-skill-row select:focus,
+.mob-skill-row input:focus {
+  outline: none;
+  border-color: #f78166;
+}
+
+.mob-skill-roll-btn {
+  background: #2d3139;
+  border: 1px solid #3d4149;
+  color: #f78166;
+  width: 28px;
+  height: 24px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.mob-skill-roll-btn:hover {
+  background: #f78166;
+  border-color: #f78166;
+  color: #0f1115;
+}
+
+.mob-skill-roll-btn:active {
+  transform: scale(0.9);
+}
+
+.mob-skill-roll-btn.rolling {
+  animation: diceShake 0.6s ease-in-out;
+}
+
+.delete-mob-skill-btn {
+  background: #2d3139;
+  border: 1px solid #3d4149;
+  color: #8b949e;
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.delete-mob-skill-btn:hover {
+  background: #f78166;
+  border-color: #f78166;
+  color: #0f1115;
+}
+
+.add-mob-skill-btn {
+  background: #238636;
+  border: 1px solid #2ea043;
+  color: #0f1115;
+  padding: 6px 12px;
+  font-size: 9px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.add-mob-skill-btn:hover {
+  background: #2ea043;
+  border-color: #3fb950;
+  color: #0f1115;
+}
+
+/* Mob Weapon Dice Container */
+.mob-weapon-dice-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.attack-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.attack-slot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mob-weapon-dice-formula {
+  flex: 1;
+  min-width: 150px;
+  background: #232931 !important;
+  border: 1px solid #3d4149 !important;
+  color: #f78166;
+  padding: 6px 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  border-radius: 3px;
+}
+
+.mob-weapon-dice-formula::placeholder {
+  color: #6e7681;
+}
+
+.mob-weapon-dice-formula:focus {
+  outline: none;
+  border-color: #f78166 !important;
+}
+
+.mob-attack-notes {
+  flex: 1;
+  min-width: 100px;
+  background: #232931 !important;
+  border: 1px solid #3d4149 !important;
+  color: #c9c6b9;
+  padding: 6px 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  border-radius: 3px;
+}
+
+.mob-attack-notes::placeholder {
+  color: #6e7681;
+}
+
+.mob-attack-notes:focus {
+  outline: none;
+  border-color: #f78166 !important;
+}
+
+.remove-attack-btn {
+  background: transparent;
+  border: none;
+  color: #f85149;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0 4px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.remove-attack-btn:hover {
+  opacity: 1;
+}
+
+.add-attack-btn {
+  background: #1a1f2e;
+  border: 1px solid #484f58;
+  color: #8b949e;
+  padding: 4px 10px;
+  font-size: 9px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.2s;
+  align-self: flex-start;
+}
+
+.add-attack-btn:hover {
+  background: #232931;
+  border-color: #f78166;
+  color: #f78166;
+}
+
+.mob-weapon-roll-btn {
+  background: #2d3139;
+  border: 1px solid #3d4149;
+  color: #f78166;
+  width: 28px;
+  height: 24px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.mob-weapon-roll-btn:hover {
+  background: #f78166;
+  border-color: #f78166;
+  color: #0f1115;
+}
+
+.mob-weapon-roll-btn:active {
+  transform: scale(0.9);
+}
+
+.mob-weapon-roll-btn.rolling {
+  animation: diceShake 0.6s ease-in-out;
+}
+
+/* Mob Weapon Dice Result */
+.mob-weapon-dice-result {
+  background: #232931;
+  border: 1px solid #3d4149;
+  border-left: 3px solid #f78166;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 3px;
+  position: relative;
+}
+
+.mob-weapon-dice-detail {
+  margin-bottom: 8px;
+}
+
+.mob-weapon-dice-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  font-size: 9px;
+}
+
+.dice-type {
+  color: #8b949e;
+  min-width: 45px;
+  font-weight: bold;
+}
+
+.dice-values {
+  color: #c9c6b9;
+  flex: 1;
+}
+
+.dice-roll {
+  display: inline-block;
+  min-width: 18px;
+  text-align: center;
+  padding: 2px 4px;
+  margin: 0 2px;
+  background: #2d3139;
+  border-radius: 3px;
+  font-size: 9px;
+}
+
+.dice-roll.crit-success {
+  background: #2ea043;
+  color: #0f1115;
+}
+
+.dice-roll.crit-fail {
+  background: #da3633;
+  color: #0f1115;
+}
+
+.dice-sum {
+  color: #f78166;
+  font-weight: bold;
+}
+
+.mob-weapon-dice-total {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 6px;
+  border-top: 1px solid #3d4149;
+}
+
+.total-label {
+  color: #8b949e;
+  font-size: 8px;
+  text-transform: uppercase;
+}
+
+.total-value {
+  color: #f78166;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.total-formula {
+  color: #6e7681;
+  font-size: 8px;
+}
+
+.mob-weapon-dice-clear {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: transparent;
+  border: none;
+  color: #6e7681;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.mob-weapon-dice-clear:hover {
+  background: #da3633;
+  color: #0f1115;
+}
+
+/* Mobile Responsive */
+
+/* Large tablets and small desktops */
+@media (max-width: 1400px) {
+  .stats-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  .weapon-row {
+    grid-template-columns: 1fr 60px 60px 60px 24px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 1000px) {
+  .mobs-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .mobs-sidebar {
+    max-height: 300px;
+  }
+
+  .mob-content-panel {
+    min-height: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .mob-combat-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Small tablets and large phones */
+@media (max-width: 768px) {
+  .mobs-page {
+    padding: 5px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mob-editor-content {
+    padding: 10px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .stat-field label {
+    font-size: 7px;
+  }
+
+  .stat-field input {
+    font-size: 9px;
+    padding: 4px;
+  }
+
+  .mob-health-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .weapon-row {
+    grid-template-columns: 1fr 50px 50px 50px 24px;
+    gap: 4px;
+  }
+
+  .weapon-row input {
+    font-size: 8px;
+    padding: 4px;
+  }
+
+  .armor-row {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 4px;
+  }
+
+  .armor-label {
+    font-size: 7px;
+  }
+
+  .armor-row input {
+    font-size: 8px;
+    padding: 4px;
+  }
+
+  .mob-skill-row {
+    grid-template-columns: 1fr 60px 45px 28px 24px;
+    gap: 4px;
+  }
+
+  .mob-skill-row select,
+  .mob-skill-row input {
+    font-size: 8px;
+    padding: 4px;
+  }
+
+  .mob-skill-select {
+    font-size: 7px;
+  }
+
+  .section-header span {
+    font-size: 8px;
+  }
+
+  .add-weapon-btn,
+  .add-mob-skill-btn {
+    width: 22px;
+    height: 22px;
+    font-size: 14px;
+  }
+
+  .add-mob-skill-btn {
+    padding: 4px 8px;
+    font-size: 8px;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 600px) {
+  .mobs-page {
+    padding: 3px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .mobs-container {
+    width: 100%;
+  }
+
+  .mobs-sidebar {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .mob-content-panel {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobs-header {
+    padding: 8px 10px;
+  }
+
+  .mobs-header span {
+    font-size: 10px;
+  }
+
+  .add-mob-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+  }
+
+  .mob-name-input {
+    font-size: 10px;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .stat-field label {
+    font-size: 7px;
+  }
+
+  .stat-field input {
+    font-size: 10px;
+    padding: 6px;
+  }
+
+  .mob-health-row {
+    grid-template-columns: 1fr;
+  }
+
+  .health-field label {
+    font-size: 7px;
+  }
+
+  .health-field input[type="number"] {
+    font-size: 9px;
+    padding: 4px;
+  }
+
+  .weapons-section,
+  .armor-section {
+    padding: 8px;
+  }
+
+  .section-header {
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+  }
+
+  .section-header span {
+    font-size: 8px;
+  }
+
+  .add-weapon-btn {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+  }
+
+  /* Weapon rows - stack vertically on small screens */
+  .weapon-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+
+  .weapon-name {
+    grid-column: 1 / -1;
+  }
+
+  .weapon-dmg,
+  .weapon-mag,
+  .weapon-rof {
+    font-size: 8px;
+    padding: 4px;
+  }
+
+  .delete-weapon-btn {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+  }
+
+  .weapon-notes {
+    font-size: 8px;
+    padding: 4px;
+  }
+
+  /* Armor - stack vertically */
+  .armor-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+
+  .armor-label {
+    grid-column: 1 / -1;
+    font-size: 8px;
+  }
+
+  .armor-sp,
+  .armor-notes,
+  .armor-penalty {
+    font-size: 8px;
+    padding: 4px;
+  }
+
+  /* Skills - stack vertically */
+  .mob-skill-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .mob-skill-select,
+  .mob-skill-stat,
+  .mob-skill-lvl {
+    font-size: 9px;
+    padding: 6px;
+  }
+
+  .mob-skill-roll-btn,
+  .delete-mob-skill-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .add-mob-skill-btn {
+    width: 100%;
+    padding: 6px 10px;
+    font-size: 9px;
+  }
+
+  .mob-skills-section {
+    padding: 8px;
+  }
+
+  /* Attack slots */
+  .attack-slot {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mob-weapon-dice-formula {
+    min-width: auto;
+    width: 100%;
+    font-size: 8px;
+    padding: 4px;
+  }
+
+  .mob-weapon-roll-btn {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .mob-attack-notes {
+    min-width: auto;
+    width: 100%;
+    font-size: 8px;
+    padding: 4px;
+  }
+
+  .remove-attack-btn {
+    font-size: 14px;
+    padding: 4px;
+  }
+
+  .add-attack-btn {
+    width: 100%;
+    padding: 6px 10px;
+    font-size: 8px;
+  }
+
+  .mob-skill-bases,
+  .mob-cyberware {
+    padding: 8px;
+  }
+
+  .mob-skill-bases label,
+  .mob-cyberware label {
+    font-size: 8px;
+  }
+
+  .skill-bases-input,
+  .cyberware-input {
+    font-size: 9px;
+    padding: 6px;
+    min-height: 50px;
+  }
+
+  /* Mobile content panel - allow horizontal scroll */
+  .mob-content-panel {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mob-editor-content {
+    min-width: 600px;
+  }
+}
+
+/* Samsung S25 and similar (360px width) */
+@media (max-width: 375px) {
+  .mobs-page {
+    padding: 2px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobs-container {
+    min-width: 320px;
+  }
+
+  .mob-editor-content {
+    min-width: 320px;
+    padding: 8px;
+  }
+
+  .mob-name-input {
+    font-size: 9px;
+    padding: 6px 8px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+  }
+
+  .stat-field label {
+    font-size: 6px;
+  }
+
+  .stat-field input {
+    font-size: 9px;
+    padding: 4px;
+  }
+
+  .health-field label {
+    font-size: 6px;
+  }
+
+  .weapon-row {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+
+  .weapon-name,
+  .weapon-dmg,
+  .weapon-mag,
+  .weapon-rof {
+    grid-column: 1 / -1;
+    font-size: 8px;
+    padding: 5px;
+  }
+
+  .delete-weapon-btn {
+    width: 100%;
+    font-size: 14px;
+    padding: 4px;
+  }
+
+  .weapon-notes {
+    font-size: 8px;
+    padding: 5px;
+  }
+
+  .armor-row {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+
+  .armor-label {
+    grid-column: 1 / -1;
+    font-size: 7px;
+  }
+
+  .armor-sp,
+  .armor-notes,
+  .armor-penalty {
+    grid-column: 1 / -1;
+    font-size: 8px;
+    padding: 5px;
+  }
+
+  .mob-skill-row {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+
+  .mob-skill-select,
+  .mob-skill-stat,
+  .mob-skill-lvl,
+  .mob-skill-roll-btn,
+  .delete-mob-skill-btn {
+    grid-column: 1 / -1;
+    font-size: 8px;
+    padding: 5px;
+  }
+
+  .mob-skill-roll-btn,
+  .delete-mob-skill-btn {
+    width: 100%;
+  }
+
+  .add-mob-skill-btn {
+    width: 100%;
+    padding: 5px 8px;
+    font-size: 8px;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .section-header span {
+    font-size: 7px;
+  }
+
+  .add-weapon-btn,
+  .add-mob-skill-btn {
+    width: 100%;
+    height: 24px;
+    font-size: 10px;
+  }
+
+  /* Attack slots for very small screens */
+  .attack-slot {
+    gap: 3px;
+  }
+
+  .mob-weapon-dice-formula,
+  .mob-attack-notes {
+    font-size: 7px;
+    padding: 4px;
+  }
+
+  .mob-weapon-roll-btn,
+  .remove-attack-btn,
+  .add-attack-btn {
+    width: 100%;
+    font-size: 10px;
+    padding: 4px;
+  }
+
+  .mob-weapon-dice-container {
+    width: 100%;
+  }
+
+  /* Cyberware */
+  .mob-skill-bases,
+  .mob-cyberware {
+    padding: 6px;
+  }
+
+  .mob-skill-bases label,
+  .mob-cyberware label {
+    font-size: 7px;
+  }
+
+  .skill-bases-input,
+  .cyberware-input {
+    font-size: 8px;
+    padding: 5px;
+  }
+}
+
+/* Very small phones (360px and below) */
+@media (max-width: 360px) {
+  .mobs-header span {
+    font-size: 8px;
+  }
+
+  .add-mob-btn {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+  }
+
+  .mob-name-input {
+    font-size: 8px;
+    padding: 5px 6px;
+  }
+
+  .stats-grid {
+    gap: 3px;
+  }
+
+  .stat-field label {
+    font-size: 5px;
+  }
+
+  .stat-field input {
+    font-size: 8px;
+    padding: 3px;
+  }
+
+  .weapon-dmg,
+  .weapon-mag,
+  .weapon-rof {
+    font-size: 7px;
+    padding: 4px;
+  }
+
+  .armor-row input,
+  .mob-skill-row select,
+  .mob-skill-row input {
+    font-size: 7px;
+    padding: 4px;
+  }
+
+  .section-header span {
+    font-size: 6px;
+  }
+
+  .mob-weapon-dice-formula,
+  .mob-attack-notes {
+    font-size: 6px;
+    padding: 3px;
+  }
+}

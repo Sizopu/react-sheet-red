@@ -338,7 +338,6 @@ export default function CharacterSheet() {
     updateCharacterField('initiative', total.toString())
     setDiceResult({
       roll,
-      stat: refValue,
       total,
       skillName: 'Initiative'
     })
@@ -1722,7 +1721,7 @@ export default function CharacterSheet() {
                     </div>
                   )}
                   {/* Дополнительный бросок при критическом успехе */}
-                  {diceResult.extraRoll !== null && (
+                  {diceResult.extraRoll && (
                     <div className="dice-roll-item crit-success pop-in">
                       {diceResult.extraRoll}
                     </div>
@@ -1733,9 +1732,13 @@ export default function CharacterSheet() {
                   <span className="dice-total-value">{diceResult.total}</span>
                 </div>
                 <div className="dice-result-detail">
-                  <span>Base: {diceResult.base}</span>
-                  {diceResult.extraRoll !== null && (
-                    <span style={{ color: '#2ea043' }}>Extra: +{diceResult.extraRoll}</span>
+                  {diceResult.base && (
+                    <>
+                      <span>Base: {diceResult.base}</span>
+                      {diceResult.extraRoll && (
+                        <span style={{ color: '#2ea043' }}>Extra: +{diceResult.extraRoll}</span>
+                      )}
+                    </>
                   )}
                 </div>
               </>

@@ -157,7 +157,17 @@ export function CharacterProvider({ children }) {
           weapons: weaponsData,
           roles: rolesData,
           customSkillNames: customSkillNames,
-          avatar: avatar
+          avatar: avatar,
+          // Armor fields
+          armor_head_sp: characterData.armor_head_sp,
+          armor_head_notes: characterData.armor_head_notes,
+          armor_head_penalty: characterData.armor_head_penalty,
+          armor_body_sp: characterData.armor_body_sp,
+          armor_body_notes: characterData.armor_body_notes,
+          armor_body_penalty: characterData.armor_body_penalty,
+          armor_shield_sp: characterData.armor_shield_sp,
+          armor_shield_notes: characterData.armor_shield_notes,
+          armor_shield_penalty: characterData.armor_shield_penalty
         }
       }
     })
@@ -240,7 +250,17 @@ export function CharacterProvider({ children }) {
           inventoryData: character.inventoryData,
           notesData: character.notesData,
           cyberdeckData: character.cyberdeckData,
-          mobsData: character.mobsData
+          mobsData: character.mobsData,
+          // Armor fields
+          armor_head_sp: character.armor_head_sp,
+          armor_head_notes: character.armor_head_notes,
+          armor_head_penalty: character.armor_head_penalty,
+          armor_body_sp: character.armor_body_sp,
+          armor_body_notes: character.armor_body_notes,
+          armor_body_penalty: character.armor_body_penalty,
+          armor_shield_sp: character.armor_shield_sp,
+          armor_shield_notes: character.armor_shield_notes,
+          armor_shield_penalty: character.armor_shield_penalty
         }
 
         // Сохраняем в localStorage

@@ -822,7 +822,7 @@ export default function Implants() {
             {/* Skeleton with markers */}
             <div className="skeleton-wrapper">
               <div className="skeleton-placeholder">
-                <img src="/images/screenshot.png" alt="Skeleton" className="skeleton-image" />
+                <img src="./images/screenshot.png" alt="Skeleton" className="skeleton-image" />
                 <div className="skeleton-label">{t('BODY SCHEMA')}</div>
                 <div className="skeleton-zones">
                   {Object.entries(ZONE_POSITIONS).map(([zone, pos]) => {

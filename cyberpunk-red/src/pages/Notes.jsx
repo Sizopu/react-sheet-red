@@ -1,9 +1,16 @@
 import { useState, useEffect } from 'react'
 import { useCharacter } from '../context/CharacterContext'
+import { useLanguage } from '../context/LanguageContext'
+import { translations } from '../i18n/translations'
 import '../css/notes.css'
 
 export default function Notes() {
   const { characterData, saveCharacterData, currentCharacterId } = useCharacter()
+  const { language } = useLanguage()
+  
+  const t = (key) => {
+    return translations[language]?.[key] || translations.en[key] || key
+  }
   
   // Инициализация с дефолтными значениями
   const [notes, setNotes] = useState([])
@@ -49,7 +56,7 @@ export default function Notes() {
     return (
       <div className="notes-page">
         <div style={{ padding: '20px', textAlign: 'center', color: '#8b949e' }}>
-          Please select a character first (go to Characters page and click "Load to Character Sheet")
+          {t('Please select a character first')} ({t('go to Characters page and click')} "{t('Load to Sheet')}")
         </div>
       </div>
     )
@@ -170,13 +177,13 @@ export default function Notes() {
         {/* Left Panel - Notes List */}
         <div className="notes-sidebar">
           <div className="notes-header">
-            <span>NOTES</span>
+            <span>{t('NOTES')}</span>
             <div style={{ position: 'relative' }}>
               <button className="add-note-btn" onClick={() => setDropdownOpen(!dropdownOpen)}>+</button>
               {dropdownOpen && (
                 <div className="note-type-dropdown" style={{ position: 'absolute', top: '100%', right: '0', left: 'auto', margin: '5px 0 0 0' }}>
-                  <button onClick={() => addNote('note')}>📄 Note</button>
-                  <button onClick={() => addNote('table')}>📊 Table</button>
+                  <button onClick={() => addNote('note')}>📄 {t('Note')}</button>
+                  <button onClick={() => addNote('table')}>📊 {t('Table')}</button>
                 </div>
               )}
             </div>
@@ -185,7 +192,7 @@ export default function Notes() {
           <div className="notes-list">
             {notes.length === 0 ? (
               <div style={{ padding: '20px', textAlign: 'center', color: '#8b949e', fontSize: '10px' }}>
-                No notes yet. Click + to create one.
+                {t('No notes yet')}. {t('Click + to create one').toLowerCase()}
               </div>
             ) : (
               notes.map(note => (
@@ -218,40 +225,40 @@ export default function Notes() {
           <div className="note-editor">
             {!selectedNoteId ? (
               <div className="editor-placeholder">
-                <p>Select a note or create a new one</p>
+                <p>{t('Select a note or create a new one')}</p>
               </div>
             ) : selectedNote ? (
               selectedNote.type === 'note' ? (
                 <div className="note-editor-content">
-                  <input 
-                    type="text" 
-                    className="note-title-input" 
+                  <input
+                    type="text"
+                    className="note-title-input"
                     value={selectedNote.title}
-                    placeholder="Note title..."
+                    placeholder={t('Note title...')}
                     onChange={(e) => updateNote(selectedNote.id, 'title', e.target.value)}
                   />
-                  <textarea 
-                    className="note-content-input" 
-                    placeholder="Write your note here..."
+                  <textarea
+                    className="note-content-input"
+                    placeholder={t('Write your note here...')}
                     value={selectedNote.content}
                     onChange={(e) => updateNote(selectedNote.id, 'content', e.target.value)}
                   />
                 </div>
               ) : (
                 <div className="table-editor-content">
-                  <input 
-                    type="text" 
-                    className="note-title-input" 
+                  <input
+                    type="text"
+                    className="note-title-input"
                     value={selectedNote.title}
-                    placeholder="Table title..."
+                    placeholder={t('Table title...')}
                     onChange={(e) => updateNote(selectedNote.id, 'title', e.target.value)}
                   />
                   <div className="table-controls">
                     <button className="table-add-row" onClick={() => addTableRow(selectedNote.id)}>
-                      + Row
+                      + {t('Row')}
                     </button>
                     <button className="table-add-col" onClick={() => addTableCol(selectedNote.id)}>
-                      + Column
+                      + {t('Column')}
                     </button>
                   </div>
                   <div className="table-wrapper">

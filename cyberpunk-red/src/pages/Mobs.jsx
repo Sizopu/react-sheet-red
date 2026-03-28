@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useCharacter } from '../context/CharacterContext'
+import { useLanguage } from '../context/LanguageContext'
+import { translations } from '../i18n/translations'
 import { rollDice } from '../utils/dice'
 import '../css/mobs.css'
 
@@ -34,6 +36,12 @@ const SKILL_PRESETS = [
 
 export default function Mobs() {
   const { characterData, saveCharacterData, currentCharacterId } = useCharacter()
+  const { language } = useLanguage()
+  
+  const t = (key) => {
+    return translations[language]?.[key] || translations.en[key] || key
+  }
+  
   const [mobs, setMobs] = useState([])
   const [selectedMobId, setSelectedMobId] = useState(null)
   const [diceResult, setDiceResult] = useState(null)
@@ -271,36 +279,36 @@ export default function Mobs() {
         {/* Left Panel - Mobs List */}
         <div className="mobs-sidebar">
           <div className="mobs-header">
-            <span>MOBS</span>
+            <span>{t('MOBS')}</span>
             <button className="add-mob-btn" onClick={addMob}>+</button>
           </div>
           <div className="mobs-list">
             {mobs.length === 0 ? (
               <div style={{ padding: '20px', textAlign: 'center', color: '#8b949e', fontSize: '10px' }}>
-                No mobs yet. Click + to create one.
+                {t('No mobs yet')}. {t('Click + to create one').toLowerCase()}
               </div>
             ) : (
               mobs.map(mob => (
-                <div 
-                  key={mob.id} 
+                <div
+                  key={mob.id}
                   className={`mob-item ${selectedMobId === mob.id ? 'selected' : ''}`}
                 >
-                  <div 
+                  <div
                     className="mob-item-info"
                     onClick={() => selectMob(mob.id)}
                   >
-                    <div className="mob-item-name">{mob.name || 'Untitled'}</div>
+                    <div className="mob-item-name">{mob.name || t('Untitled')}</div>
                     <div className="mob-item-initiative">
-                      <span>INI:</span>
-                      <input 
-                        type="number" 
-                        className="mob-init-input" 
+                      <span>{t('INI')}:</span>
+                      <input
+                        type="number"
+                        className="mob-init-input"
                         value={mob.initiative || 0}
                         onClick={e => e.stopPropagation()}
                         onChange={(e) => updateMob(mob.id, 'initiative', parseInt(e.target.value) || 0)}
                       />
-                      <button 
-                        className="mob-roll-init-btn" 
+                      <button
+                        className="mob-roll-init-btn"
                         onClick={(e) => {
                           e.stopPropagation()
                           rollMobInitiative(mob.id)
@@ -344,13 +352,13 @@ export default function Mobs() {
 
                 {/* STATS */}
                 <div className="mob-stats-block">
-                  <div className="stats-label">STATS</div>
+                  <div className="stats-label">{t('STATS')}</div>
                   <div className="stats-grid">
                     {Object.entries(selectedMob.stats).map(([stat, value]) => (
                       <div key={stat} className="stat-field">
-                        <label>{stat.toUpperCase()}</label>
-                        <input 
-                          type="number" 
+                        <label>{t(stat.toUpperCase())}</label>
+                        <input
+                          type="number"
                           value={value}
                           onChange={(e) => updateMobStat(selectedMob.id, stat, e.target.value)}
                         />
@@ -362,28 +370,28 @@ export default function Mobs() {
                 {/* HEALTH */}
                 <div className="mob-health-row">
                   <div className="health-field">
-                    <label>HIT_points</label>
-                    <input 
-                      type="number" 
+                    <label>{t('HIT Points')}</label>
+                    <input
+                      type="number"
                       value={selectedMob.hitPoints.current}
-                      onChange={(e) => updateMob(selectedMob.id, 'hitPoints', { 
-                        ...selectedMob.hitPoints, 
-                        current: parseInt(e.target.value) || 0 
+                      onChange={(e) => updateMob(selectedMob.id, 'hitPoints', {
+                        ...selectedMob.hitPoints,
+                        current: parseInt(e.target.value) || 0
                       })}
                     />
                   </div>
                   <div className="health-field">
-                    <label>SERIOUSLY_wounded</label>
-                    <input 
-                      type="checkbox" 
+                    <label>{t('Seriously Wounded')}</label>
+                    <input
+                      type="checkbox"
                       checked={selectedMob.seriouslyWounded}
                       onChange={(e) => updateMob(selectedMob.id, 'seriouslyWounded', e.target.checked)}
                     />
                   </div>
                   <div className="health-field">
-                    <label>DEATH_save</label>
-                    <input 
-                      type="number" 
+                    <label>{t('Death Save')}</label>
+                    <input
+                      type="number"
                       value={selectedMob.deathSave}
                       onChange={(e) => updateMob(selectedMob.id, 'deathSave', parseInt(e.target.value) || 0)}
                     />
@@ -394,7 +402,7 @@ export default function Mobs() {
                 <div className="mob-combat-section">
                   <div className="weapons-section">
                     <div className="section-header">
-                      <span>WEAPONS</span>
+                      <span>{t('WEAPONS')}</span>
                       <button className="add-weapon-btn" onClick={() => addWeapon(selectedMob.id, 'weapon')}>+</button>
                     </div>
                     {selectedMob.weapons.map((weapon, i) => (
@@ -505,9 +513,9 @@ export default function Mobs() {
 
                   {/* ARMOR */}
                   <div className="armor-section">
-                    <div className="section-header">ARMOR</div>
+                    <div className="section-header">{t('ARMOR')}</div>
                     <div className="armor-row">
-                      <div className="armor-label">HEAD</div>
+                      <div className="armor-label">{t('HEAD')}</div>
                       <input 
                         type="text" 
                         className="armor-sp" 
@@ -540,7 +548,7 @@ export default function Mobs() {
                       />
                     </div>
                     <div className="armor-row">
-                      <div className="armor-label">BODY</div>
+                      <div className="armor-label">{t('BODY')}</div>
                       <input 
                         type="text" 
                         className="armor-sp" 
@@ -578,13 +586,13 @@ export default function Mobs() {
                 {/* SKILLS */}
                 <div className="mob-skills-section">
                   <div className="section-header">
-                    <span>SKILLS</span>
-                    <button className="add-mob-skill-btn" onClick={() => addSkill(selectedMob.id)}>+ Add Skill</button>
+                    <span>{t('SKILLS')}</span>
+                    <button className="add-mob-skill-btn" onClick={() => addSkill(selectedMob.id)}>{t('+ Add Skill')}</button>
                   </div>
                   <div className="mob-skills-list">
                     {selectedMob.skills.map((skill, i) => (
                       <div key={i} className="mob-skill-row">
-                        <select 
+                        <select
                           className="mob-skill-select"
                           value={skill.name}
                           onChange={(e) => {
@@ -597,38 +605,38 @@ export default function Mobs() {
                             }
                           }}
                         >
-                          <option value="">-- Custom --</option>
+                          <option value="">{t('-- Custom --')}</option>
                           {SKILL_PRESETS.map(preset => (
                             <option key={preset.name} value={preset.name}>
-                              {preset.name} ({preset.stat})
+                              {t(preset.name)} ({t(preset.stat)})
                             </option>
                           ))}
                         </select>
-                        <select 
+                        <select
                           className="mob-skill-stat"
                           value={skill.stat}
                           onChange={(e) => updateSkill(selectedMob.id, i, 'stat', e.target.value)}
                         >
                           {['INT', 'REF', 'DEX', 'TECH', 'COOL', 'WILL', 'LUCK', 'MOVE', 'BODY', 'EMP'].map(stat => (
-                            <option key={stat} value={stat}>{stat}</option>
+                            <option key={stat} value={stat}>{t(stat)}</option>
                           ))}
                         </select>
-                        <input 
-                          type="number" 
-                          className="mob-skill-lvl" 
-                          placeholder="LVL"
+                        <input
+                          type="number"
+                          className="mob-skill-lvl"
+                          placeholder={t('LVL')}
                           value={skill.lvl}
                           min="0"
                           max="10"
                           onChange={(e) => updateSkill(selectedMob.id, i, 'lvl', parseInt(e.target.value) || 0)}
                         />
-                        <button 
+                        <button
                           className="mob-skill-roll-btn"
                           onClick={() => rollMobSkill(selectedMob, i)}
                         >
                           🎲
                         </button>
-                        <button 
+                        <button
                           className="delete-mob-skill-btn"
                           onClick={() => deleteSkill(selectedMob.id, i)}
                         >
@@ -641,10 +649,10 @@ export default function Mobs() {
 
                 {/* CYBERWARE */}
                 <div className="mob-cyberware">
-                  <label>Cyberware/Special_equipment</label>
-                  <textarea 
-                    className="cyberware-input" 
-                    placeholder="Cyberware..."
+                  <label>{t('Cyberware/Special equipment')}</label>
+                  <textarea
+                    className="cyberware-input"
+                    placeholder={t('Cyberware...')}
                     value={selectedMob.cyberware}
                     onChange={(e) => updateMob(selectedMob.id, 'cyberware', e.target.value)}
                   />

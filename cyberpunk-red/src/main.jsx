@@ -3,14 +3,17 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import { CharacterProvider } from './context/CharacterContext.jsx'
+import { LanguageProvider } from './context/LanguageContext.jsx'
 import './css/common.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <CharacterProvider>
-        <App />
-      </CharacterProvider>
+      <LanguageProvider>
+        <CharacterProvider>
+          <App />
+        </CharacterProvider>
+      </LanguageProvider>
     </BrowserRouter>
   </StrictMode>
 )

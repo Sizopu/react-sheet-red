@@ -1,5 +1,7 @@
 import { Outlet, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useCharacter } from '../context/CharacterContext'
+import { useLanguage } from '../context/LanguageContext'
+import { translations } from '../i18n/translations'
 import DiceDialog from './DiceDialog'
 import { useState } from 'react'
 
@@ -7,8 +9,13 @@ export default function Layout() {
   const location = useLocation()
   const navigate = useNavigate()
   const { currentCharacterId, characters, exportAllCharacters, importCharacters } = useCharacter()
+  const { language, switchLanguage } = useLanguage()
   const [diceDialogOpen, setDiceDialogOpen] = useState(false)
   const [importDialogOpen, setImportDialogOpen] = useState(false)
+
+  const t = (key) => {
+    return translations[language]?.[key] || translations.en[key] || key
+  }
 
   const isActive = (path) => {
     return location.pathname === path
@@ -53,59 +60,62 @@ export default function Layout() {
       <nav className="top-nav">
         <div className="nav-brand">CYBERPUNK RED</div>
         <div className="nav-links">
-          <NavLink 
-            to="/characters" 
+          <NavLink
+            to="/characters"
             className={`nav-link ${isActive('/characters') ? 'active' : ''}`}
           >
-            Characters
+            {t('Characters')}
           </NavLink>
           {!isCharactersPage && (
             <>
-              <NavLink 
-                to="/sheet" 
+              <NavLink
+                to="/sheet"
                 className={`nav-link ${isActive('/sheet') ? 'active' : ''}`}
               >
-                Character Sheet
+                {t('Character Sheet')}
               </NavLink>
-              <NavLink 
-                to="/implants" 
+              <NavLink
+                to="/implants"
                 className={`nav-link ${isActive('/implants') ? 'active' : ''}`}
               >
-                Implants
+                {t('Implants')}
               </NavLink>
-              <NavLink 
-                to="/notes" 
+              <NavLink
+                to="/notes"
                 className={`nav-link ${isActive('/notes') ? 'active' : ''}`}
               >
-                Notes
+                {t('Notes')}
               </NavLink>
-              <NavLink 
-                to="/mobs" 
+              <NavLink
+                to="/mobs"
                 className={`nav-link ${isActive('/mobs') ? 'active' : ''}`}
               >
-                Mobs
+                {t('Mobs')}
               </NavLink>
-              <NavLink 
-                to="/scripts" 
+              <NavLink
+                to="/scripts"
                 className={`nav-link ${isActive('/scripts') ? 'active' : ''}`}
               >
-                Scripts
+                {t('Scripts')}
               </NavLink>
               <button className="nav-btn" onClick={() => setDiceDialogOpen(true)}>
-                🎲 Roll Dice
+                🎲 {t('Roll Dice')}
               </button>
             </>
           )}
           {isCharactersPage && (
             <>
               <button className="nav-btn save-btn" onClick={exportAllCharacters}>
-                💾 Save All
+                💾 {t('Save All')}
               </button>
               <button className="nav-btn load-btn" onClick={() => setImportDialogOpen(true)}>
-                📂 Load
+                📂 {t('Load')}
               </button>
             </>
           )}
+          <button className="nav-btn lang-btn" onClick={switchLanguage}>
+            {language === 'en' ? 'RU' : 'EN'}
+          </button>
         </div>
       </nav>
       

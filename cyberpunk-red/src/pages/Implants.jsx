@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useCharacter } from '../context/CharacterContext'
+import { useLanguage } from '../context/LanguageContext'
+import { translations } from '../i18n/translations'
 import '../css/implants.css'
 
 const IMPLANT_TYPES = {
@@ -87,6 +89,11 @@ const ZONE_LABELS = {
 
 export default function Implants() {
   const { currentCharacterId, characterData } = useCharacter()
+  const { language } = useLanguage()
+  
+  const t = (key) => {
+    return translations[language]?.[key] || translations.en[key] || key
+  }
 
   const [implants, setImplants] = useState([])
   const [selectedImplantId, setSelectedImplantId] = useState(null)
@@ -372,11 +379,11 @@ export default function Implants() {
         <div className="left-panel">
           {/* ALIASES Block */}
           <div className="cyber-block aliases-block">
-            <div className="cyber-block-header">ALIASES</div>
+            <div className="cyber-block-header">{t('ALIASES')}</div>
             <div className="cyber-block-content">
-              <input 
-                type="text" 
-                className="aliases-input" 
+              <input
+                type="text"
+                className="aliases-input"
                 placeholder="Enter aliases..."
                 value={lifepathData.aliases}
                 onChange={(e) => updateLifepathField('aliases', e.target.value)}
@@ -387,25 +394,25 @@ export default function Implants() {
           {/* IMPROVEMENT POINTS & REPUTATION */}
           <div className="imp-row">
             <div className="imp-block">
-              <div className="cyber-block-header">IMPROVEMENT POINTS</div>
+              <div className="cyber-block-header">{t('IMPROVEMENT POINTS')}</div>
               <div className="imp-content">
                 <div className="imp-inputs">
                   <div className="imp-input-field">
-                    <label>Current</label>
-                    <input 
-                      type="number" 
-                      id="imp-current" 
-                      value={lifepathData.impCurrent} 
+                    <label>{t('Current')}</label>
+                    <input
+                      type="number"
+                      id="imp-current"
+                      value={lifepathData.impCurrent}
                       min="0"
                       onChange={(e) => updateLifepathField('impCurrent', parseInt(e.target.value) || 0)}
                     />
                   </div>
                   <div className="imp-input-field">
-                    <label>Max</label>
-                    <input 
-                      type="number" 
-                      id="imp-max" 
-                      value={lifepathData.impMax} 
+                    <label>{t('Max')}</label>
+                    <input
+                      type="number"
+                      id="imp-max"
+                      value={lifepathData.impMax}
                       min="0"
                       onChange={(e) => updateLifepathField('impMax', parseInt(e.target.value) || 0)}
                     />
@@ -414,10 +421,10 @@ export default function Implants() {
               </div>
             </div>
             <div className="rep-block">
-              <div className="cyber-block-header">REPUTATION</div>
+              <div className="cyber-block-header">{t('REPUTATION')}</div>
               <div className="rep-content">
                 <div className="rep-input-field">
-                  <label>REP</label>
+                  <label>{t('REP')}</label>
                   <input 
                     type="number" 
                     id="rep-value" 
@@ -438,22 +445,22 @@ export default function Implants() {
 
           {/* LIFEPATH Block */}
           <div className="cyber-block lifepath-block">
-            <div className="cyber-block-header lifepath-header">LIFEPATH</div>
+            <div className="cyber-block-header lifepath-header">{t('LIFEPATH')}</div>
             <div className="lifepath-content">
               <div className="lifepath-row">
                 <div className="lifepath-field">
-                  <label>CULTURAL ORIGINS</label>
-                  <input 
-                    type="text" 
+                  <label>{t('CULTURAL ORIGINS')}</label>
+                  <input
+                    type="text"
                     id="cultural-origins"
                     value={lifepathData.culturalOrigins}
                     onChange={(e) => updateLifepathField('culturalOrigins', e.target.value)}
                   />
                 </div>
                 <div className="lifepath-field">
-                  <label>PERSONALITY</label>
-                  <input 
-                    type="text" 
+                  <label>{t('PERSONALITY')}</label>
+                  <input
+                    type="text"
                     id="personality"
                     value={lifepathData.personality}
                     onChange={(e) => updateLifepathField('personality', e.target.value)}
@@ -462,18 +469,18 @@ export default function Implants() {
               </div>
               <div className="lifepath-row">
                 <div className="lifepath-field">
-                  <label>CLOTHING STYLES</label>
-                  <input 
-                    type="text" 
+                  <label>{t('CLOTHING STYLES')}</label>
+                  <input
+                    type="text"
                     id="clothing-styles"
                     value={lifepathData.clothingStyles}
                     onChange={(e) => updateLifepathField('clothingStyles', e.target.value)}
                   />
                 </div>
                 <div className="lifepath-field">
-                  <label>HAIRSTYLE</label>
-                  <input 
-                    type="text" 
+                  <label>{t('HAIRSTYLE')}</label>
+                  <input
+                    type="text"
                     id="hairstyle"
                     value={lifepathData.hairstyle}
                     onChange={(e) => updateLifepathField('hairstyle', e.target.value)}
@@ -482,18 +489,18 @@ export default function Implants() {
               </div>
               <div className="lifepath-row">
                 <div className="lifepath-field">
-                  <label>VALUE MOST</label>
-                  <input 
-                    type="text" 
+                  <label>{t('VALUE MOST')}</label>
+                  <input
+                    type="text"
                     id="value-most"
                     value={lifepathData.valueMost}
                     onChange={(e) => updateLifepathField('valueMost', e.target.value)}
                   />
                 </div>
                 <div className="lifepath-field">
-                  <label>FEELINGS ABOUT PEOPLE</label>
-                  <input 
-                    type="text" 
+                  <label>{t('FEELINGS ABOUT PEOPLE')}</label>
+                  <input
+                    type="text"
                     id="feelings-people"
                     value={lifepathData.feelingsPeople}
                     onChange={(e) => updateLifepathField('feelingsPeople', e.target.value)}
@@ -502,18 +509,18 @@ export default function Implants() {
               </div>
               <div className="lifepath-row">
                 <div className="lifepath-field">
-                  <label>VALUED PERSON</label>
-                  <input 
-                    type="text" 
+                  <label>{t('VALUED PERSON')}</label>
+                  <input
+                    type="text"
                     id="valued-person"
                     value={lifepathData.valuedPerson}
                     onChange={(e) => updateLifepathField('valuedPerson', e.target.value)}
                   />
                 </div>
                 <div className="lifepath-field">
-                  <label>VALUED POSSESSION</label>
-                  <input 
-                    type="text" 
+                  <label>{t('VALUED POSSESSION')}</label>
+                  <input
+                    type="text"
                     id="valued-possession"
                     value={lifepathData.valuedPossession}
                     onChange={(e) => updateLifepathField('valuedPossession', e.target.value)}
@@ -522,18 +529,18 @@ export default function Implants() {
               </div>
               <div className="lifepath-row">
                 <div className="lifepath-field">
-                  <label>FAMILY BACKGROUND</label>
-                  <input 
-                    type="text" 
+                  <label>{t('FAMILY BACKGROUND')}</label>
+                  <input
+                    type="text"
                     id="family-background"
                     value={lifepathData.familyBackground}
                     onChange={(e) => updateLifepathField('familyBackground', e.target.value)}
                   />
                 </div>
                 <div className="lifepath-field">
-                  <label>CHILDHOOD ENVIRONMENT</label>
-                  <input 
-                    type="text" 
+                  <label>{t('CHILDHOOD ENVIRONMENT')}</label>
+                  <input
+                    type="text"
                     id="childhood-environment"
                     value={lifepathData.childhoodEnvironment}
                     onChange={(e) => updateLifepathField('childhoodEnvironment', e.target.value)}
@@ -542,18 +549,18 @@ export default function Implants() {
               </div>
               <div className="lifepath-row">
                 <div className="lifepath-field">
-                  <label>FAMILY CRISIS</label>
-                  <input 
-                    type="text" 
+                  <label>{t('FAMILY CRISIS')}</label>
+                  <input
+                    type="text"
                     id="family-crisis"
                     value={lifepathData.familyCrisis}
                     onChange={(e) => updateLifepathField('familyCrisis', e.target.value)}
                   />
                 </div>
                 <div className="lifepath-field">
-                  <label>LIFE GOALS</label>
-                  <input 
-                    type="text" 
+                  <label>{t('LIFE GOALS')}</label>
+                  <input
+                    type="text"
                     id="life-goals"
                     value={lifepathData.lifeGoals}
                     onChange={(e) => updateLifepathField('lifeGoals', e.target.value)}
@@ -562,9 +569,9 @@ export default function Implants() {
               </div>
               <div className="lifepath-row full-width">
                 <div className="lifepath-field">
-                  <label>FASHION</label>
-                  <input 
-                    type="text" 
+                  <label>{t('FASHION')}</label>
+                  <input
+                    type="text"
                     id="fashion"
                     value={lifepathData.fashion}
                     onChange={(e) => updateLifepathField('fashion', e.target.value)}
@@ -576,16 +583,16 @@ export default function Implants() {
 
           {/* INVENTORY Block */}
           <div className="cyber-block inventory-block">
-            <div className="cyber-block-header inventory-header">INVENTORY</div>
+            <div className="cyber-block-header inventory-header">{t('INVENTORY')}</div>
             <div className="inventory-content">
               <table className="inventory-table">
                 <thead>
                   <tr>
-                    <th className="gear-col">GEAR</th>
-                    <th className="cost-col">COST</th>
-                    <th className="weight-col">WEIGHT</th>
-                    <th className="notes-col">NOTES</th>
-                    <th className="cash-col">Cash €$</th>
+                    <th className="gear-col">{t('GEAR')}</th>
+                    <th className="cost-col">{t('COST')}</th>
+                    <th className="weight-col">{t('WEIGHT')}</th>
+                    <th className="notes-col">{t('NOTES')}</th>
+                    <th className="cash-col">{t('Cash €$')}</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -647,11 +654,11 @@ export default function Implants() {
               <div className="inventory-footer">
                 <div className="inventory-totals">
                   <div className="total-item">
-                    <label>TOTAL WEIGHT</label>
+                    <label>{t('TOTAL WEIGHT')}</label>
                     <span id="total-weight-value">{calculateTotalWeight()}</span>
                   </div>
                   <div className="total-item">
-                    <label>TOTAL CASH</label>
+                    <label>{t('TOTAL CASH')}</label>
                     <span id="total-cash-value">{calculateTotalCash()}</span>
                   </div>
                 </div>
@@ -665,20 +672,20 @@ export default function Implants() {
         <div className="middle-panel">
           {/* LIFEPATH Top */}
           <div className="cyber-block lifepath-top-block">
-            <div className="cyber-block-header lifepath-header">LIFEPATH</div>
+            <div className="cyber-block-header lifepath-header">{t('LIFEPATH')}</div>
             <div className="lifepath-top-content">
               <div className="lifepath-sub-row">
                 <div className="lifepath-sub-field">
-                  <label>Friends</label>
-                  <textarea 
+                  <label>{t('Friends')}</label>
+                  <textarea
                     id="friends"
                     value={lifepathData.friends}
                     onChange={(e) => updateLifepathField('friends', e.target.value)}
                   />
                 </div>
                 <div className="lifepath-sub-field">
-                  <label>Tragic love affairs</label>
-                  <textarea 
+                  <label>{t('Tragic love affairs')}</label>
+                  <textarea
                     id="tragic-love"
                     value={lifepathData.tragicLove}
                     onChange={(e) => updateLifepathField('tragicLove', e.target.value)}
@@ -687,12 +694,12 @@ export default function Implants() {
               </div>
               <div className="lifepath-sub-row">
                 <div className="lifepath-sub-field enemies-field">
-                  <label>Enemies</label>
+                  <label>{t('Enemies')}</label>
                   <div className="enemies-grid">
                     {['Who?', 'What caused it?', 'What can they throw at you?', "What's gonna happen?"].map((placeholder, i) => (
-                      <input 
+                      <input
                         key={i}
-                        type="text" 
+                        type="text"
                         placeholder={placeholder}
                         value={lifepathData.enemies[i] || ''}
                         onChange={(e) => {
@@ -710,11 +717,11 @@ export default function Implants() {
 
           {/* ROLE SPECIFIC LIFEPATH */}
           <div className="cyber-block role-lifepath-block">
-            <div className="cyber-block-header lifepath-header">ROLE SPECIFIC LIFEPATH</div>
+            <div className="cyber-block-header lifepath-header">{t('ROLE SPECIFIC LIFEPATH')}</div>
             <div className="role-lifepath-content">
-              <textarea 
+              <textarea
                 id="role-lifepath-text"
-                placeholder="Role specific lifepath..."
+                placeholder={t('Role specific lifepath...')}
                 value={lifepathData.roleLifepath}
                 onChange={(e) => updateLifepathField('roleLifepath', e.target.value)}
               />
@@ -723,31 +730,31 @@ export default function Implants() {
 
           {/* Housing */}
           <div className="housing-block">
-            <div className="cyber-block-header lifepath-header">HOUSING</div>
+            <div className="cyber-block-header lifepath-header">{t('HOUSING')}</div>
             <div className="housing-content">
               <div className="housing-row">
                 <div className="lifepath-field">
-                  <label>Housing</label>
-                  <input 
-                    type="text" 
+                  <label>{t('Housing')}</label>
+                  <input
+                    type="text"
                     id="housing"
                     value={lifepathData.housing}
                     onChange={(e) => updateLifepathField('housing', e.target.value)}
                   />
                 </div>
                 <div className="lifepath-field">
-                  <label>Rent</label>
-                  <input 
-                    type="text" 
+                  <label>{t('Rent')}</label>
+                  <input
+                    type="text"
                     id="rent"
                     value={lifepathData.rent}
                     onChange={(e) => updateLifepathField('rent', e.target.value)}
                   />
                 </div>
                 <div className="lifepath-field">
-                  <label>Lifestyle</label>
-                  <input 
-                    type="text" 
+                  <label>{t('Lifestyle')}</label>
+                  <input
+                    type="text"
                     id="lifestyle"
                     value={lifepathData.lifestyle}
                     onChange={(e) => updateLifepathField('lifestyle', e.target.value)}
@@ -755,11 +762,11 @@ export default function Implants() {
                 </div>
               </div>
               <div className="money-display">
-                <label>Total Money</label>
-                <input 
-                  type="number" 
-                  className="money-input" 
-                  id="money-total" 
+                <label>{t('Total Money')}</label>
+                <input
+                  type="number"
+                  className="money-input"
+                  id="money-total"
                   placeholder="€$ 0"
                   value={lifepathData.moneyTotal}
                   onChange={(e) => updateLifepathField('moneyTotal', parseInt(e.target.value) || 0)}
@@ -773,7 +780,7 @@ export default function Implants() {
         <div className="right-panel">
           <div className="cyberware-panel">
             <div className="cyber-block cyberware-header-block">
-              <div className="cyber-block-header cyberware-main-header">CYBERWARE</div>
+              <div className="cyber-block-header cyberware-main-header">{t('CYBERWARE')}</div>
             </div>
 
             {/* Controls */}
@@ -783,7 +790,7 @@ export default function Implants() {
                   className="add-implant-btn"
                   onClick={() => setDropdownOpen(!dropdownOpen)}
                 >
-                  <span>+</span> ADD CYBERWARE
+                  <span>+</span> {t('ADD CYBERWARE')}
                 </button>
                 {dropdownOpen && (
                   <div className="implant-type-dropdown active">
@@ -806,7 +813,7 @@ export default function Implants() {
 
             {/* Humanity Loss */}
             <div className="humanity-loss-top">
-              <label>Humanity Loss</label>
+              <label>{t('Humanity Loss')}</label>
               <div className="humanity-value" id="humanity-total">
                 {calculateHumanityTotal()}
               </div>
@@ -816,7 +823,7 @@ export default function Implants() {
             <div className="skeleton-wrapper">
               <div className="skeleton-placeholder">
                 <img src="/images/screenshot.png" alt="Skeleton" className="skeleton-image" />
-                <div className="skeleton-label">BODY SCHEMA</div>
+                <div className="skeleton-label">{t('BODY SCHEMA')}</div>
                 <div className="skeleton-zones">
                   {Object.entries(ZONE_POSITIONS).map(([zone, pos]) => {
                     const typeKey = Object.keys(IMPLANT_TYPES).find(key =>
@@ -911,7 +918,7 @@ export default function Implants() {
                         </div>
                         <div className="implant-card-body" onClick={e => e.stopPropagation()}>
                           <div className="implant-card-row">
-                            <label>Location</label>
+                            <label>{t('Location')}</label>
                             <select
                               className="implant-card-zone"
                               value={implant.zone}
@@ -927,17 +934,17 @@ export default function Implants() {
                             </select>
                           </div>
                           <div className="implant-card-row">
-                            <label>Game Effect</label>
+                            <label>{t('Game Effect')}</label>
                             <input
                               type="text"
                               className="implant-card-gameeffect"
-                              placeholder="e.g. +1 Interface"
+                              placeholder={t('e.g. +1 Interface')}
                               value={implant.gameEffect || ''}
                               onChange={(e) => updateImplant(implant.id, 'gameEffect', e.target.value)}
                             />
                           </div>
                           <div className="implant-card-row">
-                            <label>Humanity Loss</label>
+                            <label>{t('Humanity Loss')}</label>
                             <input
                               type="number"
                               className="implant-card-humanity"
@@ -947,7 +954,7 @@ export default function Implants() {
                             />
                           </div>
                           <div className="implant-card-row">
-                            <label>Cost</label>
+                            <label>{t('Cost')}</label>
                             <input
                               type="number"
                               className="implant-card-cost"
@@ -957,7 +964,7 @@ export default function Implants() {
                             />
                           </div>
                           <div className="implant-card-row">
-                            <label>Rarity</label>
+                            <label>{t('Rarity')}</label>
                             <select
                               className="implant-card-rarity"
                               value={implant.rarity}

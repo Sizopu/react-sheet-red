@@ -1,11 +1,18 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useCharacter, charStorage } from '../context/CharacterContext'
+import { useLanguage } from '../context/LanguageContext'
+import { translations } from '../i18n/translations'
 import '../css/main.css'
 
 export default function Characters() {
   const navigate = useNavigate()
   const { characters, addCharacter, updateCharacter, deleteCharacter, loadCharacterToSheet } = useCharacter()
+  const { language } = useLanguage()
+  
+  const t = (key) => {
+    return translations[language]?.[key] || translations.en[key] || key
+  }
   const [selectedId, setSelectedId] = useState(null)
   const [dialogOpen, setDialogOpen] = useState(false)
   const [editingId, setEditingId] = useState(null)
@@ -124,13 +131,13 @@ export default function Characters() {
         {/* Left Panel - Character List */}
         <div className="characters-sidebar">
           <div className="characters-header">
-            <span>CHARACTERS</span>
+            <span>{t('Characters')}</span>
             <button className="add-character-btn" onClick={() => handleOpenDialog()}>+</button>
           </div>
           <div className="characters-list">
             {characters.length === 0 ? (
               <div style={{ padding: '20px', textAlign: 'center', color: '#8b949e', fontSize: '10px' }}>
-                No characters yet. Click + to create one.
+                {t('No characters yet')}. {t('Create your first character to get started').toLowerCase()}
               </div>
             ) : (
               characters.map(char => (
@@ -273,17 +280,17 @@ export default function Characters() {
                 </div>
 
                 <div className="character-actions">
-                  <button 
-                    className="action-btn action-btn-primary" 
+                  <button
+                    className="action-btn action-btn-primary"
                     onClick={() => handleLoadToSheet(selectedCharacter.id)}
                   >
-                    Load to Character Sheet
+                    {t('Load to Sheet')}
                   </button>
-                  <button 
-                    className="action-btn action-btn-danger" 
+                  <button
+                    className="action-btn action-btn-danger"
                     onClick={() => deleteCharacter(selectedCharacter.id)}
                   >
-                    Delete
+                    {t('Delete')}
                   </button>
                 </div>
               </div>
@@ -297,15 +304,15 @@ export default function Characters() {
         <div className="dialog-overlay" onClick={handleCloseDialog}>
           <div className="dialog character-dialog" onClick={e => e.stopPropagation()}>
             <div className="dialog-header">
-              <span>{editingId ? 'Edit Character' : 'New Character'}</span>
+              <span>{editingId ? t('Edit Character') : t('Create New Character')}</span>
               <button className="dialog-close" onClick={handleCloseDialog}>×</button>
             </div>
             <div className="dialog-content">
               <div className="form-group">
-                <label>Character Name</label>
-                <input 
-                  type="text" 
-                  className="form-input" 
+                <label>{t('Character Name')}</label>
+                <input
+                  type="text"
+                  className="form-input"
                   placeholder="Enter character name"
                   value={formData.name}
                   onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
@@ -313,9 +320,9 @@ export default function Characters() {
                 />
               </div>
               <div className="form-group">
-                <label>Description (optional)</label>
-                <textarea 
-                  className="form-textarea" 
+                <label>{t('Description')}</label>
+                <textarea
+                  className="form-textarea"
                   placeholder="Character description..."
                   value={formData.description}
                   onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
@@ -324,10 +331,10 @@ export default function Characters() {
             </div>
             <div className="dialog-footer">
               <button className="dialog-btn" onClick={handleCloseDialog}>
-                Cancel
+                {t('Cancel')}
               </button>
               <button className="dialog-btn dialog-btn-primary" onClick={handleSave}>
-                Save
+                {t('Save')}
               </button>
             </div>
           </div>

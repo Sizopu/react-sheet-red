@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useCharacter, charStorage } from '../context/CharacterContext'
+import { useLanguage } from '../context/LanguageContext'
+import { translations } from '../i18n/translations'
 import '../css/character.css'
 
 const STATS = {
@@ -185,6 +187,11 @@ const getSkillDowngradeRefund = (currentLvl, isX2Skill = false) => {
 
 export default function CharacterSheet() {
   const { currentCharacterId, characterData, updateCharacterField, saveCharacterData, charStorage } = useCharacter()
+  const { language } = useLanguage()
+  
+  const t = (key) => {
+    return translations[language]?.[key] || translations.en[key] || key
+  }
 
   // Состояния для данных (как в оригинале)
   const [skills, setSkills] = useState({})
@@ -528,7 +535,10 @@ export default function CharacterSheet() {
 
   const getSkillDisplayName = (group, skillName) => {
     const key = `${group}_${skillName}`
-    return customSkillNames[key] || skillName
+    const customName = customSkillNames[key]
+    if (customName) return customName
+    // Пробуем перевести название навыка
+    return t(skillName) || skillName
   }
 
   // Specialised skills handlers
@@ -740,7 +750,7 @@ export default function CharacterSheet() {
       <div className="left-column">
         {/* ID BLOCK */}
         <div className="block id-block">
-          <div className="block-header">id</div>
+          <div className="block-header">{t('CHARACTER')}</div>
           <div className="id-content">
             <div className="fingerprint-area" onClick={() => setAvatarDialogOpen(true)}>
               {avatarPreview ? (
@@ -755,8 +765,8 @@ export default function CharacterSheet() {
             <div className="id-fields">
               <div className="id-row">
                 <label>name</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   id="char-name"
                   value={characterData.char_name || ''}
                   onChange={(e) => updateCharacterField('char_name', e.target.value)}
@@ -764,8 +774,8 @@ export default function CharacterSheet() {
               </div>
               <div className="id-row">
                 <label>age</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   id="age"
                   value={characterData.age || ''}
                   onChange={(e) => updateCharacterField('age', e.target.value)}
@@ -975,7 +985,7 @@ export default function CharacterSheet() {
 
         {/* STATS */}
         <div className="block stats-block">
-          <div className="block-header">STATS</div>
+          <div className="block-header">{t('STATS')}</div>
           <div className="stats-vertical">
             {Object.entries(STATS).map(([key, fieldId]) => {
               const isMaxField = key === 'LUCK' || key === 'EMP'
@@ -1061,7 +1071,7 @@ export default function CharacterSheet() {
           </div>
 
           <div className="block injuries-block">
-            <div className="block-header">INJURIES / ADDICTIONS</div>
+            <div className="block-header">{t('WOUNDS')}</div>
             <div className="injuries-content">
               <div className="injuries-section">
                 <label>CRITICAL injuries</label>
@@ -1085,15 +1095,15 @@ export default function CharacterSheet() {
 
         {/* ARMOR */}
         <div className="block armor-block">
-          <div className="block-header">ARMOR</div>
+          <div className="block-header">{t('ARMOR')}</div>
           <div className="armor-content">
             {['head', 'body', 'shield'].map(part => (
               <div key={part} className="armor-section">
                 <div className="armor-header">
-                  <span>{part.toUpperCase()}</span>
-                  <span>SP</span>
-                  <span>NOTES</span>
-                  <span>PENALTY</span>
+                  <span>{t(part.toUpperCase())}</span>
+                  <span>{t('SP')}</span>
+                  <span>{t('NOTES')}</span>
+                  <span>{t('PENALTY')}</span>
                 </div>
                 <div className="armor-row">
                   <input 
@@ -1126,7 +1136,7 @@ export default function CharacterSheet() {
         {/* SPECIALISED SKILLS */}
         <div className="block specialised-skills-block">
           <div className="block-header">
-            SPECIALISED skills 
+            {t('SPECIALISED SKILLS')}
             <button className="add-btn" id="add-ss-btn" onClick={addSpecialisedSkill}>+</button>
           </div>
           <div className="specialised-skills-content">
@@ -1260,7 +1270,7 @@ export default function CharacterSheet() {
         {/* WEAPONS */}
         <div className="block weapons-block">
           <div className="block-header">
-            WEAPONS 
+            {t('WEAPONS')}
             <button className="add-btn" id="add-weapon-btn" onClick={addWeapon}>+</button>
           </div>
           <div className="weapons-content" id="weapons-container">
@@ -1373,24 +1383,24 @@ export default function CharacterSheet() {
       {/* RIGHT COLUMN */}
       <div className="right-column">
         <div className="block skills-block">
-          <div className="block-header">SKILLS</div>
+          <div className="block-header">{t('SKILLS')}</div>
           <div className="skills-content" id="skills-container">
             {Object.entries(SKILL_GROUPS).map(([group, skillsList]) => {
               const isExpandableGroup = EXPANDABLE_SKILLS[group]
-              
+
               return (
                 <div key={group} className="skill-group">
-                  <div className="skill-group-title">{group.replace(/_/g, ' ')}</div>
+                  <div className="skill-group-title">{t(group)}</div>
                   <table className="skill-table">
                     <thead>
                       <tr>
-                        <th colSpan="6" className="skill-name-header">SKILL</th>
+                        <th colSpan="6" className="skill-name-header">{t('SKILL')}</th>
                       </tr>
                       <tr>
-                        <th>MOD</th>
-                        <th>LVL</th>
-                        <th>STAT</th>
-                        <th>BASE</th>
+                        <th>{t('MOD')}</th>
+                        <th>{t('LVL')}</th>
+                        <th>{t('STAT')}</th>
+                        <th>{t('BASE')}</th>
                         <th colSpan="2"></th>
                       </tr>
                     </thead>
@@ -1689,8 +1699,8 @@ export default function CharacterSheet() {
               <>
                 <div className="dice-rolls">
                   {diceResult.rolls.map((roll, i) => (
-                    <div 
-                      key={i} 
+                    <div
+                      key={i}
                       className={`dice-roll-item ${
                         roll === diceResult.sides ? 'crit-success' : roll === 1 ? 'crit-fail' : ''
                       }`}
@@ -1720,13 +1730,19 @@ export default function CharacterSheet() {
                       {diceResult.roll}
                     </div>
                   )}
+                  {/* Дополнительный бросок при крите (10) */}
+                  {diceResult.extraRoll !== undefined && diceResult.extraRoll !== null && (
+                    <div className="dice-roll-item crit-success">
+                      {diceResult.extraRoll}
+                    </div>
+                  )}
                 </div>
                 <div className="dice-total-display">
                   <span className="dice-total-label">Total:</span>
                   <span className="dice-total-value">{diceResult.total}</span>
                 </div>
                 <p className="dice-description">
-                  Roll: 1d10 + REF
+                  Roll: 1d10{diceResult.extraRoll !== undefined && diceResult.extraRoll !== null ? ' + 1d10 (Crit!)' : ''} + {diceResult.base}
                 </p>
               </>
             )}

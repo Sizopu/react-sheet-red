@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useCharacter } from '../context/CharacterContext'
+import { useLanguage } from '../context/LanguageContext'
+import { translations } from '../i18n/translations'
 import { rollDice } from '../utils/dice'
 import '../css/scripts.css'
 
@@ -10,6 +12,11 @@ const INTERFACE_ABILITIES = [
 
 export default function Scripts() {
   const { currentCharacterId } = useCharacter()
+  const { language } = useLanguage()
+  
+  const t = (key) => {
+    return translations[language]?.[key] || translations.en[key] || key
+  }
 
   // Инициализация состояний
   const [cyberdeckData, setCyberdeckData] = useState({
@@ -234,7 +241,7 @@ export default function Scripts() {
         {/* Left Top - Cyberdeck Info */}
         <div className="cyberdeck-info-block">
           <div className="cyberdeck-info-row">
-            <div className="cyberdeck-info-label">Model</div>
+            <div className="cyberdeck-info-label">{t('Model')}</div>
             <input
               type="text"
               className="cyberdeck-info-input"
@@ -243,7 +250,7 @@ export default function Scripts() {
             />
           </div>
           <div className="cyberdeck-info-row">
-            <div className="cyberdeck-info-label">Icon</div>
+            <div className="cyberdeck-info-label">{t('Icon')}</div>
             <input
               type="text"
               className="cyberdeck-info-input"
@@ -252,7 +259,7 @@ export default function Scripts() {
             />
           </div>
           <div className="cyberdeck-info-row">
-            <div className="cyberdeck-info-label">NET Actions</div>
+            <div className="cyberdeck-info-label">{t('NET Actions')}</div>
             <input
               type="number"
               className="cyberdeck-net-actions"
@@ -261,7 +268,7 @@ export default function Scripts() {
               max="10"
               onChange={(e) => updateCyberdeckField('netActions', parseInt(e.target.value) || 0)}
             />
-            <div className="cyberdeck-info-label">Black</div>
+            <div className="cyberdeck-info-label">{t('Black')}</div>
             <input
               type="number"
               className="cyberdeck-black"
@@ -272,7 +279,7 @@ export default function Scripts() {
             />
           </div>
           <div className="cyberdeck-info-row">
-            <div className="cyberdeck-info-label">Cyberdeck Cost</div>
+            <div className="cyberdeck-info-label">{t('Cyberdeck Cost')}</div>
             <input
               type="number"
               className="cyberdeck-info-input"
@@ -285,19 +292,19 @@ export default function Scripts() {
         {/* Right Top - Tests & Abilities */}
         <div className="cyberdeck-tests-block">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <button className="cyberdeck-help-btn" onClick={() => setHelpOpen(true)}>📖 Help</button>
+            <button className="cyberdeck-help-btn" onClick={() => setHelpOpen(true)}>📖 {t('Help')}</button>
           </div>
           <div className="cyberdeck-test-row">
-            <div className="cyberdeck-test-label">Test = Interface + 1d10 vs. DV</div>
+            <div className="cyberdeck-test-label">{t('Test')} = {t('Interface')} + 1d10 {t('vs. DV')}</div>
           </div>
           <div className="cyberdeck-test-row">
             <div className="cyberdeck-combat-label">
-              <strong>Net Combat</strong> = Interface + Program/Black ICE ATK + 1d10 vs.<br />
-              Target's Interface or Program/Black ICE DEF + 1d10
+              <strong>{t('Net Combat')}</strong> = {t('Interface')} + {t('Program')}/{t('Black ICE')} ATK + 1d10 {t('vs.')}<br />
+              {t("Target's Interface")} or {t('Program')}/{t('Black ICE')} DEF + 1d10
             </div>
           </div>
           <div className="cyberdeck-abilities-block">
-            <div className="cyberdeck-abilities-title">Interface Abilities</div>
+            <div className="cyberdeck-abilities-title">{t('Interface Abilities')}</div>
             <div className="cyberdeck-abilities-grid">
               {INTERFACE_ABILITIES.map(ability => (
                 <label key={ability} className="ability-label">
@@ -322,16 +329,16 @@ export default function Scripts() {
             <table className="programs-table">
               <thead>
                 <tr>
-                  <th className="col-section">Section</th>
-                  <th className="col-name">Name</th>
-                  <th className="col-class">Class</th>
+                  <th className="col-section">{t('Section')}</th>
+                  <th className="col-name">{t('Name')}</th>
+                  <th className="col-class">{t('Class')}</th>
                   <th className="col-stat">PER</th>
                   <th className="col-stat">SPD</th>
                   <th className="col-attack">ATK</th>
                   <th className="col-defense">DEF</th>
                   <th className="col-stat">REZ</th>
-                  <th className="col-effect">Effect</th>
-                  <th className="col-cost">Cost</th>
+                  <th className="col-effect">{t('Effect')}</th>
+                  <th className="col-cost">{t('Cost')}</th>
                   <th className="col-action"></th>
                 </tr>
               </thead>
@@ -486,10 +493,10 @@ export default function Scripts() {
             </table>
           </div>
           <div className="programs-footer">
-            <button className="add-section-btn" onClick={() => addProgramRow('poor')}>+ Add Poor Program</button>
-            <button className="add-section-btn" onClick={() => addProgramRow('standard')}>+ Add Standard Program</button>
-            <button className="add-section-btn" onClick={() => addProgramRow('excellent')}>+ Add Excellent Program</button>
-            <button className="add-section-btn" onClick={() => addProgramRow('cyberarm')}>+ Add Cyberarm Program</button>
+            <button className="add-section-btn" onClick={() => addProgramRow('poor')}>+ {t('Add Poor Program')}</button>
+            <button className="add-section-btn" onClick={() => addProgramRow('standard')}>+ {t('Add Standard Program')}</button>
+            <button className="add-section-btn" onClick={() => addProgramRow('excellent')}>+ {t('Add Excellent Program')}</button>
+            <button className="add-section-btn" onClick={() => addProgramRow('cyberarm')}>+ {t('Add Cyberarm Program')}</button>
           </div>
         </div>
 
@@ -501,9 +508,9 @@ export default function Scripts() {
               <table className="hardware-table">
                 <thead>
                   <tr>
-                    <th className="hardware-name-col">Hardware</th>
-                    <th className="hardware-effect-col">Effect</th>
-                    <th className="hardware-cost-col">Cost</th>
+                    <th className="hardware-name-col">{t('Hardware')}</th>
+                    <th className="hardware-effect-col">{t('Effect')}</th>
+                    <th className="hardware-cost-col">{t('Cost')}</th>
                     <th className="hardware-action-col"></th>
                   </tr>
                 </thead>
@@ -546,7 +553,7 @@ export default function Scripts() {
                   ))}
                   <tr className="hardware-add-row">
                     <td colSpan="4">
-                      <button className="add-hardware-btn" onClick={addHardwareRow}>+ Add Hardware</button>
+                      <button className="add-hardware-btn" onClick={addHardwareRow}>+ {t('Add Hardware')}</button>
                     </td>
                   </tr>
                 </tbody>
@@ -556,7 +563,7 @@ export default function Scripts() {
 
           {/* Notes */}
           <div className="notes-block">
-            <div className="notes-header">Notes</div>
+            <div className="notes-header">{t('Notes')}</div>
             <textarea
               className="notes-textarea"
               placeholder=""

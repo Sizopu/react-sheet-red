@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/react-sheet-red/cyberpunk-red/',
+  base: '/react-sheet-red/',
   server: {
     port: 3000,
     open: true

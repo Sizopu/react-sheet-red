@@ -3,7 +3,11 @@
     "allow": [
       "Bash(npm run *)",
       "Bash(lsof *)",
-      "Bash(netstat *)"
+      "Bash(netstat *)",
+      "Bash(git add *)",
+      "Bash(powershell *)",
+      "Bash(git *)",
+      "Bash(findstr *)"
     ]
   },
   "$version": 3

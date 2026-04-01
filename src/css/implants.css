@@ -444,7 +444,7 @@
 
 /* Right Panel - Cyberware */
 .right-panel {
-  min-width: 900px;
+  width: 100%;
 }
 
 .cyberware-panel {
@@ -580,6 +580,7 @@
   left: 20px;
   width: 350px;
   height: 700px;
+  max-width: 100%;
 }
 
 .skeleton-placeholder {
@@ -615,6 +616,19 @@
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+/* Responsive skeleton container */
+.skeleton-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.skeleton-section {
+  flex: 0 0 350px;
+  max-width: 100%;
 }
 
 /* Body Zone Markers (clickable areas) */
@@ -771,13 +785,14 @@
   position: absolute;
   top: 100px;
   right: 15px;
-  left: 400px;
+  left: 390px;
   bottom: 20px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 5px;
   padding-right: 10px;
+  min-width: 0;
 }
 
 .implant-cards-container::-webkit-scrollbar {
@@ -791,6 +806,26 @@
 .implant-cards-container::-webkit-scrollbar-thumb {
   background: #3d4149;
   border-radius: 3px;
+}
+
+/* Responsive layout for cyberware panel */
+.cyberware-content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.cyberware-skeleton-section {
+  flex: 0 0 350px;
+  position: relative;
+  max-width: 100%;
+}
+
+.cyberware-cards-section {
+  flex: 1;
+  min-width: 300px;
+  position: relative;
 }
 
 /* Implant Type Header */
@@ -978,17 +1013,17 @@
     gap: 8px;
   }
 
-  .right-panel {
-    min-width: 700px;
-  }
-
   .skeleton-wrapper {
     width: 300px;
     height: 600px;
   }
+
+  .implant-cards-container {
+    left: 320px;
+  }
 }
 
-/* Tablets */
+/* Tablets - переключение на flex layout */
 @media (max-width: 1200px) {
   .cyberware-container {
     grid-template-columns: 1fr;
@@ -996,9 +1031,7 @@
   }
 
   .right-panel {
-    min-width: auto;
     width: 100%;
-    overflow-x: auto;
   }
 
   .cyberware-panel {
@@ -1006,6 +1039,7 @@
     padding: 15px;
     padding-bottom: 100px;
     width: 100%;
+    overflow-x: auto;
   }
 
   .left-panel,
@@ -1016,6 +1050,59 @@
   /* Stack panels vertically */
   .cyberware-container > div {
     width: 100%;
+  }
+
+  /* Переключаем на flex layout для tablets */
+  .cyberware-content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .cyberware-skeleton-section {
+    flex: 0 0 280px;
+  }
+
+  .cyberware-cards-section {
+    flex: 1;
+    min-width: 280px;
+  }
+
+  /* Позиционируем элементы относительно для tablet */
+  .skeleton-wrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 560px;
+    margin: 0 auto;
+  }
+
+  .implant-cards-container {
+    position: relative;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin-top: 20px;
+    padding-right: 0;
+  }
+
+  .cyberware-controls {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+
+  .humanity-loss-top {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 10px 0;
+    text-align: left;
   }
 }
 
@@ -1064,8 +1151,8 @@
     top: 0;
     left: 0;
     margin: 20px auto;
-    width: 200px;
-    height: 400px;
+    width: 220px;
+    height: 440px;
   }
 
   .implant-cards-container {
@@ -1101,6 +1188,22 @@
 
   .enemies-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Flex layout для mobile */
+  .cyberware-content-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cyberware-skeleton-section {
+    flex: none;
+    width: 220px;
+  }
+
+  .cyberware-cards-section {
+    flex: 1;
+    min-width: 100%;
   }
 }
 

@@ -1,0 +1,377 @@
+{
+  "version": "2.1",
+  "exportDate": "2026-03-28T18:51:12.076Z",
+  "characters": [
+    {
+      "profile": {
+        "id": "char_1774294535286",
+        "name": "Hydrargyrum",
+        "description": "",
+        "createdAt": 1774294535286,
+        "updatedAt": 1774294535286
+      },
+      "character": {
+        "char_name": "",
+        "age": "",
+        "role": "",
+        "xp_current": "",
+        "hp_current": "50",
+        "hp_max": "50",
+        "humanity_current": "50",
+        "humanity_max": "69",
+        "initiative": "",
+        "death_save": "",
+        "critically_wounded": false,
+        "seriously_wounded": false,
+        "critical_injuries": "",
+        "addictions": "",
+        "notes": "",
+        "stat_int": "5",
+        "stat_ref": "8",
+        "stat_dex": "6",
+        "stat_tech": "4",
+        "stat_cool": "6",
+        "stat_will": "7",
+        "stat_luck_current": "6",
+        "stat_luck_max": "6",
+        "stat_move": "5",
+        "stat_body": "7",
+        "stat_emp_current": "5",
+        "stat_emp_max": "6",
+        "skills": {
+          "AWARENESS_SKILLS_concentration": {
+            "mod": 0,
+            "lvl": 2
+          },
+          "AWARENESS_SKILLS_conceal/reveal object": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "AWARENESS_SKILLS_lip reading": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "AWARENESS_SKILLS_perception": {
+            "mod": 0,
+            "lvl": 6
+          },
+          "AWARENESS_SKILLS_tracking": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "BODY_SKILLS_athletics": {
+            "mod": 0,
+            "lvl": 2
+          },
+          "BODY_SKILLS_contortionist": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "BODY_SKILLS_dance": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "BODY_SKILLS_endurance": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "BODY_SKILLS_resist torture/drugs": {
+            "mod": 0,
+            "lvl": 6
+          },
+          "BODY_SKILLS_stealth": {
+            "mod": 0,
+            "lvl": 2
+          },
+          "CONTROL_SKILLS_drive land vehicle": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "CONTROL_SKILLS_pilot air vehicle": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "CONTROL_SKILLS_pilot sea vehicle": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "CONTROL_SKILLS_riding": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "EDUCATION_SKILLS_accounting": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "EDUCATION_SKILLS_animal handling": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "EDUCATION_SKILLS_bureaucracy": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "EDUCATION_SKILLS_business": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "EDUCATION_SKILLS_composition": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "EDUCATION_SKILLS_criminology": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "EDUCATION_SKILLS_cryptography": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "EDUCATION_SKILLS_deduction": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "EDUCATION_SKILLS_education": {
+            "mod": 0,
+            "lvl": 2
+          },
+          "EDUCATION_SKILLS_gamble": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "EDUCATION_SKILLS_language": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "EDUCATION_SKILLS_library search": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "EDUCATION_SKILLS_local expert": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "EDUCATION_SKILLS_science": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "EDUCATION_SKILLS_tactics": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "EDUCATION_SKILLS_wilderness survival": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "FIGHTING_SKILLS_brawling": {
+            "mod": 0,
+            "lvl": 2
+          },
+          "FIGHTING_SKILLS_evasion": {
+            "mod": 0,
+            "lvl": 6
+          },
+          "FIGHTING_SKILLS_martial arts": {
+            "mod": 0,
+            "lvl": 6
+          },
+          "FIGHTING_SKILLS_melee weapon": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "PERFORMANCE_SKILLS_acting": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "PERFORMANCE_SKILLS_play instrument": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "RANGED_WEAPON_SKILLS_archery": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "RANGED_WEAPON_SKILLS_autofire": {
+            "mod": 0,
+            "lvl": 6
+          },
+          "RANGED_WEAPON_SKILLS_handgun": {
+            "mod": 0,
+            "lvl": 6
+          },
+          "RANGED_WEAPON_SKILLS_heavy weapons": {
+            "mod": 0,
+            "lvl": 6
+          },
+          "RANGED_WEAPON_SKILLS_shoulder arms": {
+            "mod": 0,
+            "lvl": 6
+          },
+          "SOCIAL_SKILLS_bribery": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "SOCIAL_SKILLS_conversation": {
+            "mod": 0,
+            "lvl": 6
+          },
+          "SOCIAL_SKILLS_human perception": {
+            "mod": 0,
+            "lvl": 2
+          },
+          "SOCIAL_SKILLS_interrogation": {
+            "mod": 0,
+            "lvl": 6
+          },
+          "SOCIAL_SKILLS_persuasion": {
+            "mod": 0,
+            "lvl": 4
+          },
+          "SOCIAL_SKILLS_personal grooming": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "SOCIAL_SKILLS_streetwise": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "SOCIAL_SKILLS_trading": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "SOCIAL_SKILLS_wardrobe/style": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "TECHNIQUE_SKILLS_air vehicle tech": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "TECHNIQUE_SKILLS_basic tech": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "TECHNIQUE_SKILLS_cybertech": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "TECHNIQUE_SKILLS_demolitions": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "TECHNIQUE_SKILLS_electronics/security tech": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "TECHNIQUE_SKILLS_first aid": {
+            "mod": 0,
+            "lvl": 6
+          },
+          "TECHNIQUE_SKILLS_forgery": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "TECHNIQUE_SKILLS_land vehicle tech": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "TECHNIQUE_SKILLS_paint/draw/sculpt": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "TECHNIQUE_SKILLS_paramedic": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "TECHNIQUE_SKILLS_photography": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "TECHNIQUE_SKILLS_pick lock": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "BODY_SKILLS_pick pocket": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "TECHNIQUE_SKILLS_sea vehicle tech": {
+            "mod": 0,
+            "lvl": 0
+          },
+          "TECHNIQUE_SKILLS_weaponstech": {
+            "mod": 0,
+            "lvl": 0
+          }
+        },
+        "expandableRows": {},
+        "customSkillNames": {},
+        "specialisedSkills": [],
+        "weapons": [
+          {
+            "id": 1774723872083.6045,
+            "name": "Штурмовая винтовка",
+            "dmg": "5d6",
+            "mag": "25",
+            "rof": "1",
+            "notes": "70 ammo",
+            "attackSlots": [
+              {
+                "formula": "5d6",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "id": 1774723872083.6099,
+            "name": "Очень тяжелый пистолет",
+            "dmg": "4d6",
+            "mag": "8",
+            "rof": "1",
+            "notes": "30 ammo",
+            "attackSlots": [
+              {
+                "formula": "4d6",
+                "notes": ""
+              }
+            ]
+          }
+        ],
+        "roles": [],
+        "cyberwareImplants": "[{\"id\":1774295874954.364,\"type\":\"fashionware\",\"name\":\"SynthSkin\",\"gameEffect\":\"Style +2\",\"cost\":50,\"zones\":[\"skin\"],\"description\":\"Синтетическая кожа с узорами\",\"humanityLoss\":1},{\"id\":1774295874954.7278,\"type\":\"neuralware\",\"name\":\"Neural Link\",\"gameEffect\":\"Interface plugs\",\"cost\":200,\"zones\":[\"neck\"],\"description\":\"Базовый нейроинтерфейс\",\"humanityLoss\":2},{\"id\":1774295874954.7441,\"type\":\"cyberoptics\",\"name\":\"Kiroshi Optics Mk.I\",\"gameEffect\":\"Low-light, Anti-dazzle\",\"cost\":300,\"zones\":[\"eyes\"],\"description\":\"Базовая кибероптика\",\"humanityLoss\":2},{\"id\":1774295874954.3843,\"type\":\"cyberaudio\",\"name\":\"AudioVox\",\"gameEffect\":\"Amplified hearing\",\"cost\":150,\"zones\":[\"ears\"],\"description\":\"Улучшенный слуховой аппарат\",\"humanityLoss\":1},{\"id\":1774295874954.0972,\"type\":\"internal\",\"name\":\"SynthLung\",\"gameEffect\":\"Toxin resistance\",\"cost\":600,\"zones\":[\"ribs\"],\"description\":\"Синтетические лёгкие\",\"humanityLoss\":3},{\"id\":1774295874954.027,\"type\":\"external\",\"name\":\"Dermal Plating\",\"gameEffect\":\"SP 8, -1 REF\",\"cost\":400,\"zones\":[\"chest\"],\"description\":\"Кожные пластины\",\"humanityLoss\":2},{\"id\":1774295874954.7239,\"type\":\"limb\",\"name\":\"CyberArm Right\",\"gameEffect\":\"STR +2, Grip +2\",\"cost\":700,\"zones\":[\"right-arm\"],\"description\":\"Кибернетическая правая рука\",\"humanityLoss\":3},{\"id\":1774295874954.8909,\"type\":\"borgware\",\"name\":\"Full Borg Conversion\",\"gameEffect\":\"SP 20, STR +4, BODY +4\",\"cost\":5000,\"zones\":[\"borg-torso\"],\"description\":\"Полная конверсия тела\",\"humanityLoss\":18}]",
+        "lifepathData": "{\"aliases\":\"\",\"impCurrent\":\"\",\"impMax\":\"\",\"repValue\":\"\",\"repEvents\":\"\",\"culturalOrigins\":\"\",\"personality\":\"\",\"clothingStyles\":\"\",\"hairstyle\":\"\",\"valueMost\":\"\",\"feelingsPeople\":\"\",\"valuedPerson\":\"\",\"valuedPossession\":\"\",\"familyBackground\":\"\",\"childhoodEnvironment\":\"\",\"familyCrisis\":\"\",\"lifeGoals\":\"\",\"fashion\":\"\",\"friends\":\"\",\"tragicLove\":\"\",\"enemies\":[\"\",\"\",\"\",\"\"],\"housing\":\"\",\"rent\":\"\",\"lifestyle\":\"\",\"moneyTotal\":\"\",\"roleLifepath\":\"\"}",
+        "inventoryData": "[]",
+        "notesData": "[]",
+        "cyberdeckData": {
+          "cyberdeckInfo": {
+            "model": "",
+            "icon": "",
+            "netActions": 0,
+            "black": 0,
+            "cost": 0
+          },
+          "interfaceAbilities": [],
+          "cyberdeckNotes": "",
+          "programsData": {
+            "poor": [],
+            "standard": [],
+            "excellent": [],
+            "cyberarm": []
+          },
+          "hardwareData": []
+        },
+        "armor_head_sp": "11",
+        "armor_head_notes": "",
+        "armor_head_penalty": "",
+        "armor_body_sp": "11",
+        "armor_body_notes": "",
+        "armor_body_penalty": "",
+        "armor_shield_sp": "10",
+        "armor_shield_notes": "",
+        "armor_shield_penalty": "",
+        "avatar": ""
+      }
+    }
+  ],
+  "mobs": []
+}

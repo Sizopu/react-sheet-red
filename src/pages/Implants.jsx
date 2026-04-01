@@ -819,197 +819,204 @@ export default function Implants() {
               </div>
             </div>
 
-            {/* Skeleton with markers */}
-            <div className="skeleton-wrapper">
-              <div className="skeleton-placeholder">
-                <img src="./images/screenshot.png" alt="Skeleton" className="skeleton-image" />
-                <div className="skeleton-label">{t('BODY SCHEMA')}</div>
-                <div className="skeleton-zones">
-                  {Object.entries(ZONE_POSITIONS).map(([zone, pos]) => {
-                    const typeKey = Object.keys(IMPLANT_TYPES).find(key =>
-                      IMPLANT_TYPES[key].defaultZones?.includes(zone)
-                    ) || 'external'
-                    const typeInfo = IMPLANT_TYPES[typeKey]
-                    
+            {/* Responsive content wrapper */}
+            <div className="cyberware-content-wrapper">
+              {/* Skeleton section */}
+              <div className="cyberware-skeleton-section">
+                <div className="skeleton-wrapper">
+                  <div className="skeleton-placeholder">
+                    <img src="./images/screenshot.png" alt="Skeleton" className="skeleton-image" />
+                    <div className="skeleton-label">{t('BODY SCHEMA')}</div>
+                    <div className="skeleton-zones">
+                      {Object.entries(ZONE_POSITIONS).map(([zone, pos]) => {
+                        const typeKey = Object.keys(IMPLANT_TYPES).find(key =>
+                          IMPLANT_TYPES[key].defaultZones?.includes(zone)
+                        ) || 'external'
+                        const typeInfo = IMPLANT_TYPES[typeKey]
+
+                        return (
+                          <div
+                            key={zone}
+                            className="body-marker-zone"
+                            style={{
+                              top: pos.top,
+                              left: pos.left,
+                              background: typeInfo.color
+                            }}
+                            onClick={() => addImplant(typeKey, zone)}
+                            title={ZONE_LABELS[zone]}
+                          />
+                        )
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Implant markers */}
+                  <div className="implant-markers">
+                    {implants.map(implant => {
+                      const position = ZONE_POSITIONS[implant.zone]
+                      if (!position) return null
+
+                      const typeInfo = IMPLANT_TYPES[implant.type]
+
+                      return (
+                        <div
+                          key={implant.id}
+                          className={`implant-marker ${selectedImplantId === implant.id ? 'selected' : ''}`}
+                          style={{
+                            top: position.top,
+                            left: position.left,
+                            background: typeInfo.color,
+                            boxShadow: `0 0 10px ${typeInfo.color}`
+                          }}
+                          onClick={() => setSelectedImplantId(implant.id)}
+                          title={implant.name || 'Implant'}
+                        />
+                      )
+                    })}
+                  </div>
+                </div>
+              </div>
+
+              {/* Implant Cards Section */}
+              <div className="cyberware-cards-section">
+                <div className="implant-cards-container">
+                  {Object.entries(IMPLANT_TYPES).map(([type, info]) => {
+                    const typeImplants = implants.filter(i => i.type === type)
+                    if (typeImplants.length === 0) return null
+
                     return (
-                      <div 
-                        key={zone}
-                        className="body-marker-zone"
-                        style={{ 
-                          top: pos.top, 
-                          left: pos.left,
-                          background: typeInfo.color
-                        }}
-                        onClick={() => addImplant(typeKey, zone)}
-                        title={ZONE_LABELS[zone]}
-                      />
+                      <div key={type}>
+                        <div
+                          className="implant-type-header"
+                          style={{ borderColor: info.color }}
+                        >
+                          <span className="type-name">{info.name}</span>
+                          <span className="type-count">{typeImplants.length}</span>
+                        </div>
+
+                        {typeImplants.map(implant => (
+                          <div
+                            key={implant.id}
+                            className={`implant-card ${selectedImplantId === implant.id ? 'selected' : ''}`}
+                            style={{ borderLeftColor: info.color }}
+                            onClick={() => setSelectedImplantId(implant.id)}
+                          >
+                            <div className="implant-card-header">
+                              <input
+                                type="text"
+                                className="implant-card-name"
+                                placeholder="IMPLANT NAME..."
+                                value={implant.name}
+                                onClick={e => e.stopPropagation()}
+                                onChange={(e) => updateImplant(implant.id, 'name', e.target.value)}
+                              />
+                              <button
+                                className="implant-card-delete"
+                                onClick={(e) => {
+                                  e.stopPropagation()
+                                  deleteImplant(implant.id)
+                                }}
+                              >
+                                ×
+                              </button>
+                            </div>
+                            <div className="implant-card-body" onClick={e => e.stopPropagation()}>
+                              <div className="implant-card-row">
+                                <label>{t('Location')}</label>
+                                <select
+                                  className="implant-card-zone"
+                                  value={implant.zone}
+                                  onChange={(e) => {
+                                    const newZone = e.target.value
+                                    updateImplant(implant.id, 'zone', newZone)
+                                    updateImplant(implant.id, 'zones', [newZone])
+                                  }}
+                                >
+                                  {Object.entries(ZONE_LABELS).map(([zone, label]) => (
+                                    <option key={zone} value={zone}>{label}</option>
+                                  ))}
+                                </select>
+                              </div>
+                              <div className="implant-card-row">
+                                <label>{t('Game Effect')}</label>
+                                <input
+                                  type="text"
+                                  className="implant-card-gameeffect"
+                                  placeholder={t('e.g. +1 Interface')}
+                                  value={implant.gameEffect || ''}
+                                  onChange={(e) => updateImplant(implant.id, 'gameEffect', e.target.value)}
+                                />
+                              </div>
+                              <div className="implant-card-row">
+                                <label>{t('Humanity Loss')}</label>
+                                <input
+                                  type="number"
+                                  className="implant-card-humanity"
+                                  value={implant.humanityLoss}
+                                  min="0"
+                                  onChange={(e) => updateImplant(implant.id, 'humanityLoss', parseInt(e.target.value) || 0)}
+                                />
+                              </div>
+                              <div className="implant-card-row">
+                                <label>{t('Cost')}</label>
+                                <input
+                                  type="number"
+                                  className="implant-card-cost"
+                                  value={implant.cost}
+                                  min="0"
+                                  onChange={(e) => updateImplant(implant.id, 'cost', parseInt(e.target.value) || 0)}
+                                />
+                              </div>
+                              <div className="implant-card-row">
+                                <label>{t('Rarity')}</label>
+                                <select
+                                  className="implant-card-rarity"
+                                  value={implant.rarity}
+                                  onChange={(e) => updateImplant(implant.id, 'rarity', e.target.value)}
+                                >
+                                  <option value="common">Common</option>
+                                  <option value="uncommon">Uncommon</option>
+                                  <option value="rare">Rare</option>
+                                  <option value="very-rare">Very Rare</option>
+                                </select>
+                              </div>
+                              <div className="implant-card-row full">
+                                <label>Description</label>
+                                <textarea
+                                  className="implant-card-description"
+                                  placeholder="Description..."
+                                  value={implant.description}
+                                  onChange={(e) => updateImplant(implant.id, 'description', e.target.value)}
+                                />
+                              </div>
+                              <div className="implant-card-row full">
+                                <label>Effects</label>
+                                <div className="effects-grid">
+                                  {(implant.effects || ['', '', '']).map((effect, i) => (
+                                    <input
+                                      key={i}
+                                      type="text"
+                                      className="implant-card-effect"
+                                      placeholder={`Effect ${i + 1}`}
+                                      value={effect}
+                                      onChange={(e) => {
+                                        const newEffects = [...(implant.effects || ['', '', ''])]
+                                        newEffects[i] = e.target.value
+                                        updateImplant(implant.id, 'effects', newEffects)
+                                      }}
+                                    />
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     )
                   })}
                 </div>
               </div>
-
-              {/* Implant markers */}
-              <div className="implant-markers">
-                {implants.map(implant => {
-                  const position = ZONE_POSITIONS[implant.zone]
-                  if (!position) return null
-                  
-                  const typeInfo = IMPLANT_TYPES[implant.type]
-                  
-                  return (
-                    <div 
-                      key={implant.id}
-                      className={`implant-marker ${selectedImplantId === implant.id ? 'selected' : ''}`}
-                      style={{ 
-                        top: position.top, 
-                        left: position.left,
-                        background: typeInfo.color,
-                        boxShadow: `0 0 10px ${typeInfo.color}`
-                      }}
-                      onClick={() => setSelectedImplantId(implant.id)}
-                      title={implant.name || 'Implant'}
-                    />
-                  )
-                })}
-              </div>
-            </div>
-
-            {/* Implant Cards */}
-            <div className="implant-cards-container">
-              {Object.entries(IMPLANT_TYPES).map(([type, info]) => {
-                const typeImplants = implants.filter(i => i.type === type)
-                if (typeImplants.length === 0) return null
-                
-                return (
-                  <div key={type}>
-                    <div 
-                      className="implant-type-header"
-                      style={{ borderColor: info.color }}
-                    >
-                      <span className="type-name">{info.name}</span>
-                      <span className="type-count">{typeImplants.length}</span>
-                    </div>
-                    
-                    {typeImplants.map(implant => (
-                      <div 
-                        key={implant.id}
-                        className={`implant-card ${selectedImplantId === implant.id ? 'selected' : ''}`}
-                        style={{ borderLeftColor: info.color }}
-                        onClick={() => setSelectedImplantId(implant.id)}
-                      >
-                        <div className="implant-card-header">
-                          <input 
-                            type="text" 
-                            className="implant-card-name" 
-                            placeholder="IMPLANT NAME..."
-                            value={implant.name}
-                            onClick={e => e.stopPropagation()}
-                            onChange={(e) => updateImplant(implant.id, 'name', e.target.value)}
-                          />
-                          <button 
-                            className="implant-card-delete" 
-                            onClick={(e) => {
-                              e.stopPropagation()
-                              deleteImplant(implant.id)
-                            }}
-                          >
-                            ×
-                          </button>
-                        </div>
-                        <div className="implant-card-body" onClick={e => e.stopPropagation()}>
-                          <div className="implant-card-row">
-                            <label>{t('Location')}</label>
-                            <select
-                              className="implant-card-zone"
-                              value={implant.zone}
-                              onChange={(e) => {
-                                const newZone = e.target.value
-                                updateImplant(implant.id, 'zone', newZone)
-                                updateImplant(implant.id, 'zones', [newZone])
-                              }}
-                            >
-                              {Object.entries(ZONE_LABELS).map(([zone, label]) => (
-                                <option key={zone} value={zone}>{label}</option>
-                              ))}
-                            </select>
-                          </div>
-                          <div className="implant-card-row">
-                            <label>{t('Game Effect')}</label>
-                            <input
-                              type="text"
-                              className="implant-card-gameeffect"
-                              placeholder={t('e.g. +1 Interface')}
-                              value={implant.gameEffect || ''}
-                              onChange={(e) => updateImplant(implant.id, 'gameEffect', e.target.value)}
-                            />
-                          </div>
-                          <div className="implant-card-row">
-                            <label>{t('Humanity Loss')}</label>
-                            <input
-                              type="number"
-                              className="implant-card-humanity"
-                              value={implant.humanityLoss}
-                              min="0"
-                              onChange={(e) => updateImplant(implant.id, 'humanityLoss', parseInt(e.target.value) || 0)}
-                            />
-                          </div>
-                          <div className="implant-card-row">
-                            <label>{t('Cost')}</label>
-                            <input
-                              type="number"
-                              className="implant-card-cost"
-                              value={implant.cost}
-                              min="0"
-                              onChange={(e) => updateImplant(implant.id, 'cost', parseInt(e.target.value) || 0)}
-                            />
-                          </div>
-                          <div className="implant-card-row">
-                            <label>{t('Rarity')}</label>
-                            <select
-                              className="implant-card-rarity"
-                              value={implant.rarity}
-                              onChange={(e) => updateImplant(implant.id, 'rarity', e.target.value)}
-                            >
-                              <option value="common">Common</option>
-                              <option value="uncommon">Uncommon</option>
-                              <option value="rare">Rare</option>
-                              <option value="very-rare">Very Rare</option>
-                            </select>
-                          </div>
-                          <div className="implant-card-row full">
-                            <label>Description</label>
-                            <textarea
-                              className="implant-card-description"
-                              placeholder="Description..."
-                              value={implant.description}
-                              onChange={(e) => updateImplant(implant.id, 'description', e.target.value)}
-                            />
-                          </div>
-                          <div className="implant-card-row full">
-                            <label>Effects</label>
-                            <div className="effects-grid">
-                              {(implant.effects || ['', '', '']).map((effect, i) => (
-                                <input
-                                  key={i}
-                                  type="text"
-                                  className="implant-card-effect"
-                                  placeholder={`Effect ${i + 1}`}
-                                  value={effect}
-                                  onChange={(e) => {
-                                    const newEffects = [...(implant.effects || ['', '', ''])]
-                                    newEffects[i] = e.target.value
-                                    updateImplant(implant.id, 'effects', newEffects)
-                                  }}
-                                />
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )
-              })}
             </div>
           </div>
         </div>

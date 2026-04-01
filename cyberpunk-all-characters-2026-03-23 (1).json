@@ -1,0 +1,847 @@
+{
+  "version": "2.0",
+  "exportDate": "2026-03-23T20:13:27.656Z",
+  "characters": [
+    {
+      "profile": {
+        "id": "char_1774294535286",
+        "name": "Hydrargyrum",
+        "description": "",
+        "createdAt": 1774294535286,
+        "updatedAt": 1774294535286
+      },
+      "character": {
+        "stat_int": "5",
+        "stat_ref": "8",
+        "stat_dex": "6",
+        "stat_tech": "4",
+        "stat_cool": "6",
+        "stat_will": "7",
+        "stat_luck_current": "6",
+        "stat_luck_max": "6",
+        "stat_move": "5",
+        "stat_body": "7",
+        "stat_emp_current": "5",
+        "stat_emp_max": "6",
+        "char-name": "",
+        "age": "",
+        "role": "",
+        "role_rank": "",
+        "xp_current": "",
+        "humanity_current": "50",
+        "humanity_max": "69",
+        "initiative": "",
+        "hp_current": "50",
+        "hp_max": "50",
+        "death_save": "",
+        "seriously_wounded": false,
+        "armor_head_sp": "11",
+        "armor_head_notes": "",
+        "armor_head_penalty": "",
+        "armor_body_sp": "11",
+        "armor_body_notes": "",
+        "armor_body_penalty": "",
+        "armor_shield_sp": "10",
+        "armor_shield_notes": "",
+        "armor_shield_penalty": "",
+        "critical_injuries": "",
+        "addictions": "",
+        "notes": ""
+      },
+      "roleAbilities": [
+        {
+          "name": "",
+          "lvl": ""
+        },
+        {
+          "name": "",
+          "lvl": ""
+        },
+        {
+          "name": "",
+          "lvl": ""
+        }
+      ],
+      "weapons": [
+        {
+          "name": "Штурмовая винтовка",
+          "dmg": "5d6",
+          "mag": "25",
+          "rof": "1",
+          "notes": "70 ammo",
+          "diceFormulas": [
+            ""
+          ],
+          "attackNotes": [
+            ""
+          ]
+        },
+        {
+          "name": "Очень тяжелый пистолет",
+          "dmg": "4d6",
+          "mag": "8",
+          "rof": "1",
+          "notes": "30 ammo",
+          "diceFormulas": [
+            ""
+          ],
+          "attackNotes": [
+            ""
+          ]
+        },
+        {
+          "name": "",
+          "dmg": "",
+          "mag": "",
+          "rof": "",
+          "notes": "",
+          "diceFormulas": [
+            ""
+          ],
+          "attackNotes": [
+            ""
+          ]
+        },
+        {
+          "name": "",
+          "dmg": "",
+          "mag": "",
+          "rof": "",
+          "notes": "",
+          "diceFormulas": [
+            ""
+          ],
+          "attackNotes": [
+            ""
+          ]
+        },
+        {
+          "name": "",
+          "dmg": "",
+          "mag": "",
+          "rof": "",
+          "notes": "",
+          "diceFormulas": [
+            ""
+          ],
+          "attackNotes": [
+            ""
+          ]
+        },
+        {
+          "name": "",
+          "dmg": "",
+          "mag": "",
+          "rof": "",
+          "notes": "",
+          "diceFormulas": [
+            ""
+          ],
+          "attackNotes": [
+            ""
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "skillName": "concentration",
+          "mod": "0",
+          "lvl": "2",
+          "stat": "WILL"
+        },
+        {
+          "skillName": "conceal/reveal object",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "INT"
+        },
+        {
+          "skillName": "lip reading",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "INT"
+        },
+        {
+          "skillName": "perception",
+          "mod": "0",
+          "lvl": "6",
+          "stat": "INT"
+        },
+        {
+          "skillName": "tracking",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "INT"
+        },
+        {
+          "skillName": "athletics",
+          "mod": "0",
+          "lvl": "2",
+          "stat": "DEX"
+        },
+        {
+          "skillName": "contortionist",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "DEX"
+        },
+        {
+          "skillName": "dance",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "DEX"
+        },
+        {
+          "skillName": "endurance",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "WILL"
+        },
+        {
+          "skillName": "resist torture/drugs",
+          "mod": "0",
+          "lvl": "6",
+          "stat": "WILL"
+        },
+        {
+          "skillName": "stealth",
+          "mod": "0",
+          "lvl": "2",
+          "stat": "DEX"
+        },
+        {
+          "skillName": "drive land vehicle",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "REF"
+        },
+        {
+          "skillName": "pilot air vehicle",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "REF"
+        },
+        {
+          "skillName": "pilot sea vehicle",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "REF"
+        },
+        {
+          "skillName": "riding",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "REF"
+        },
+        {
+          "skillName": "accounting",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "INT"
+        },
+        {
+          "skillName": "animal handling",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "INT"
+        },
+        {
+          "skillName": "bureaucracy",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "INT"
+        },
+        {
+          "skillName": "business",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "INT"
+        },
+        {
+          "skillName": "composition",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "INT"
+        },
+        {
+          "skillName": "criminology",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "INT"
+        },
+        {
+          "skillName": "cryptography",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "INT"
+        },
+        {
+          "skillName": "deduction",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "INT"
+        },
+        {
+          "skillName": "education",
+          "mod": "0",
+          "lvl": "2",
+          "stat": "INT"
+        },
+        {
+          "skillName": "gamble",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "INT"
+        },
+        {
+          "skillName": "language",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "INT"
+        },
+        {
+          "skillName": "library search",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "INT"
+        },
+        {
+          "skillName": "local expert",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "INT"
+        },
+        {
+          "skillName": "science",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "INT"
+        },
+        {
+          "skillName": "tactics",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "INT"
+        },
+        {
+          "skillName": "wilderness survival",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "INT"
+        },
+        {
+          "skillName": "brawling",
+          "mod": "0",
+          "lvl": "2",
+          "stat": "DEX"
+        },
+        {
+          "skillName": "evasion",
+          "mod": "0",
+          "lvl": "6",
+          "stat": "DEX"
+        },
+        {
+          "skillName": "martial arts",
+          "mod": "0",
+          "lvl": "6",
+          "stat": "DEX"
+        },
+        {
+          "skillName": "melee weapon",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "DEX"
+        },
+        {
+          "skillName": "acting",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "COOL"
+        },
+        {
+          "skillName": "play instrument",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "COOL"
+        },
+        {
+          "skillName": "archery",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "REF"
+        },
+        {
+          "skillName": "autofire",
+          "mod": "0",
+          "lvl": "6",
+          "stat": "REF"
+        },
+        {
+          "skillName": "handgun",
+          "mod": "0",
+          "lvl": "6",
+          "stat": "REF"
+        },
+        {
+          "skillName": "heavy weapons",
+          "mod": "0",
+          "lvl": "6",
+          "stat": "REF"
+        },
+        {
+          "skillName": "shoulder arms",
+          "mod": "0",
+          "lvl": "6",
+          "stat": "REF"
+        },
+        {
+          "skillName": "bribery",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "COOL"
+        },
+        {
+          "skillName": "conversation",
+          "mod": "0",
+          "lvl": "6",
+          "stat": "EMP"
+        },
+        {
+          "skillName": "human perception",
+          "mod": "0",
+          "lvl": "2",
+          "stat": "EMP"
+        },
+        {
+          "skillName": "interrogation",
+          "mod": "0",
+          "lvl": "6",
+          "stat": "COOL"
+        },
+        {
+          "skillName": "persuasion",
+          "mod": "0",
+          "lvl": "4",
+          "stat": "COOL"
+        },
+        {
+          "skillName": "personal grooming",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "COOL"
+        },
+        {
+          "skillName": "streetwise",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "COOL"
+        },
+        {
+          "skillName": "trading",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "COOL"
+        },
+        {
+          "skillName": "wardrobe/style",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "COOL"
+        },
+        {
+          "skillName": "air vehicle tech",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "TECH"
+        },
+        {
+          "skillName": "basic tech",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "TECH"
+        },
+        {
+          "skillName": "cybertech",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "TECH"
+        },
+        {
+          "skillName": "demolitions",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "TECH"
+        },
+        {
+          "skillName": "electronics/security tech",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "TECH"
+        },
+        {
+          "skillName": "first aid",
+          "mod": "0",
+          "lvl": "6",
+          "stat": "TECH"
+        },
+        {
+          "skillName": "forgery",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "TECH"
+        },
+        {
+          "skillName": "land vehicle tech",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "TECH"
+        },
+        {
+          "skillName": "paint/draw/sculpt",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "TECH"
+        },
+        {
+          "skillName": "paramedic",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "TECH"
+        },
+        {
+          "skillName": "photography",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "TECH"
+        },
+        {
+          "skillName": "pick lock",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "TECH"
+        },
+        {
+          "skillName": "pick pocket",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "DEX"
+        },
+        {
+          "skillName": "sea vehicle tech",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "TECH"
+        },
+        {
+          "skillName": "weaponstech",
+          "mod": "0",
+          "lvl": "0",
+          "stat": "TECH"
+        }
+      ],
+      "specialisedSkills": [
+        {
+          "stat": "",
+          "name": "",
+          "mod": "0",
+          "lvl": "0"
+        },
+        {
+          "stat": "",
+          "name": "",
+          "mod": "0",
+          "lvl": "0"
+        },
+        {
+          "stat": "",
+          "name": "",
+          "mod": "0",
+          "lvl": "0"
+        },
+        {
+          "stat": "",
+          "name": "",
+          "mod": "0",
+          "lvl": "0"
+        },
+        {
+          "stat": "",
+          "name": "",
+          "mod": "0",
+          "lvl": "0"
+        },
+        {
+          "stat": "",
+          "name": "",
+          "mod": "0",
+          "lvl": "0"
+        }
+      ],
+      "lifepath": {
+        "impCurrent": "",
+        "impMax": "",
+        "repValue": "",
+        "moneyTotal": "",
+        "aliases": "",
+        "enemies": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "culturalOrigins": "",
+        "personality": "",
+        "clothingStyles": "",
+        "hairstyle": "",
+        "valueMost": "",
+        "feelingsPeople": "",
+        "valuedPerson": "",
+        "valuedPossession": "",
+        "familyBackground": "",
+        "childhoodEnvironment": "",
+        "familyCrisis": "",
+        "lifeGoals": "",
+        "fashion": "",
+        "friends": "",
+        "tragicLove": "",
+        "roleLifepath": "",
+        "repEvents": "",
+        "housing": "",
+        "rent": "",
+        "lifestyle": ""
+      },
+      "inventory": [],
+      "cyberware": [
+        {
+          "id": 1774295874954.364,
+          "type": "fashionware",
+          "name": "SynthSkin",
+          "zone": "skin",
+          "humanityLoss": 1,
+          "description": "Синтетическая кожа с узорами",
+          "effects": [
+            "Style +2",
+            ""
+          ],
+          "cost": 50,
+          "rarity": "common"
+        },
+        {
+          "id": 1774295874954.7278,
+          "type": "neuralware",
+          "name": "Neural Link",
+          "zone": "neck",
+          "humanityLoss": 2,
+          "description": "Базовый нейроинтерфейс",
+          "effects": [
+            "Interface plugs",
+            ""
+          ],
+          "cost": 200,
+          "rarity": "common"
+        },
+        {
+          "id": 1774295874954.7441,
+          "type": "cyberoptics",
+          "name": "Kiroshi Optics Mk.I",
+          "zone": "eyes",
+          "humanityLoss": 2,
+          "description": "Базовая кибероптика",
+          "effects": [
+            "Low-light",
+            "Anti-dazzle"
+          ],
+          "cost": 300,
+          "rarity": "common"
+        },
+        {
+          "id": 1774295874954.3843,
+          "type": "cyberaudio",
+          "name": "AudioVox",
+          "zone": "ears",
+          "humanityLoss": 1,
+          "description": "Улучшенный слуховой аппарат",
+          "effects": [
+            "Amplified hearing",
+            ""
+          ],
+          "cost": 150,
+          "rarity": "common"
+        },
+        {
+          "id": 1774295874954.0972,
+          "type": "internal",
+          "name": "SynthLung",
+          "zone": "ribs",
+          "humanityLoss": 3,
+          "description": "Синтетические лёгкие",
+          "effects": [
+            "Toxin resistance",
+            ""
+          ],
+          "cost": 600,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 1774295874954.027,
+          "type": "external",
+          "name": "Dermal Plating",
+          "zone": "chest",
+          "humanityLoss": 2,
+          "description": "Кожные пластины",
+          "effects": [
+            "SP 8",
+            "-1 REF"
+          ],
+          "cost": 400,
+          "rarity": "common"
+        },
+        {
+          "id": 1774295874954.7239,
+          "type": "limb",
+          "name": "CyberArm Right",
+          "zone": "right-arm",
+          "humanityLoss": 3,
+          "description": "Кибернетическая правая рука",
+          "effects": [
+            "STR +2",
+            "Grip +2"
+          ],
+          "cost": 700,
+          "rarity": "common"
+        },
+        {
+          "id": 1774295874954.8909,
+          "type": "borgware",
+          "name": "Full Borg Conversion",
+          "zone": "borg-torso",
+          "humanityLoss": 18,
+          "description": "Полная конверсия тела",
+          "effects": [
+            "SP 20",
+            "STR +4",
+            "BODY +4"
+          ],
+          "cost": 5000,
+          "rarity": "very-rare"
+        },
+        {
+          "id": 1774295962133,
+          "type": "limb",
+          "name": "",
+          "zone": "left-arm",
+          "humanityLoss": 0,
+          "description": "",
+          "effects": [
+            "",
+            "",
+            ""
+          ],
+          "cost": 0,
+          "rarity": "common"
+        }
+      ],
+      "notes": [],
+      "mobs": [],
+      "programsData": {
+        "poor": [
+          {
+            "name": "",
+            "class": "",
+            "per": "",
+            "spd": "",
+            "atkFormulas": [
+              ""
+            ],
+            "defFormulas": [
+              ""
+            ],
+            "rez": "",
+            "effect": "",
+            "cost": "",
+            "slots": {
+              "slots": "",
+              "program": "",
+              "hardware": ""
+            }
+          }
+        ],
+        "standard": [
+          {
+            "name": "",
+            "class": "",
+            "per": "",
+            "spd": "",
+            "atkFormulas": [
+              ""
+            ],
+            "defFormulas": [
+              ""
+            ],
+            "rez": "",
+            "effect": "",
+            "cost": "",
+            "slots": {
+              "slots": "",
+              "program": "",
+              "hardware": ""
+            }
+          }
+        ],
+        "excellent": [
+          {
+            "name": "",
+            "class": "",
+            "per": "",
+            "spd": "",
+            "atkFormulas": [
+              ""
+            ],
+            "defFormulas": [
+              ""
+            ],
+            "rez": "",
+            "effect": "",
+            "cost": "",
+            "slots": {
+              "slots": "",
+              "program": "",
+              "hardware": ""
+            }
+          }
+        ],
+        "cyberarm": [
+          {
+            "name": "",
+            "class": "",
+            "per": "",
+            "spd": "",
+            "atkFormulas": [
+              ""
+            ],
+            "defFormulas": [
+              ""
+            ],
+            "rez": "",
+            "effect": "",
+            "cost": "",
+            "slots": {
+              "slots": "",
+              "program": "",
+              "hardware": ""
+            }
+          }
+        ]
+      },
+      "hardwareData": [
+        {
+          "name": "",
+          "effect": "",
+          "cost": ""
+        }
+      ],
+      "moneyTotal": ""
+    }
+  ]
+}

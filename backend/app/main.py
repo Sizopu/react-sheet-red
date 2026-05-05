@@ -10,8 +10,9 @@ app = FastAPI(title="Cyberpunk RED Character Sheet API")
 
 # Настройка CORS, чтобы фронтенд мог общаться с бэкендом
 origins = [
-    "http://localhost:3000",  # Адрес вашего React-приложения
-    "http://localhost:5173",  # Стандартный порт Vite
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "http://localhost:5173",
 ]
 
 app.add_middleware(

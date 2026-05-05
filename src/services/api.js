@@ -1,17 +1,12 @@
-// src/services/api.js
 import axios from 'axios';
 
 const API_URL = 'http://localhost:8000';
 
-// Создаем экземпляр axios с базовым URL
 const api = axios.create({
   baseURL: API_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  headers: { 'Content-Type': 'application/json' },
 });
 
-// Интерцептор для добавления токена в каждый запрос
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
@@ -23,20 +18,19 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// --- Аутентификация ---
 export const authAPI = {
   register: (userData) => api.post('/auth/register', userData),
   login: (username, password) => {
-    const formData = new FormData();
-    formData.append('username', username);
-    formData.append('password', password);
-    return api.post('/auth/login', formData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
+    // OAuth2 требует application/x-www-form-urlencoded
+    const params = new URLSearchParams();
+    params.append('username', username);
+    params.append('password', password);
+    return api.post('/auth/login', params, {
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     });
   },
 };
 
-// --- Персонажи ---
 export const charactersAPI = {
   getAll: () => api.get('/characters/'),
   getById: (id) => api.get(`/characters/${id}`),

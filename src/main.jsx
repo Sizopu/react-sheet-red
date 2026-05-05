@@ -4,16 +4,19 @@ import { HashRouter } from 'react-router-dom'
 import App from './App.jsx'
 import { CharacterProvider } from './context/CharacterContext.jsx'
 import { LanguageProvider } from './context/LanguageContext.jsx'
+import { AuthProvider } from './context/AuthContext.jsx'
 import './css/common.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <HashRouter>
-      <LanguageProvider>
-        <CharacterProvider>
-          <App />
-        </CharacterProvider>
-      </LanguageProvider>
+      <AuthProvider>
+        <LanguageProvider>
+          <CharacterProvider>
+            <App />
+          </CharacterProvider>
+        </LanguageProvider>
+      </AuthProvider>
     </HashRouter>
   </StrictMode>
 )

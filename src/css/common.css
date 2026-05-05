@@ -114,6 +114,28 @@ body {
   color: #0d1117;
 }
 
+.login-btn {
+  background: #392d23;
+  border-color: #f78166;
+  color: #f78166;
+}
+
+.login-btn:hover {
+  background: #f78166;
+  color: #0d1117;
+}
+
+.user-btn {
+  background: #1a3a1a;
+  border-color: #2ea043;
+  color: #2ea043;
+}
+
+.user-btn:hover {
+  background: #2ea043;
+  color: #0d1117;
+}
+
 .save-btn {
   background: #233923;
   border-color: #2ea043;
@@ -245,8 +267,17 @@ body {
 }
 
 .dialog-btn-cancel:hover {
-  background: #f85149;
-  border-color: #f85149;
+  background: #d03030;
+}
+
+.dialog-btn.logout-btn {
+  background: #da3633;
+  border: 1px solid #b31a17;
+  color: white;
+}
+
+.dialog-btn.logout-btn:hover {
+  background: #c52825;
 }
 
 /* Form elements */

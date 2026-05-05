@@ -186,7 +186,7 @@ const getSkillDowngradeRefund = (currentLvl, isX2Skill = false) => {
 }
 
 export default function CharacterSheet() {
-  const { currentCharacterId, characterData, updateCharacterField, saveCharacterData, charStorage } = useCharacter()
+  const { currentCharacterId, characterData, updateCharacterField, saveCharacterData } = useCharacter()
   const { language } = useLanguage()
   
   const t = (key) => {

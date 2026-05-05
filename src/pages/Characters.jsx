@@ -76,10 +76,14 @@ export default function Characters() {
         description: formData.description.trim()
       })
     } else {
-      const newChar = addCharacter(formData.name.trim(), formData.description.trim())
-      setSelectedId(newChar.id)
+      addCharacter(formData.name.trim(), formData.description.trim())
     }
     handleCloseDialog()
+  }
+
+  const handleLoadToSheet = async (charId) => {
+    loadCharacterToSheet(charId)
+    navigate('/sheet')
   }
 
   const formatDate = (timestamp) => {
@@ -92,11 +96,6 @@ export default function Characters() {
       hour: '2-digit',
       minute: '2-digit'
     })
-  }
-
-  const handleLoadToSheet = (charId) => {
-    loadCharacterToSheet(charId)
-    navigate('/sheet')
   }
 
   // Обработчики для tooltip

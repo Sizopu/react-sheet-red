@@ -13,6 +13,8 @@ export const translations = {
     'Roll Dice': 'Roll Dice',
     'Save All': 'Save All',
     'Load': 'Load',
+    'Login': 'Login',
+    'Logout': 'Logout',
     
     // Character Sheet - Header
     'CHARACTER': 'CHARACTER',
@@ -248,6 +250,9 @@ export const translations = {
     'Add': 'Add',
     'Remove': 'Remove',
     'Close': 'Close',
+    'User Info': 'User Info',
+    'Username': 'Username',
+    'Logout': 'Logout',
     
     // Scripts
     'SCRIPTS': 'SCRIPTS',
@@ -428,6 +433,8 @@ export const translations = {
     'Roll Dice': 'Бросить Кубик',
     'Save All': 'Сохранить Всё',
     'Load': 'Загрузить',
+    'Login': 'Войти',
+    'Logout': 'Выйти',
     
     // Character Sheet - Header
     'CHARACTER': 'ПЕРСОНАЖ',
@@ -663,6 +670,9 @@ export const translations = {
     'Add': 'Добавить',
     'Remove': 'Удалить',
     'Close': 'Закрыть',
+    'User Info': 'Информация о Пользователе',
+    'Username': 'Имя пользователя',
+    'Logout': 'Выйти',
     
     // Scripts
     'SCRIPTS': 'СКРИПТЫ',

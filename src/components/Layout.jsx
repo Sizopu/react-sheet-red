@@ -1,17 +1,22 @@
 import { Outlet, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useCharacter } from '../context/CharacterContext'
 import { useLanguage } from '../context/LanguageContext'
+import { useAuth } from '../context/AuthContext'
 import { translations } from '../i18n/translations'
 import DiceDialog from './DiceDialog'
+import AuthModal from './AuthModal'
+import UserDialog from './UserDialog'
 import { useState } from 'react'
 
-export default function Layout() {
+export default function Layout({ authModalOpen, setAuthModalOpen }) {
   const location = useLocation()
   const navigate = useNavigate()
   const { currentCharacterId, characters, exportAllCharacters, importCharacters } = useCharacter()
   const { language, switchLanguage } = useLanguage()
+  const { isAuthenticated, user, logout } = useAuth()
   const [diceDialogOpen, setDiceDialogOpen] = useState(false)
   const [importDialogOpen, setImportDialogOpen] = useState(false)
+  const [userDialogOpen, setUserDialogOpen] = useState(false)
 
   const t = (key) => {
     return translations[language]?.[key] || translations.en[key] || key
@@ -53,6 +58,15 @@ export default function Layout() {
     } else {
       navigate('/characters')
     }
+  }
+
+  const handleLogout = () => {
+    logout()
+    navigate('/characters')
+  }
+
+  const handleUserClick = () => {
+    setUserDialogOpen(true)
   }
 
   return (
@@ -116,12 +130,35 @@ export default function Layout() {
           <button className="nav-btn lang-btn" onClick={switchLanguage}>
             {language === 'en' ? 'RU' : 'EN'}
           </button>
+          {isAuthenticated ? (
+            <button className="nav-btn user-btn" onClick={handleUserClick}>
+              👤 {user?.username}
+            </button>
+          ) : (
+            <button className="nav-btn login-btn" onClick={() => setAuthModalOpen(true)}>
+              🔑 {t('Login')}
+            </button>
+          )}
         </div>
       </nav>
       
       <main className="main-content">
         <Outlet />
       </main>
+
+      {authModalOpen && (
+        <AuthModal 
+          onLogin={() => setAuthModalOpen(false)}
+          onClose={() => setAuthModalOpen(false)}
+        />
+      )}
+
+      {userDialogOpen && (
+        <UserDialog 
+          onClose={() => setUserDialogOpen(false)}
+          onLogout={handleLogout}
+        />
+      )}
 
       <DiceDialog 
         open={diceDialogOpen} 

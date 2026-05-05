@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from . import models, schemas
-from .auth import get_password_hash
+from .auth_utils import get_password_hash
 
 # --- CRUD для пользователей ---
 def get_user(db: Session, user_id: int):

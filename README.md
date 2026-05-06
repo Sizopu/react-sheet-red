@@ -183,6 +183,8 @@ npm run dev
 ```bash
 cd backend
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+nohup /path/to/venv/bin/python3 -m uvicorn app.main:app --host 0.0.0.0 --port 8000 > /tmp/uvicorn.log 2>&1 &
 ```
 
 ---

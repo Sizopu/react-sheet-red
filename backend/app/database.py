@@ -1,9 +1,14 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # Путь к файлу базы данных SQLite
-SQLALCHEMY_DATABASE_URL = "sqlite:///./cyberpunk.db"
+# Поддержка переменной окружения DATABASE_URL для Docker
+SQLALCHEMY_DATABASE_URL = os.environ.get(
+    "DATABASE_URL",
+    "sqlite:///./data/cyberpunk.db"
+)
 
 # Создаем движок SQLAlchemy
 engine = create_engine(

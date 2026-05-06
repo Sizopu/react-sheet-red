@@ -131,14 +131,47 @@
 - Node.js 18+ и npm
 - Python 3.9+ и pip
 - Git (опционально)
+- Docker и Docker Compose (для контейнерного запуска)
 
-### 1. Клонирование репозитория
+### 🔧 Вариант 1: Docker (рекомендуется для продакшена)
+
 ```bash
+# Клонируйте репозиторий
 git clone https://github.com/sizopu/react-sheet-red.git
 cd react-sheet-red
+
+# Скопируйте пример .env
+cp .env.example .env
+
+# Запустите оба сервиса
+docker-compose up -d
+
+# Проверьте логи
+docker-compose logs -f
 ```
 
-### 2. Запуск Frontend (разработка)
+Доступ:
+- Frontend: `http://localhost:80`
+- Backend API: `http://localhost:8000`
+- Swagger docs: `http://localhost:8000/docs`
+
+**Остановка:**
+```bash
+docker-compose down
+# С сохранением данных БД:
+docker-compose down -v  # удаляет тома с данными
+```
+
+**Пересборка:**
+```bash
+docker-compose build --no-cache
+docker-compose up -d
+```
+
+### Вариант 2: Локальная разработка
+
+#### Запуск Frontend (разработка)
+
 ```bash
 # Установка зависимостей
 npm install
@@ -149,7 +182,7 @@ npm run dev
 
 Frontend запустится на `http://localhost:3000`
 
-### 3. Запуск Backend (разработка)
+#### Запуск Backend (разработка)
 ```bash
 # Переход в директорию бэкенда
 cd backend
@@ -171,21 +204,6 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 Backend запустится на `http://localhost:8000`
-
-### 4. Быстрый старт (оба сервера)
-
-**Terminal 1 - Frontend:**
-```bash
-npm run dev
-```
-
-**Terminal 2 - Backend:**
-```bash
-cd backend
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-
-nohup /path/to/venv/bin/python3 -m uvicorn app.main:app --host 0.0.0.0 --port 8000 > /tmp/uvicorn.log 2>&1 &
-```
 
 ---
 
@@ -637,24 +655,118 @@ npm run deploy
    ```
 3. Укажите DATABASE_URL как переменную окружения
 
-### Docker (опционально)
-```dockerfile
-# Frontend
-FROM node:18-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-CMD ["npm", "run", "preview"]
+### Docker (рекомендуется для VPS)
 
-# Backend
-FROM python:3.11-slim
-WORKDIR /app
-COPY requirements.txt ./
-RUN pip install -r requirements.txt
-COPY . .
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+```bash
+# Клонируйте репозиторий
+git clone https://github.com/sizopu/react-sheet-red.git
+cd react-sheet-red
+
+# Настройте .env (секретный ключ для JWT)
+cp .env.example .env
+nano .env  # отредактируйте SECRET_KEY
+
+# Запустите в фоне
+docker-compose up -d
+
+# Проверьте логи
+docker-compose logs -f
+
+# Остановите
+docker-compose down
+
+# Сброс данных (удаляет БД)
+docker-compose down -v
+```
+
+**Доступ после запуска:**
+- Frontend: `http://your-server-ip:80`
+- Backend API: `http://your-server-ip:8000`
+- Swagger docs: `http://your-server-ip:8000/docs`
+
+**Обновление на VPS:**
+```bash
+git pull
+docker-compose build --no-cache
+docker-compose up -d
+```
+
+### VPS Deployment (Ubuntu/Debian)
+
+**1. Установите Docker и Docker Compose:**
+```bash
+# Обновите систему
+sudo apt update && sudo apt upgrade -y
+
+# Установите Docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+
+# Установите Docker Compose
+sudo apt install docker-compose -y
+
+# Добавьте пользователя в группу docker
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+**2. Запустите приложение:**
+```bash
+# Клонируйте репозиторий
+git clone https://github.com/sizopu/react-sheet-red.git
+cd react-sheet-red
+
+# Настройте переменные окружения
+cp .env.example .env
+nano .env
+
+# Запустите
+docker-compose up -d
+
+# Проверьте статус
+docker-compose ps
+```
+
+**3. Настройте Nginx как обратный прокси (опционально, для HTTPS):**
+```bash
+sudo apt install nginx -y
+sudo nano /etc/nginx/sites-available/cyberpunk
+
+# Добавьте конфигурацию:
+server {
+    listen 80;
+    server_name your-domain.com;
+
+    location / {
+        proxy_pass http://localhost:80;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+
+# Включите сайт
+sudo ln -s /etc/nginx/sites-available/cyberpunk /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl restart nginx
+```
+
+**4. Настройте автоматическое обновление (опционально):**
+```bash
+# Создайте скрипт обновления
+cat > ~/update-cyberpunk.sh << 'EOF'
+#!/bin/bash
+cd /path/to/react-sheet-red
+git pull
+docker-compose build --no-cache
+docker-compose up -d
+docker system prune -f
+EOF
+
+chmod +x ~/update-cyberpunk.sh
+
+# Добавьте в crontab для автоматического обновления раз в неделю
+crontab -e
+# 0 3 * * 0 /home/username/update-cyberpunk.sh
 ```
 
 ---

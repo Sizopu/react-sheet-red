@@ -6,10 +6,10 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "${FRONTEND_PORT:-8080}:80"
     depends_on:
       - backend
-    restart: unless-stopped
+    restart: always
     networks:
       - app-network
 
@@ -18,14 +18,14 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"
+      - "${BACKEND_PORT:-8001}:8000"
     volumes:
       # Persist SQLite database
       - backend_data:/app/data
     environment:
       - DATABASE_URL=sqlite:///./data/cyberpunk.db
-      - SECRET_KEY=${SECRET_KEY:-your-super-secret-key-change-in-production}
-    restart: unless-stopped
+      - SECRET_KEY=${SECRET_KEY}
+    restart: always
     networks:
       - app-network
 

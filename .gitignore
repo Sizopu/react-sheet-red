@@ -1,8 +1,5 @@
 node_modules/  
 dist/  
-backend/cyberpunk.db
 backend/data/
-.env
 *.pyc
 __pycache__/
-*.db  

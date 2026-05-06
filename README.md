@@ -151,9 +151,9 @@ docker-compose logs -f
 ```
 
 Доступ:
-- Frontend: `http://localhost:80`
-- Backend API: `http://localhost:8000`
-- Swagger docs: `http://localhost:8000/docs`
+- Frontend: `http://localhost:8080`
+- Backend API: `http://localhost:8001`
+- Swagger docs: `http://localhost:8001/docs`
 
 **Остановка:**
 ```bash
@@ -680,9 +680,9 @@ docker-compose down -v
 ```
 
 **Доступ после запуска:**
-- Frontend: `http://your-server-ip:80`
-- Backend API: `http://your-server-ip:8000`
-- Swagger docs: `http://your-server-ip:8000/docs`
+- Frontend: `http://your-server-ip:8080`
+- Backend API: `http://your-server-ip:8001`
+- Swagger docs: `http://your-server-ip:8001/docs`
 
 **Обновление на VPS:**
 ```bash
@@ -738,7 +738,7 @@ server {
     server_name your-domain.com;
 
     location / {
-        proxy_pass http://localhost:80;
+        proxy_pass http://localhost:8080;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }

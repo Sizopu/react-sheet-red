@@ -140,8 +140,15 @@
 git clone https://github.com/sizopu/react-sheet-red.git
 cd react-sheet-red
 
-# Скопируйте пример .env
-cp .env.example .env
+# Сгенерируйте SECRET_KEY
+python3 -c "import secrets; print(secrets.token_urlsafe(32))"
+
+# Создайте .env файл с вашим ключом
+cat > .env << EOF
+SECRET_KEY=<ваш-сгенерированный-ключ>
+FRONTEND_PORT=8080
+BACKEND_PORT=8001
+EOF
 
 # Запустите оба сервиса
 docker-compose up -d
@@ -655,42 +662,6 @@ npm run deploy
    ```
 3. Укажите DATABASE_URL как переменную окружения
 
-### Docker (рекомендуется для VPS)
-
-```bash
-# Клонируйте репозиторий
-git clone https://github.com/sizopu/react-sheet-red.git
-cd react-sheet-red
-
-# Настройте .env (секретный ключ для JWT)
-cp .env.example .env
-nano .env  # отредактируйте SECRET_KEY
-
-# Запустите в фоне
-docker-compose up -d
-
-# Проверьте логи
-docker-compose logs -f
-
-# Остановите
-docker-compose down
-
-# Сброс данных (удаляет БД)
-docker-compose down -v
-```
-
-**Доступ после запуска:**
-- Frontend: `http://your-server-ip:8080`
-- Backend API: `http://your-server-ip:8001`
-- Swagger docs: `http://your-server-ip:8001/docs`
-
-**Обновление на VPS:**
-```bash
-git pull
-docker-compose build --no-cache
-docker-compose up -d
-```
-
 ### VPS Deployment (Ubuntu/Debian)
 
 **1. Установите Docker и Docker Compose:**
@@ -716,9 +687,15 @@ newgrp docker
 git clone https://github.com/sizopu/react-sheet-red.git
 cd react-sheet-red
 
-# Настройте переменные окружения
-cp .env.example .env
-nano .env
+# Сгенерируйте SECRET_KEY
+python3 -c "import secrets; print(secrets.token_urlsafe(32))"
+
+# Создайте .env файл
+cat > .env << EOF
+SECRET_KEY=<ваш-ключ>
+FRONTEND_PORT=8080
+BACKEND_PORT=8001
+EOF
 
 # Запустите
 docker-compose up -d
@@ -771,15 +748,40 @@ crontab -e
 
 ---
 
-## 📝 Лицензия
+## 🔐 Настройка .env
 
-MIT License
+**Перед запуском обязательно создайте `.env` файл:**
+
+```bash
+# 1. Сгенерируйте секретный ключ для JWT
+python3 -c "import secrets; print(secrets.token_urlsafe(32))"
+
+# 2. Создайте .env файл
+cat > .env << EOF
+SECRET_KEY=<вставьте-сгенерированный-ключ>
+FRONTEND_PORT=8080
+BACKEND_PORT=8001
+EOF
+```
+
+**Параметры .env:**
+
+| Параметр | Описание | Обязательный | По умолчанию |
+|----------|----------|--------------|--------------|
+| `SECRET_KEY` | Секретный ключ для подписи JWT токенов | **Да** | - |
+| `FRONTEND_PORT` | Порт для фронтенда | Нет | 8080 |
+| `BACKEND_PORT` | Порт для бекенда | Нет | 8001 |
+
+**Важно:**
+- `SECRET_KEY` **обязателен** — контейнеры не запустятся без него
+- Используйте надёжный ключ (минимум 32 символа)
+- Никогда не коммитьте `.env` в Git (уже добавлен в `.gitignore`)
 
 ---
 
-## 👨‍💻 Автор
+## 📝 Лицензия
 
-Разработан командой **NLP-Core-Team**
+MIT License
 
 ---
 
